@@ -313,65 +313,117 @@ header nav a:hover {
   </div>
 </section>
 
-  <!-- Why Us Section - Professional & Technical -->
-<section class="why-us-section">
-  <div class="container">
-    <h2 class="title">Why Choose Us</h2>
-    <p class="subtitle">Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.</p>
+ <!-- WHY US (Slider Style Like Services Section) -->
+<section class="why-us-section" id="whyus">
+  <h2 class="why-title">Why Choose Us</h2>
+  <p class="why-subtitle">
+    Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.
+  </p>
 
-    <div class="why-grid">
-      <div class="card">
-        <div class="icon">💼</div>
-        <h3>Professional Expertise</h3>
-        <p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
-      </div>
+  <div class="why-slider">
 
-      <div class="card">
-        <div class="icon">🔒</div>
-        <h3>Security First Approach</h3>
-        <p>We implement industry‑standard security frameworks ensuring compliance, protection and risk reduction for your business.</p>
-      </div>
+    <div class="why-card">
+      <div class="why-icon">💼</div>
+      <h3>Professional Expertise</h3>
+      <p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">⚡</div>
-        <h3>Fast Response & 24/7 Support</h3>
-        <p>Critical support when you need it. Our monitoring and helpdesk ensure your systems remain operational at all times.</p>
-      </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Security First Approach</h3>
+      <p>We implement industry-standard security frameworks ensuring compliance, protection and risk reduction.</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">🚀</div>
-        <h3>Scalable Solutions</h3>
-        <p>Solutions engineered to grow with your business—from cloud migrations to full IT infrastructure modernisation.</p>
-      </div>
-          <div class="card">
-        <div class="icon">🧩</div>
-        <h3>Custom‑Built IT Solutions</h3>
-        <p>We design systems tailored to your exact business needs, ensuring seamless integration, efficiency and long‑term scalability.</p>
-      </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Fast Response & 24/7 Support</h3>
+      <p>Our helpdesk and monitoring ensure your systems remain operational at all times.</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3>Data‑Driven Strategy</h3>
-        <p>Our decisions and recommendations are backed by analytics, monitoring insights and industry best‑practice frameworks.</p>
-      </div>
+    <div class="why-card">
+      <div class="why-icon">🚀</div>
+      <h3>Scalable Solutions</h3>
+      <p>Solutions engineered to grow with your business—from cloud migrations to full IT modernisation.</p>
+    </div>
 
-</div>
+    <div class="why-card">
+      <div class="why-icon">🧩</div>
+      <h3>Custom-Built IT Solutions</h3>
+      <p>We design IT systems tailored to your exact business needs for efficiency and long-term scalability.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">📊</div>
+      <h3>Data-Driven Strategy</h3>
+      <p>Decisions backed by analytics, monitoring insights and industry best-practice frameworks.</p>
+    </div>
+
   </div>
 </section>
+/* WHY US Slider Style */
+.why-us-section {
+  padding: 80px 60px;
+  background: #f8f9fb;
+}
 
-<style>
-  .why-us-section {padding: 80px 0; background: #f8f9fb; font-family: Arial, sans-serif;}
-  .why-us-section .title {text-align: center; font-size: 2.2rem; margin-bottom: 10px; font-weight: 700;}
-  .why-us-section .subtitle {text-align: center; max-width: 680px; margin: 0 auto 50px; color: #555; font-size: 1.1rem;}
+.why-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
 
-  .why-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;}
-  .card {background: #fff; padding: 28px; border-radius: 16px; box-shadow: 0 8px 18px rgba(0,0,0,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease;}
-  .card:hover {transform: translateY(-6px); box-shadow: 0 12px 26px rgba(0,0,0,0.1);} 
+.why-subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
 
-  .icon {font-size: 2.2rem; margin-bottom: 14px;}
-  .card h3 {margin-bottom: 10px; font-size: 1.3rem; font-weight: 600;}
-  .card p {color: #555; line-height: 1.5;}
-</style>
+/* Slider like Services */
+.why-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+/* Card Style */
+.why-card {
+  background: #fff;
+  min-width: 260px;
+  height: 300px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+}
+
+.why-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.why-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.why-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
 
   
 <!-- SERVICES -->
