@@ -215,8 +215,9 @@ header nav a:hover {
 /* Card Style */
 .why-card {
   background: #fff;
-  min-width: 200px;
-  height: 300px;
+  min-width: 250px;     /* wider starting point */
+  max-width: 250px;     /* prevents the huge stretching */
+  height: 260px;        /* reduced height so it looks balanced */
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -224,6 +225,7 @@ header nav a:hover {
   transition: transform 0.3s ease;
   cursor: pointer;
 }
+
 
 .why-card:hover {
   transform: translateY(-5px);
