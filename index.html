@@ -132,24 +132,25 @@ header nav a:hover {
       scroll-behavior: smooth;
     }
 
-    .service-card {
-      position: relative;
-      min-width: 220px;
-      height: 520px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-    }
+   .service-card {
+  position: relative;
+  width: 220px;                /* FIXED WIDTH */
+  height: 520px;               /* FIXED HEIGHT */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
 
-    .service-card video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.service-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* FORCE SAME VIDEO SIZE */
+  display: block;
+}
+
 
     .service-card:hover {
       transform: translateY(-5px);
