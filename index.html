@@ -134,20 +134,21 @@
     .about-media { flex: 1; min-width: 300px; }
     .about-media video { width: 75%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
 
-  .testimonials-wrapper {
+ .testimonials-wrapper {
   overflow: hidden;
+  width: 100%;
 }
 
 .testimonials-slider {
   display: flex;
   gap: 20px;
-  width: max-content; /* Ensure slider is wide enough on mobile */
-  touch-action: pan-x; /* Allow horizontal swipe */
+  width: max-content;
+  transform: translateX(0);
 }
 
 .test-card {
   background: #fff;
-  min-width: 250px; /* smaller for mobile */
+  min-width: 250px;
   max-width: 300px;
   padding: 20px;
   border-radius: 20px;
@@ -172,6 +173,7 @@
   font-size: 15px;
   color: #111;
 }
+
 
   </style>
 </head>
@@ -372,42 +374,20 @@
 
   <div class="testimonials-wrapper">
     <div class="testimonials-slider" id="testimonials-slider">
-      <div class="test-card">
-        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
-        <div>— David, Logistics Co.</div>
-      </div>
-      <div class="test-card">
-        <p>"Fast response, highly professional, and very knowledgeable."</p>
-        <div>— Sarah, Accounting Firm</div>
-      </div>
-      <div class="test-card">
-        <p>"Reliable team. Best experience with cloud migration so far."</p>
-        <div>— Mark, Construction Group</div>
-      </div>
-      <div class="test-card">
-        <p>"Excellent support and very knowledgeable IT team!"</p>
-        <div>— Emily, Retail Co.</div>
-      </div>
-      <!-- Duplicate for infinite scroll -->
-      <div class="test-card">
-        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
-        <div>— David, Logistics Co.</div>
-      </div>
-      <div class="test-card">
-        <p>"Fast response, highly professional, and very knowledgeable."</p>
-        <div>— Sarah, Accounting Firm</div>
-      </div>
-      <div class="test-card">
-        <p>"Reliable team. Best experience with cloud migration so far."</p>
-        <div>— Mark, Construction Group</div>
-      </div>
-      <div class="test-card">
-        <p>"Excellent support and very knowledgeable IT team!"</p>
-        <div>— Emily, Retail Co.</div>
-      </div>
+      <!-- Original Cards -->
+      <div class="test-card"> <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p><div>— David, Logistics Co.</div></div>
+      <div class="test-card"> <p>"Fast response, highly professional, and very knowledgeable."</p><div>— Sarah, Accounting Firm</div></div>
+      <div class="test-card"> <p>"Reliable team. Best experience with cloud migration so far."</p><div>— Mark, Construction Group</div></div>
+      <div class="test-card"> <p>"Excellent support and very knowledgeable IT team!"</p><div>— Emily, Retail Co.</div></div>
+      <!-- Duplicate for infinite loop -->
+      <div class="test-card"> <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p><div>— David, Logistics Co.</div></div>
+      <div class="test-card"> <p>"Fast response, highly professional, and very knowledgeable."</p><div>— Sarah, Accounting Firm</div></div>
+      <div class="test-card"> <p>"Reliable team. Best experience with cloud migration so far."</p><div>— Mark, Construction Group</div></div>
+      <div class="test-card"> <p>"Excellent support and very knowledgeable IT team!"</p><div>— Emily, Retail Co.</div></div>
     </div>
   </div>
 </section>
+
 
 
  
@@ -495,23 +475,26 @@ const slider = document.getElementById('testimonials-slider');
 let speed = 0.5; // pixels per frame
 let isHovered = false;
 
-// Pause on hover (desktop)
+// Pause auto-scroll on hover
 slider.addEventListener('mouseenter', () => isHovered = true);
 slider.addEventListener('mouseleave', () => isHovered = false);
 
-// Auto-scroll function
-function autoScroll() {
+function smoothScroll() {
   if(!isHovered){
+    slider.style.transform = `translateX(-${speed}px)`;
     slider.scrollLeft += speed;
+
     if(slider.scrollLeft >= slider.scrollWidth / 2){
-      slider.scrollLeft = 0;
+      slider.scrollLeft = 0; // reset to start for infinite loop
     }
   }
-  requestAnimationFrame(autoScroll);
+  requestAnimationFrame(smoothScroll);
 }
 
-autoScroll();
+// Start auto-scrolling
+smoothScroll();
 </script>
+
 
 </body>
 </html>
