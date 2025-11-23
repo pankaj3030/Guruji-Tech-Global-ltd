@@ -134,12 +134,11 @@
     .about-media { flex: 1; min-width: 300px; }
     .about-media video { width: 75%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
 
-    .testimonials-slider {
+   .testimonials-slider {
   display: flex;
   gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
+  overflow: hidden; /* hide scrollbar */
+  cursor: grab;
 }
 
 .test-card {
@@ -151,7 +150,6 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
   flex-shrink: 0;
   transition: transform 0.3s ease;
-  cursor: grab;
 }
 
 .test-card:hover {
@@ -169,17 +167,6 @@
   font-weight: 700;
   font-size: 16px;
   color: #111;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.testimonials-slider::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.testimonials-slider {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
   </style>
@@ -380,6 +367,7 @@
   <p>What our clients say about us.</p>
 
   <div class="testimonials-slider" id="testimonials-slider">
+    <!-- Original Cards -->
     <div class="test-card">
       <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
       <div>— David, Logistics Co.</div>
@@ -396,7 +384,7 @@
       <p>"Excellent support and very knowledgeable IT team!"</p>
       <div>— Emily, Retail Co.</div>
     </div>
-    <!-- Duplicate for infinite scroll -->
+    <!-- Duplicate Cards for Infinite Loop -->
     <div class="test-card">
       <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
       <div>— David, Logistics Co.</div>
@@ -405,10 +393,16 @@
       <p>"Fast response, highly professional, and very knowledgeable."</p>
       <div>— Sarah, Accounting Firm</div>
     </div>
+    <div class="test-card">
+      <p>"Reliable team. Best experience with cloud migration so far."</p>
+      <div>— Mark, Construction Group</div>
+    </div>
+    <div class="test-card">
+      <p>"Excellent support and very knowledgeable IT team!"</p>
+      <div>— Emily, Retail Co.</div>
+    </div>
   </div>
 </section>
-
-
 
  
 <!-- CONTACT -->
@@ -491,30 +485,27 @@
    
   </script>
 <script>
-  const slider = document.getElementById('testimonials-slider');
-  let scrollAmount = 0;
-  let scrollStep = 1; // speed
-  let sliderInterval;
+const slider = document.getElementById('testimonials-slider');
+let speed = 0.5; // pixels per frame
+let isHovered = false;
 
-  function startAutoSlide() {
-    sliderInterval = setInterval(() => {
-      slider.scrollLeft += scrollStep;
-      // If reached the end, scroll back to start
-      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-        slider.scrollLeft = 0;
-      }
-    }, 20); // 20ms per step
+// Pause on hover
+slider.addEventListener('mouseenter', () => isHovered = true);
+slider.addEventListener('mouseleave', () => isHovered = false);
+
+function autoScroll() {
+  if(!isHovered){
+    slider.scrollLeft += speed;
+    // Loop: reset scroll when reaching the first half (original cards)
+    if(slider.scrollLeft >= slider.scrollWidth / 2){
+      slider.scrollLeft = 0;
+    }
   }
+  requestAnimationFrame(autoScroll);
+}
 
-  function stopAutoSlide() {
-    clearInterval(sliderInterval);
-  }
-
-  slider.addEventListener('mouseenter', stopAutoSlide);
-  slider.addEventListener('mouseleave', startAutoSlide);
-
-  // Start auto slide initially
-  startAutoSlide();
+// Start animation
+autoScroll();
 </script>
 
   
