@@ -256,6 +256,20 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); } /* move left by half the slider (duplicated cards) */
 }
+    .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 9999;
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: 100%;
+}
+
   </style>
 </head>
   <!-- HEADER -->
@@ -518,6 +532,9 @@
     </form>
   </div>
 </section>
+<a href="https://wa.me/447123456789" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
 
   <!-- FOOTER -->
   <footer style="background:#111;color:#fff;padding:40px;text-align:center;border-top-left-radius:20px;border-top-right-radius:20px;">
