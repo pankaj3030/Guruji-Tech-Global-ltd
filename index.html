@@ -134,16 +134,20 @@
     .about-media { flex: 1; min-width: 300px; }
     .about-media video { width: 75%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
 
-   .testimonials-slider {
+  .testimonials-wrapper {
+  overflow: hidden;
+}
+
+.testimonials-slider {
   display: flex;
   gap: 20px;
-  overflow: hidden; /* hide scrollbar */
-  cursor: grab;
+  width: max-content; /* Ensure slider is wide enough on mobile */
+  touch-action: pan-x; /* Allow horizontal swipe */
 }
 
 .test-card {
   background: #fff;
-  min-width: 300px;
+  min-width: 250px; /* smaller for mobile */
   max-width: 300px;
   padding: 20px;
   border-radius: 20px;
@@ -157,7 +161,7 @@
 }
 
 .test-card p {
-  font-size: 15px;
+  font-size: 14px;
   color: #555;
   margin-bottom: 10px;
   line-height: 1.5;
@@ -165,7 +169,7 @@
 
 .test-card div {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   color: #111;
 }
 
@@ -489,14 +493,14 @@ const slider = document.getElementById('testimonials-slider');
 let speed = 0.5; // pixels per frame
 let isHovered = false;
 
-// Pause on hover
+// Pause on hover (desktop)
 slider.addEventListener('mouseenter', () => isHovered = true);
 slider.addEventListener('mouseleave', () => isHovered = false);
 
+// Auto-scroll function
 function autoScroll() {
   if(!isHovered){
     slider.scrollLeft += speed;
-    // Loop: reset scroll when reaching the first half (original cards)
     if(slider.scrollLeft >= slider.scrollWidth / 2){
       slider.scrollLeft = 0;
     }
@@ -504,10 +508,8 @@ function autoScroll() {
   requestAnimationFrame(autoScroll);
 }
 
-// Start animation
 autoScroll();
 </script>
 
-  
 </body>
 </html>
