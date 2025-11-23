@@ -134,6 +134,55 @@
     .about-media { flex: 1; min-width: 300px; }
     .about-media video { width: 75%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
 
+    .testimonials-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.test-card {
+  background: #fff;
+  min-width: 300px;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+
+.test-card:hover {
+  transform: translateY(-5px);
+}
+
+.test-card p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.test-card div {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.testimonials-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.testimonials-slider {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
   </style>
 </head>
 
