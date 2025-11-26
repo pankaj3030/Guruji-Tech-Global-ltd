@@ -272,7 +272,46 @@
     height: 100%;
 }
 
+
+    .cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cookie-buttons button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 4px;
+}
+
+.cookie-buttons button:nth-child(2) {
+  background: #f44336;
+}
+
+
   </style>
+
+
+
+  
 </head>
   <!-- HEADER -->
   <header>
@@ -619,6 +658,57 @@
   <footer style="background:#111;color:#fff;padding:40px;text-align:center;border-top-left-radius:20px;border-top-right-radius:20px;">
     <p>© 2025 Guruji Tech Global. All Rights Reserved.</p>
   </footer>
+
+  <div id="cookie-banner" class="cookie-banner">
+  <p>
+    We use cookies to improve your experience and analyze our traffic.
+    <a href="/cookie-policy.html">Learn more</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Accept</button>
+    <button id="reject-cookies">Reject</button>
+  </div>
+</div>
+
+  <script>
+  // Show banner only if no consent is stored
+  if (!localStorage.getItem("cookieConsent")) {
+    document.getElementById("cookie-banner").style.display = "flex";
+  }
+
+  // Accept cookies
+  document.getElementById("accept-cookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    document.getElementById("cookie-banner").style.display = "none";
+    loadAnalytics();
+  };
+
+  // Reject cookies
+  document.getElementById("reject-cookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "rejected");
+    document.getElementById("cookie-banner").style.display = "none";
+  };
+
+  // Load analytics only if previously accepted
+  if (localStorage.getItem("cookieConsent") === "accepted") {
+    loadAnalytics();
+  }
+
+  // Function to load GA only after consent
+  function loadAnalytics() {
+    var gtagScript = document.createElement("script");
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX";
+    document.head.appendChild(gtagScript);
+
+    gtagScript.onload = function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
+    };
+  }
+</script>
+
 
   <!-- SCRIPTS -->
   <script>
