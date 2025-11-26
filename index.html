@@ -697,14 +697,14 @@
   // Function to load GA only after consent
   function loadAnalytics() {
     var gtagScript = document.createElement("script");
-    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX";
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
     document.head.appendChild(gtagScript);
 
     gtagScript.onload = function () {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXX');
+      gtag('config', 'G-HFCKN1H30C');
     };
   }
 </script>
