@@ -94,11 +94,11 @@
 }
 .slider-track {
   display: flex;
-  animation: slide-right 60s linear infinite;
+  animation: slide-left 60s linear infinite reverse; /* ← Add 'reverse' here */
   gap: 25px;
 }
 
-@keyframes slide-right {
+@keyframes slide-left {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
