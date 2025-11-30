@@ -193,7 +193,16 @@
     .about-text p { margin-bottom: 16px; line-height: 1.6; color: #444; }
     .about-points li { margin-bottom: 8px; font-size: 1rem; color: #222; }
     .about-media { flex: 1; min-width: 300px; }
-    .about-media video { width: 80%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
+    
+
+    .about-media video {
+  width: 400px;      /* Set your custom width */
+  height: 250px;     /* Set your custom height */
+  object-fit: cover; /* Keeps video looking good */
+  border-radius: 14px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
 
 .testimonials-wrapper {
   overflow: hidden;
