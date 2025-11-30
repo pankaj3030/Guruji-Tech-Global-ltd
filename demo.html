@@ -96,9 +96,12 @@
   width: 100%;
   position: relative;
 }
+.services-slider:hover .slider-track {
+  animation-play-state: paused;
+}
 .slider-track {
   display: flex;
-  animation: slide-left 25s linear infinite;
+  animation: slide-left 45s linear infinite;
   gap: 25px;
 }
 @keyframes slide-left {
@@ -218,8 +221,6 @@
   border-radius: 14px;
   box-shadow: 0 5px 25px rgba(0,0,0,0.15);
 }
-
-
 
 .testimonials-wrapper {
   overflow: hidden;
