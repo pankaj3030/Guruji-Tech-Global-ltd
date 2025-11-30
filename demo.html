@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guruji Tech Global</title>
+  <!-- Favicon -->
+    <link rel="icon" type="image/jpg" href="favicon.jpg">
   <style>
     * {box-sizing: border-box;}
     body {margin:0;font-family:Arial, sans-serif;background:#f5f7fa;color:#111;scroll-behavior: smooth;}
     h2, h3 {margin:0;}
     a {text-decoration:none;}
-
-    html { scroll-padding-top: 70px; }
-
-    /* HEADER */
+    html {
+  scroll-padding-top: 70px; /* match your header height */
+}
+ /* HEADER */
     header {
       padding:10px 40px;
       display:flex;
@@ -25,21 +27,17 @@
       z-index:1000;
       flex-wrap: wrap;
     }
-
     .logo-container img {
       height: 100px;
       width: auto;
       display: block;
     }
-
     nav#nav-links a {
       margin-left: 20px;
       color: #333;
       font-weight: 600;
     }
-
     nav#nav-links a:hover { color: #111; }
-
     /* Hamburger Menu */
     .hamburger {
       display: none;
@@ -47,7 +45,6 @@
       cursor: pointer;
       gap: 5px;
     }
-
     .hamburger span {
       height: 3px;
       width: 25px;
@@ -55,11 +52,9 @@
       border-radius: 2px;
       transition: 0.3s;
     }
-
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
-
     /* HERO */
     .hero { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 60px; min-height: 100vh; color: #fff; overflow: hidden; }
     .hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
@@ -69,21 +64,100 @@
     .hero-left h2 {font-size:52px;margin-bottom:20px;font-weight:800;line-height:1.2;}
     .hero-left p {font-size:18px;line-height:1.6;color:#fff;margin-bottom:30px;}
     .hero-btn {background:#fff;color:#111;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:600;display:inline-block;}
-
     .stat-card { background: #fff; color: #111; padding: 30px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); margin-top: 20px; z-index: 1; animation: fadeUp 1s ease-out forwards; }
-
     /* SERVICES */
-    .services-section {padding:80px 60px; animation: fadeIn 1s ease-out forwards;}
-    .services-section h2 {font-size:42px;font-weight:800;margin-bottom:20px;}
-    .services-section p {color:#444;margin-bottom:40px;font-size:18px;}
-    .services-slider { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; scroll-behavior: smooth; }
+ .services-section {
+  padding: 80px 60px;
+  animation: fadeIn 1s ease-out forwards;
+}
+.services-section h2 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.services-section p {
+  color: #444;
+  margin-bottom: 40px;
+  font-size: 18px;
+}
+.service-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+}
+.services-slider {
+  display: flex;
+  gap: 25px;
+  padding: 20px 0;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.slider-track {
+  display: flex;
+  animation: slide-left 25s linear infinite;
+  gap: 25px;
+}
+@keyframes slide-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-    .service-card { position: relative; width: 350px; height: 520px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer; flex-shrink: 0; transition: transform 0.3s ease; }
-    .service-card video { width: 100%; height: 100%; object-fit: contain; display: block; }
-    .service-card:hover { transform: translateY(-5px); }
-    .service-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.75), transparent); color: #fff; padding: 15px 20px; }
-    .service-overlay h3 { font-size: 18px; margin-bottom: 5px; }
-    .service-overlay p { font-size: 14px; line-height: 1.4; }
+.service-card {
+  position: relative;
+  width: 350px;
+  height: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+/* Video container slightly pulled up */
+.service-video-container {
+  height: 380px; /* Adjust based on how much space text needs */
+  overflow: hidden;
+  margin-bottom: -30px; /* Pulls video UP visually */
+  border-radius: 20px 20px 0 0;
+}
+
+.service-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Text below video (no overlay) */
+.service-content {
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 40px 20px 20px; /* Extra top padding compensates for video pull-up */
+  border-radius: 20px;
+  height: 170px; /* Ensures consistent height */
+  display: flex;
+  flex-direction: column;
+}
+
+.service-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.service-content p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #666;
+  margin: 0;
+}
 
     /* WHY US */
     .why-us-section { padding: 80px 60px; background: #f8f9fb; }
@@ -97,7 +171,7 @@
     .why-card p { font-size: 15px; color: #555; line-height: 1.5; }
 
     /* OTHER SECTIONS */
-    .testimonials { display:flex; overflow-x:auto; gap:20px; padding-bottom:10px; }
+  
     .contact-box input, .contact-box textarea, .contact-box button { width:100%; padding:14px; margin-top:10px; border-radius:12px; border:1px solid #ccc; font-size:15px; }
     .contact-box button { background:#111; color:#fff; border:none; cursor:pointer; font-weight:600; }
     .contact-box button:hover { background:#333; }
@@ -128,27 +202,133 @@
     .about-text h2 { font-size: 2.4rem; margin-bottom: 15px; }
     .about-text p { margin-bottom: 16px; line-height: 1.6; color: #444; }
     .about-points li { margin-bottom: 8px; font-size: 1rem; color: #222; }
-    .about-media { flex: 1; min-width: 300px; }
-    .about-media video { width: 75%; border-radius: 14px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); }
+    
+  .about-media {
+  width: 100%;
+  max-width: 600px;
+  height: 550px;
+  overflow: hidden;
+  border-radius: 14px;
+}
 
+.about-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fills the box perfectly */
+  border-radius: 14px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+
+
+.testimonials-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.testimonials-slider {
+  display: flex;
+  gap: 20px;
+  animation: scroll 20s linear infinite;
+}
+
+.testimonials-wrapper:hover .testimonials-slider {
+  animation-play-state: paused; /* pause on hover */
+}
+
+.test-card {
+  background: #fff;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.test-card:hover {
+  transform: translateY(-5px);
+}
+
+.test-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.test-card div {
+  font-weight: 700;
+  font-size: 15px;
+  color: #111;
+}
+
+/* Keyframes for infinite horizontal scroll */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* move left by half the slider (duplicated cards) */
+}
+    .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 9999;
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: 100%;
+}
+    .cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.cookie-banner p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cookie-buttons button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 4px;
+}
+.cookie-buttons button:nth-child(2) {
+  background: #f44336;
+}
   </style>
 </head>
-
-<body>
-
   <!-- HEADER -->
   <header>
     <div class="logo-container">
-      <img src="logo.png" alt="logo image">
-    </div>
-
+  <a href="index">
+    <img src="logo.png" alt="logo image">
+  </a>
+</div>
     <!-- Hamburger Menu -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
-
     <nav id="nav-links">
       <a href="#">Home</a>
       <a href="#about">About</a>
@@ -158,7 +338,6 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
   <!-- HERO -->
   <section class="hero">
     <video src="video.mp4" autoplay muted loop playsinline></video>
@@ -168,83 +347,473 @@
       <a class="hero-btn" href="#contact">Get in Touch</a>
     </div>
   </section>
-
+  
   <!-- ABOUT US -->
-  <section class="about-section" id="about">
-    <div class="about-container">
-      <div class="about-text">
-        <h2>About Us</h2>
-        <p>At <strong>Guruji Tech Global</strong>, we provide secure, scalable, and cost-efficient IT solutions...</p>
-        <ul class="about-points">
-          <li>✔ Over 10+ years of IT industry experience</li>
-          <li>✔ Fully managed IT support & monitoring</li>
-          <li>✔ Cloud-first approach with Azure & AWS</li>
-          <li>✔ Fast response time & 24/7 availability</li>
+<section class="about-section" id="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        At <strong>Guruji Tech Global</strong>, we provide secure, scalable, and cost-efficient IT solutions for businesses of all sizes. 
+        With expertise across Cloud Services, IT Support, Microsoft 365, Cyber Security and Infrastructure Management, 
+        we help organisations modernize their technology and operate efficiently.
+      </p>
+      <p>
+        Our mission is simple: Deliver enterprise-grade IT services with transparency, speed, and reliability. 
+        Whether you need round-the-clock support, cloud migration, or complete IT management, our team is here to ensure 
+        your systems run smoothly so you can focus on growing your business.
+      </p>
+
+      <ul class="about-points">
+        <li>✔ Over 10+ years of IT industry experience</li>
+        <li>✔ Fully managed IT support & monitoring</li>
+        <li>✔ Cloud-first approach with Azure & AWS</li>
+        <li>✔ Fast response time & 24/7 availability</li>
+      </ul>
+    </div>
+    <div class="about-media">
+      <video src="about.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+  </div>
+</section>
+
+ <!-- WHY US (Slider Style Like Services Section) -->
+<section class="why-us-section" id="whyus">
+  <h2 class="why-title">Why Choose Us</h2>
+  <p class="why-subtitle">
+    Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.
+  </p>
+  <div class="why-slider">
+    <div class="why-card">
+      <div class="why-icon">💼</div>
+      <h3>Professional Expertise</h3>
+      <p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <h3>Security First Approach</h3>
+      <p>We implement industry-standard security frameworks ensuring compliance, protection and risk reduction.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Fast Response & 24/7 Support</h3>
+      <p>Our helpdesk and monitoring ensure your systems remain operational at all times.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">🚀</div>
+      <h3>Scalable Solutions</h3>
+      <p>Solutions engineered to grow with your business—from cloud migrations to full IT modernisation.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">🧩</div>
+      <h3>Custom-Built IT Solutions</h3>
+      <p>We design IT systems tailored to your exact business needs for efficiency and long-term scalability.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">📊</div>
+      <h3>Data-Driven Strategy</h3>
+      <p>Decisions backed by analytics, monitoring insights and industry best-practice frameworks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <h2>Our Services</h2>
+  <p>Explore our professional IT services tailored for modern businesses.</p>
+
+  <div class="services-slider">
+<div class="slider-track">
+    <!-- Service Card -->
+    <div class="service-card">
+      <video src="cloud.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Cloud Services</strong></h3>
+        <ul>
+          <li>Azure & AWS Migration</li>
+          <li>Cloud Backup</li>
+          <li>Virtual Machines</li>
         </ul>
       </div>
-      <div class="about-media">
-        <video src="about.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+    <div class="service-card">
+      <video src="ms365.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Microsoft 365</strong></h3>
+        <ul>
+          <li>Email Hosting</li>
+          <li>SharePoint Setup</li>
+          <li>Teams Integration</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- WHY US -->
-  <section class="why-us-section" id="whyus">
-    <h2 class="why-title">Why Choose Us</h2>
-    <p class="why-subtitle">Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.</p>
-    <div class="why-slider">
-      <!-- Why Cards (same as your code) -->
+    <div class="service-card">
+      <video src="cyber.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Cyber Security</strong></h3>
+        <ul>
+          <li>Antivirus Management</li>
+          <li>Firewall Protection</li>
+          <li>Threat Monitoring</li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-  <!-- SERVICES -->
-  <section class="services-section" id="services">
-    <h2>Our Services</h2>
-    <p>Explore our professional IT services tailored for modern businesses.</p>
-    <div class="services-slider">
-      <!-- Service Cards (same as your code) -->
+    <div class="service-card">
+      <video src="support.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>24/7 IT Support</strong></h3>
+        <ul>
+          <li>Remote Support</li>
+          <li>On-site Visits</li>
+          <li>Device Management</li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" style="padding:80px 60px">
-    <h2>Testimonials</h2>
-    <p>What our clients say about us.</p>
-    <div class="testimonials">
-      <!-- Testimonials (same as your code) -->
+    <!-- New Services -->
+    <div class="service-card">
+      <video src="network.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Network Solutions</strong></h3>
+        <ul>
+          <li>LAN / WAN Setup</li>
+          <li>VPN Configuration</li>
+          <li>Network Monitoring</li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" style="padding:80px 60px">
-    <h2>Contact Us</h2>
-    <p>Reach out and our team will respond shortly.</p>
-    <div class="contact-box" style="max-width:600px;">
+    <div class="service-card">
+      <video src="devops.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>DevOps & Automation</strong></h3>
+        <ul>
+          <li>CI/CD Pipelines</li>
+          <li>Infrastructure as Code</li>
+          <li>Deployment Automation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="telephone.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>IP Telephony</strong></h3>
+        <ul>
+          <li>Internet-based Calling</li>
+          <li>High Audio Quality</li>
+          <li>Flexible & Low-Cost VoIP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="consulting.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>IT Consulting</strong></h3>
+        <ul>
+          <li>Strategy Planning</li>
+          <li>IT Audits</li>
+          <li>Technology Roadmaps</li>
+        </ul>
+      </div>
+    </div>
+ <!-- Service Card -->
+    <div class="service-card">
+      <video src="cloud.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Cloud Services</strong></h3>
+        <ul>
+          <li>Azure & AWS Migration</li>
+          <li>Cloud Backup</li>
+          <li>Virtual Machines</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="ms365.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Microsoft 365</strong></h3>
+        <ul>
+          <li>Email Hosting</li>
+          <li>SharePoint Setup</li>
+          <li>Teams Integration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="cyber.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Cyber Security</strong></h3>
+        <ul>
+          <li>Antivirus Management</li>
+          <li>Firewall Protection</li>
+          <li>Threat Monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="support.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>24/7 IT Support</strong></h3>
+        <ul>
+          <li>Remote Support</li>
+          <li>On-site Visits</li>
+          <li>Device Management</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- New Services -->
+    <div class="service-card">
+      <video src="network.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>Network Solutions</strong></h3>
+        <ul>
+          <li>LAN / WAN Setup</li>
+          <li>VPN Configuration</li>
+          <li>Network Monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="devops.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>DevOps & Automation</strong></h3>
+        <ul>
+          <li>CI/CD Pipelines</li>
+          <li>Infrastructure as Code</li>
+          <li>Deployment Automation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="telephone.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>IP Telephony</strong></h3>
+        <ul>
+          <li>Internet-based Calling</li>
+          <li>High Audio Quality</li>
+          <li>Flexible & Low-Cost VoIP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <video src="consulting.mp4" muted loop playsinline></video>
+      <div class="service-overlay">
+        <h3><strong>IT Consulting</strong></h3>
+        <ul>
+          <li>Strategy Planning</li>
+          <li>IT Audits</li>
+          <li>Technology Roadmaps</li>
+        </ul>
+      </div>
+    </div>
+
+</div>
+  </div>
+</section>
+
+
+<section id="testimonials" style="padding:80px 20px">
+  <h2 style="text-align:center">Testimonials</h2>
+  <p style="text-align:center">What our clients say about us.</p>
+
+  <div class="testimonials-wrapper">
+    <div class="testimonials-slider">
+      <!-- Original Cards -->
+      <div class="test-card">
+        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
+        <div>— David, Logistics Co.</div>
+      </div>
+      <div class="test-card">
+        <p>"Fast response, highly professional, and very knowledgeable."</p>
+        <div>— Sarah, Accounting Firm</div>
+      </div>
+      <div class="test-card">
+        <p>"Reliable team. Best experience with cloud migration so far."</p>
+        <div>— Mark, Construction Group</div>
+      </div>
+      <div class="test-card">
+        <p>"Excellent support and very knowledgeable IT team!"</p>
+        <div>— Emily, Retail Co.</div>
+      </div>
+      <!-- Duplicate cards for infinite loop -->
+      <div class="test-card">
+        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
+        <div>— David, Logistics Co.</div>
+      </div>
+      <div class="test-card">
+        <p>"Fast response, highly professional, and very knowledgeable."</p>
+        <div>— Sarah, Accounting Firm</div>
+      </div>
+      <div class="test-card">
+        <p>"Reliable team. Best experience with cloud migration so far."</p>
+        <div>— Mark, Construction Group</div>
+      </div>
+      <div class="test-card">
+        <p>"Excellent support and very knowledgeable IT team!"</p>
+        <div>— Emily, Retail Co.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact" style="padding:80px 60px">
+  <h2>Contact Us</h2>
+  <p>Reach out and our team will respond shortly.</p>
+
+  <div style="
+      display:flex;
+      gap:40px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    ">
+
+    <!-- LEFT SIDE — FORM -->
+    <div class="contact-box" style="max-width:600px; flex:1; min-width:280px;">
       <form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
+
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none">
-        <input type="text" id="name" name="name" placeholder="Name" required>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <input type="text" id="phone" name="phone" placeholder="Phone Number">
-        <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="text" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
         <button type="submit">Send Message</button>
       </form>
     </div>
-  </section>
+
+    <!-- RIGHT SIDE — CONTACT INFO + MAP -->
+    <div style="flex:1; min-width:280px;">
+
+      <h3>Our Contact Info</h3>
+
+      <p><strong>📞 Phone:</strong> +44-7488564873</p>
+      <p><strong>📧 Email:</strong> contact@gurujitechglobal.com</p>
+      <p><strong>📍 Address:</strong><br>
+         Guruji Tech Global LTD<br>
+        111 Union House,  <br>
+        New Union Street <br>
+        Coventry, United Kingdom
+      </p>
+
+      <!-- Small Map -->
+   <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.378150338298!2d-1.5158029235651375!3d52.40529624661592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774bfb6a2d4ab3%3A0xa2db0f4da6af7d2!2sUnion%20House%2C%20111%20New%20Union%20St%2C%20Coventry%20CV1%202NT!5e0!3m2!1sen!2suk!4v1732473670000"
+      width="100%" 
+      height="220" 
+      style="border:0; border-radius:10px;" 
+      allowfullscreen 
+      loading="lazy">
+  </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/447488564873" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+  
 
   <!-- FOOTER -->
   <footer style="background:#111;color:#fff;padding:40px;text-align:center;border-top-left-radius:20px;border-top-right-radius:20px;">
     <p>© 2025 Guruji Tech Global. All Rights Reserved.</p>
   </footer>
 
+  <div id="cookie-banner" class="cookie-banner">
+  <p>
+    We use cookies to improve your experience and analyze our traffic.
+    <a href="/cookie-policy.html">Learn more</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Accept</button>
+    <button id="reject-cookies">Reject</button>
+  </div>
+</div>
+
+  <script>
+  // Show banner only if no consent is stored
+  if (!localStorage.getItem("cookieConsent")) {
+    document.getElementById("cookie-banner").style.display = "flex";
+  }
+
+  // Accept cookies
+  document.getElementById("accept-cookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    document.getElementById("cookie-banner").style.display = "none";
+    loadAnalytics();
+  };
+
+  // Reject cookies
+  document.getElementById("reject-cookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "rejected");
+    document.getElementById("cookie-banner").style.display = "none";
+  };
+
+  // Load analytics only if previously accepted
+  if (localStorage.getItem("cookieConsent") === "accepted") {
+    loadAnalytics();
+  }
+
+  // Function to load GA only after consent
+  function loadAnalytics() {
+    var gtagScript = document.createElement("script");
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
+    document.head.appendChild(gtagScript);
+
+    gtagScript.onload = function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HFCKN1H30C');
+    };
+  }
+</script>
+
+
   <!-- SCRIPTS -->
   <script>
-    // Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      hamburger.classList.toggle('active');
+    // Autoplay videos on hover (desktop) & autoplay muted on mobile
+    const videos = document.querySelectorAll('.service-card video');
+    videos.forEach(v => {
+      v.play().catch(()=>{}); // autoplay muted default
+      v.addEventListener('mouseenter', ()=>v.play());
+      v.addEventListener('mouseleave', ()=>v.pause());
     });
 
     // Typing effect
@@ -255,11 +824,56 @@
       const word = words[i];
       current = word.slice(0, j);
       element.textContent = current;
+
       if(!isDeleting && j < word.length){ j++; setTimeout(type,120);}
       else if(isDeleting && j>0){ j--; setTimeout(type,70);}
       else{ isDeleting = !isDeleting; if(!isDeleting) i=(i+1)%words.length; setTimeout(type,1200);}
     }
     window.onload = type;
+
+// Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      hamburger.classList.toggle('active');
+    });
+   
   </script>
+<script>
+const slider = document.getElementById('testimonials-slider');
+let speed = 0.5; // pixels per frame
+let isHovered = false;
+
+// Pause auto-scroll on hover
+slider.addEventListener('mouseenter', () => isHovered = true);
+slider.addEventListener('mouseleave', () => isHovered = false);
+
+function smoothScroll() {
+  if(!isHovered){
+    slider.style.transform = `translateX(-${speed}px)`;
+    slider.scrollLeft += speed;
+
+    if(slider.scrollLeft >= slider.scrollWidth / 2){
+      slider.scrollLeft = 0; // reset to start for infinite loop
+    }
+  }
+  requestAnimationFrame(smoothScroll);
+}
+
+// Start auto-scrolling
+smoothScroll();
+</script>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCKN1H30C');
+</script>
+  
 </body>
 </html>
