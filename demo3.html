@@ -421,7 +421,22 @@
     /* CONTACT */
     .contact-section {
       padding: 5rem 5%;
-      background: #fff;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+    }
+    .section-header-white {
+      text-align: center; 
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+    .section-header-white h2 { 
+      font-size: 2.5rem; 
+      margin-bottom: 1rem; 
+      color: #f8fafc;
+    }
+    .section-header-white p { 
+      color: #cbd5e1; 
+      font-size: 1.125rem;
     }
     .contact-container {
       display: grid;
@@ -430,18 +445,58 @@
       max-width: 1400px;
       margin: 0 auto;
     }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
     .contact-info h3 {
       font-size: 1.75rem;
       margin-bottom: 1.5rem;
-      color: #1e293b;
+      color: #f8fafc;
     }
-    .contact-info p {
-      margin-bottom: 1rem;
-      color: #475569;
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      transition: background 0.3s;
     }
-    .contact-info a {
+    .contact-detail:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    .contact-icon {
+      background: #3b82f6;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+    .contact-text h4 {
+      color: #f8fafc;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+    .contact-text p, .contact-text a {
+      color: #cbd5e1;
+      margin: 0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-text a:hover {
       color: #3b82f6;
-      font-weight: 600;
+    }
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      height: 250px;
     }
     .contact-form .form-group {
       margin-bottom: 1.25rem;
@@ -450,26 +505,29 @@
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 600;
-      color: #1e293b;
+      color: #f8fafc;
     }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #cbd5e1;
+      padding: 0.875rem;
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
-      transition: border-color 0.3s;
+      background: rgba(255,255,255,0.05);
+      color: #f8fafc;
+      transition: border-color 0.3s, background 0.3s;
     }
     .contact-form input:focus,
     .contact-form textarea:focus {
       outline: none;
       border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
     }
     .contact-form button {
-      background: #1e40af;
+      background: #3b82f6;
       color: white;
       border: none;
       padding: 0.875rem 2rem;
@@ -477,16 +535,12 @@
       font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
     }
     .contact-form button:hover {
-      background: #1d4ed8;
-    }
-
-    .map-container {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      background: #2563eb;
+      transform: translateY(-2px);
     }
 
     /* WHATSAPP */
@@ -565,6 +619,7 @@
       .hamburger { display: flex; }
       
       .section-header h2,
+      .section-header-white h2,
       .about-text h2,
       .contact-info h3 { font-size: 2rem; }
     }
@@ -909,63 +964,76 @@
 
   <!-- CONTACT SECTION -->
   <section class="contact-section" id="contact">
-    <div class="section-header">
+    <div class="section-header-white">
       <h2>Contact Us</h2>
       <p>Reach out and our team will respond shortly.</p>
     </div>
     <div class="contact-container">
-      <div class="contact-form">
-        <form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none">
-
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" aria-label="Phone number">
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-          </div>
-
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-
       <div class="contact-info">
-        <h3>Our Contact Info</h3>
-        <p><strong>📞 Phone:</strong> <a href="tel:+447488564873">+44-7488564873</a></p>
-        <p><strong>📧 Email:</strong> <a href="mailto:contact@gurujitechglobal.com">contact@gurujitechglobal.com</a></p>
-        <p><strong>📍 Address:</strong><br>
-           Guruji Tech Global LTD<br>
-          111 Union House<br>
-          New Union Street<br>
-          Coventry, CV1 2NT<br>
-          United Kingdom
-        </p>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <h4>Phone</h4>
+            <a href="tel:+447488564873">+44-7488564873</a>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">📧</div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <a href="mailto:contact@gurujitechglobal.com">contact@gurujitechglobal.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <h4>Office Address</h4>
+            <p>Guruji Tech Global LTD<br>111 Union House,<br>New Union Street<br>Coventry, CV1 2NT<br>United Kingdom</p>
+          </div>
+        </div>
 
         <div class="map-container">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.378150338298!2d-1.5158029235651375!3d52.40529624661592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774bfb6a2d4ab3%3A0xa2db0f4da6af7d2!2sUnion%20House%2C%20111%20New%20Union%20St%2C%20Coventry%20CV1%202NT!5e0!3m2!1sen!2suk!4v1732473670000"
             width="100%" 
-            height="250" 
+            height="100%"
             style="border:0;" 
             allowfullscreen 
             loading="lazy"
             title="Guruji Tech Global Location">
           </iframe>
         </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your full name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" aria-label="Phone number" placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="How can we help you?"></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
