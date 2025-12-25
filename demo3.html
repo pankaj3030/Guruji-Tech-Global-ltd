@@ -202,21 +202,28 @@
       min-height: 100vh; 
       color: #fff; 
       overflow: hidden; 
-      background: linear-gradient(135deg, #1e40af 0%, #0c4a6e 100%);
     }
-    .hero::before { 
-      content: ""; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      background: rgba(0,0,0,0.3); 
-      z-index: -1; 
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(12, 74, 110, 0.85) 100%);
+      z-index: -1;
     }
     .hero-left {max-width: 650px; z-index:1; animation: fadeUp 1s ease-out forwards;}
     .hero-left h1 {font-size:3.5rem;margin-bottom:1.5rem;font-weight:800;line-height:1.2;}
-    .hero-left p {font-size:1.25rem;line-height:1.6;margin-bottom:2rem;opacity:0.9;}
+    .hero-left p {font-size:1.25rem;line-height:1.6;margin-bottom:2rem;opacity:0.95;}
     .hero-btn {background:#fff;color:#1e40af;padding:0.875rem 2rem;border-radius:8px;font-size:1.1rem;font-weight:600;display:inline-block;transition:all 0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
     .hero-btn:hover {background:#f1f5f9;transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.2);}
 
@@ -630,7 +637,7 @@
   <header role="banner">
     <div class="logo-container">
       <a href="/" aria-label="Guruji Tech Global - Professional IT Services">
-        <img src="logo.png" alt="Guruji Tech Global IT Services Logo">
+        <img src="https://placehold.co/140x70/1e40af/white?text=Guruji+Tech" alt="Guruji Tech Global IT Services Logo">
       </a>
     </div>
     
@@ -652,6 +659,11 @@
 
   <!-- HERO SECTION -->
   <section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1205-large.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-left">
       <h1>We <span id="typewriter" aria-label="Manage, Support, Secure or Modernise"></span><br>IT Infrastructure</h1>
       <p>Fully managed IT support, cloud services, cybersecurity and infrastructure solutions with 24/7 UK-based support for businesses of all sizes.</p>
