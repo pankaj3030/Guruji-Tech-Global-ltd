@@ -3,18 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guruji Tech Global</title>
-  <!-- Favicon -->
-    <link rel="icon" type="image/jpg" href="favicon.jpg">
+  <meta name="description" content="Guruji Tech Global provides fully managed IT support, cloud services, cybersecurity, Microsoft 365 and infrastructure solutions with 24/7 UK-based support. Expert IT solutions for businesses.">
+  <meta name="keywords" content="IT support, cloud services, cybersecurity, Microsoft 365, managed IT services, Azure, AWS, network solutions, UK IT support">
+  <meta name="author" content="Guruji Tech Global">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta property="og:title" content="Guruji Tech Global - Professional IT Services & Cloud Solutions">
+  <meta property="og:description" content="Enterprise-grade IT support, cloud migration, cybersecurity and Microsoft 365 services with 24/7 UK-based support">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.gurujitechglobal.com">
+  <meta property="og:image" content="https://www.gurujitechglobal.com/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guruji Tech Global - Professional IT Services">
+  <meta name="twitter:description" content="Enterprise IT support, cloud services & cybersecurity with 24/7 UK support">
+  <link rel="canonical" href="https://www.gurujitechglobal.com">
+  <link rel="apple-touch-icon" type="image/jpg" href="favicon.jpg">
+  <title>Professional IT Support & Cloud Services | Guruji Tech Global</title>
+  
   <style>
     * {box-sizing: border-box;}
     body {margin:0;font-family:Arial, sans-serif;background:#f5f7fa;color:#111;scroll-behavior: smooth;}
-    h2, h3 {margin:0;}
+    h1, h2, h3 {margin:0;}
     a {text-decoration:none;}
-    html {
-  scroll-padding-top: 70px; /* match your header height */
-}
- /* HEADER */
+    html {scroll-padding-top: 70px;}
+    
+    /* HEADER */
     header {
       padding:10px 40px;
       display:flex;
@@ -38,7 +50,7 @@
       font-weight: 600;
     }
     nav#nav-links a:hover { color: #111; }
-    /* Hamburger Menu */
+    
     .hamburger {
       display: none;
       flex-direction: column;
@@ -55,272 +67,383 @@
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+    
     /* HERO */
-    .hero { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 60px; min-height: 100vh; color: #fff; overflow: hidden; }
-    .hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-    .hero::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: -1; }
-    .hero-logo { width:140px; margin-bottom:25px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6)); }
+    .hero { 
+      position: relative; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: flex-start; 
+      padding: 0 60px; 
+      min-height: 100vh; 
+      color: #fff; 
+      overflow: hidden; 
+    }
+    .hero video { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      z-index: -2; 
+    }
+    .hero::after { 
+      content: ""; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.4); 
+      z-index: -1; 
+    }
     .hero-left {max-width: 600px; z-index:1; animation: fadeUp 1s ease-out forwards;}
-    .hero-left h2 {font-size:52px;margin-bottom:20px;font-weight:800;line-height:1.2;}
+    .hero-left h1 {font-size:52px;margin-bottom:20px;font-weight:800;line-height:1.2;}
     .hero-left p {font-size:18px;line-height:1.6;color:#fff;margin-bottom:30px;}
     .hero-btn {background:#fff;color:#111;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:600;display:inline-block;}
-    .stat-card { background: #fff; color: #111; padding: 30px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); margin-top: 20px; z-index: 1; animation: fadeUp 1s ease-out forwards; }
+    
     /* SERVICES */
- .services-section {
-  padding: 80px 60px;
-  animation: fadeIn 1s ease-out forwards;
-}
-.services-section h2 {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-.services-section p {
-  color: #444;
-  margin-bottom: 40px;
-  font-size: 18px;
-}
+    .services-section {
+      padding: 80px 60px;
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .services-section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .services-section p {
+      color: #444;
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
 
-.services-slider {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  scroll-behavior: smooth;
-}
+    .services-slider {
+      display: flex;
+      gap: 25px;
+      padding: 20px 0;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .services-slider:hover .slider-track {
+      animation-play-state: paused;
+    }
+    .slider-track {
+      display: flex;
+      animation: slide-left 60s linear infinite reverse;
+      gap: 25px;
+    }
 
-.service-card {
-  position: relative;
-  width: 350px;
-  height: 520px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: #fff; /* Optional: adds a clean background under text */
-}
+    @keyframes slide-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-/* Video container slightly pulled up */
-.service-video-container {
-  height: 380px; /* Adjust based on how much space text needs */
-  overflow: hidden;
-  margin-bottom: -30px; /* Pulls video UP visually */
-  border-radius: 20px 20px 0 0;
-}
+    .service-card {
+      position: relative;
+      width: 350px;
+      height: 520px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+    }
 
-.service-card video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Use 'cover' for full fill or 'contain' if you prefer */
-  display: block;
-}
+    .service-video-container {
+      height: 380px;
+      overflow: hidden;
+      margin-bottom: -30px;
+      border-radius: 20px 20px 0 0;
+    }
 
-.service-card:hover {
-  transform: translateY(-5px);
-}
+    .service-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* Text below video (no overlay) */
-.service-content {
-  position: relative;
-  z-index: 2;
-  background: white;
-  padding: 40px 20px 20px; /* Extra top padding compensates for video pull-up */
-  border-radius: 20px;
-  height: 170px; /* Ensures consistent height */
-  display: flex;
-  flex-direction: column;
-}
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
 
-.service-content h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #333;
-}
+    .service-content {
+      position: relative;
+      z-index: 2;
+      background: white;
+      padding: 20px;
+      border-radius: 0 0 20px 20px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
 
-.service-content p {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #666;
-  margin: 0;
-}
+    .service-content h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .service-content p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #666;
+      margin: 0;
+    }
 
     /* WHY US */
-    .why-us-section { padding: 80px 60px; background: #f8f9fb; }
-    .why-title { text-align: center; font-size: 42px; font-weight: 800; margin-bottom: 10px; }
-    .why-subtitle { text-align: center; color: #555; font-size: 18px; max-width: 700px; margin: 0 auto 40px; }
-    .why-slider { display: flex; gap: 20px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
-    .why-card { background: #fff; min-width: 250px; max-width: 250px; height: 260px; padding: 25px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); flex-shrink: 0; transition: transform 0.3s ease; cursor: pointer; }
+    .why-us-section { 
+      padding: 80px 60px; 
+      background: #f8f9fb; 
+    }
+    .why-title { 
+      text-align: center; 
+      font-size: 42px; 
+      font-weight: 800; 
+      margin-bottom: 10px; 
+    }
+    .why-subtitle { 
+      text-align: center; 
+      color: #555; 
+      font-size: 18px; 
+      max-width: 700px; 
+      margin: 0 auto 40px; 
+    }
+    .why-slider { 
+      display: flex; 
+      gap: 20px; 
+      overflow-x: auto; 
+      scroll-behavior: smooth; 
+      padding-bottom: 10px; 
+    }
+    .why-card { 
+      background: #fff; 
+      min-width: 250px; 
+      max-width: 250px; 
+      height: 260px; 
+      padding: 25px; 
+      border-radius: 20px; 
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
+      flex-shrink: 0; 
+      transition: transform 0.3s ease; 
+      cursor: pointer; 
+    }
     .why-card:hover { transform: translateY(-5px); }
     .why-icon { font-size: 40px; margin-bottom: 15px; }
     .why-card h3 { font-size: 20px; margin-bottom: 10px; font-weight: 700; }
     .why-card p { font-size: 15px; color: #555; line-height: 1.5; }
 
-    /* OTHER SECTIONS */
-  
-    .contact-box input, .contact-box textarea, .contact-box button { width:100%; padding:14px; margin-top:10px; border-radius:12px; border:1px solid #ccc; font-size:15px; }
-    .contact-box button { background:#111; color:#fff; border:none; cursor:pointer; font-weight:600; }
+    .contact-box input, .contact-box textarea, .contact-box button { 
+      width:100%; 
+      padding:14px; 
+      margin-top:10px; 
+      border-radius:12px; 
+      border:1px solid #ccc; 
+      font-size:15px; 
+    }
+    .contact-box button { 
+      background:#111; 
+      color:#fff; 
+      border:none; 
+      cursor:pointer; 
+      font-weight:600; 
+    }
     .contact-box button:hover { background:#333; }
 
-    /* ANIMATIONS */
     @keyframes fadeIn {0% {opacity:0;}100% {opacity:1;}}
     @keyframes fadeUp {0% {opacity:0;transform:translateY(30px);}100% {opacity:1;transform:translateY(0);}}
     @keyframes slideIn {0% {opacity:0;transform:translateX(40px);}100% {opacity:1;transform:translateX(0);}}
 
-    /* RESPONSIVE */
-    @media (max-width:1024px){.hero-left{max-width:60%;}.stat-card{margin-top:30px;}}
+    @media (max-width:1024px){.hero-left{max-width:60%;}}
     @media (max-width:768px){
       .hero{padding:0 30px; min-height:80vh;} 
-      .hero-left h2{font-size:36px;} 
+      .hero-left h1{font-size:36px;} 
       .hero-left p{font-size:16px;} 
       .services-section{padding:60px 30px;}
 
-      /* Mobile nav */
-      nav#nav-links { display: none; flex-direction: column; width: 100%; margin-top: 10px; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 10px; padding: 10px 0; }
+      nav#nav-links { 
+        display: none; 
+        flex-direction: column; 
+        width: 100%; 
+        margin-top: 10px; 
+        background: #fff; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        border-radius: 10px; 
+        padding: 10px 0; 
+      }
       nav#nav-links.show { display: flex; }
       nav#nav-links a { margin: 10px 20px; display: block; }
       .hamburger { display: flex; }
     }
 
-    .about-section { padding: 80px 5%; background: #f7f7f7; }
-    .about-container { display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap; }
-    .about-text { flex: 1; min-width: 320px; }
-    .about-text h2 { font-size: 2.4rem; margin-bottom: 15px; }
-    .about-text p { margin-bottom: 16px; line-height: 1.6; color: #444; }
-    .about-points li { margin-bottom: 8px; font-size: 1rem; color: #222; }
+    .about-section { 
+      padding: 80px 5%; 
+      background: #f7f7f7; 
+    }
+    .about-container { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 50px; 
+      flex-wrap: wrap; 
+    }
+    .about-text { 
+      flex: 1; 
+      min-width: 320px; 
+    }
+    .about-text h2 { 
+      font-size: 2.4rem; 
+      margin-bottom: 15px; 
+    }
+    .about-text p { 
+      margin-bottom: 16px; 
+      line-height: 1.6; 
+      color: #444; 
+    }
+    .about-points li { 
+      margin-bottom: 8px; 
+      font-size: 1rem; 
+      color: #222; 
+    }
     
-  .about-media {
-  width: 100%;
-  max-width: 600px;
-  height: 550px;
-  overflow: hidden;
-  border-radius: 14px;
-}
+    .about-media {
+      width: 100%;
+      max-width: 600px;
+      height: 550px;
+      overflow: hidden;
+      border-radius: 14px;
+    }
 
-.about-media video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* fills the box perfectly */
-  border-radius: 14px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-}
+    .about-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    }
 
+    .testimonials-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
 
+    .testimonials-slider {
+      display: flex;
+      gap: 20px;
+      animation: scroll 20s linear infinite;
+    }
 
-.testimonials-wrapper {
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-}
+    .testimonials-wrapper:hover .testimonials-slider {
+      animation-play-state: paused;
+    }
 
-.testimonials-slider {
-  display: flex;
-  gap: 20px;
-  animation: scroll 20s linear infinite;
-}
+    .test-card {
+      background: #fff;
+      min-width: 250px;
+      max-width: 300px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
 
-.testimonials-wrapper:hover .testimonials-slider {
-  animation-play-state: paused; /* pause on hover */
-}
+    .test-card:hover {
+      transform: translateY(-5px);
+    }
 
-.test-card {
-  background: #fff;
-  min-width: 250px;
-  max-width: 300px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
+    .test-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
 
-.test-card:hover {
-  transform: translateY(-5px);
-}
+    .test-card div {
+      font-weight: 700;
+      font-size: 15px;
+      color: #111;
+    }
 
-.test-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-.test-card div {
-  font-weight: 700;
-  font-size: 15px;
-  color: #111;
-}
-
-/* Keyframes for infinite horizontal scroll */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* move left by half the slider (duplicated cards) */
-}
     .whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    z-index: 9999;
-}
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      z-index: 9999;
+    }
 
-.whatsapp-float img {
-    width: 100%;
-    height: 100%;
-}
+    .whatsapp-float img {
+      width: 100%;
+      height: 100%;
+    }
+
     .cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #ffffff;
-  padding: 15px;
-  border-top: 1px solid #ccc;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-  display: none;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999;
-}
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #ffffff;
+      padding: 15px;
+      border-top: 1px solid #ccc;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999;
+    }
 
-.cookie-banner p {
-  margin: 0;
-  font-size: 14px;
-}
+    .cookie-banner p {
+      margin: 0;
+      font-size: 14px;
+    }
 
-.cookie-buttons button {
-  margin-left: 10px;
-  padding: 8px 15px;
-  cursor: pointer;
-  border: none;
-  background: #4CAF50;
-  color: white;
-  border-radius: 4px;
-}
-.cookie-buttons button:nth-child(2) {
-  background: #f44336;
-}
+    .cookie-buttons button {
+      margin-left: 10px;
+      padding: 8px 15px;
+      cursor: pointer;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 4px;
+    }
+    .cookie-buttons button:nth-child(2) {
+      background: #f44336;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
   </style>
 </head>
+<body>
   <!-- HEADER -->
-  <header>
+  <header role="banner">
     <div class="logo-container">
-  <a href="index">
-    <img src="logo.png" alt="logo image">
-  </a>
-</div>
-    <!-- Hamburger Menu -->
-    <div class="hamburger" id="hamburger">
+      <a href="/" aria-label="Guruji Tech Global Home">
+        <img src="logo.png" alt="Guruji Tech Global IT Services Logo" width="140" height="100">
+      </a>
+    </div>
+    
+    <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <nav id="nav-links">
-      <a href="#">Home</a>
+    
+    <nav id="nav-links" role="navigation">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#whyus">Why Us</a>
       <a href="#services">Services</a>
@@ -328,242 +451,372 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
   <!-- HERO -->
-  <section class="hero">
-    <video src="video.mp4" autoplay muted loop playsinline></video>
+  <section class="hero" id="home">
+    <video src="video.mp4" autoplay muted loop playsinline alt="IT Infrastructure Background"></video>
     <div class="hero-left">
-      <h2>We <span id="typewriter"></span><br>IT Infrastructure</h2>
-      <p>We provide fully managed IT, cloud, telecom and cybersecurity services for businesses of all sizes with 24/7 UK support.</p>
+      <h1>We <span id="typewriter"></span><br>IT Infrastructure</h1>
+      <p>Fully managed IT support, cloud services, cybersecurity and infrastructure solutions with 24/7 UK-based support for businesses of all sizes.</p>
       <a class="hero-btn" href="#contact">Get in Touch</a>
     </div>
   </section>
   
   <!-- ABOUT US -->
-<section class="about-section" id="about">
-  <div class="about-container">
-    <div class="about-text">
-      <h2>About Us</h2>
-      <p>
-        At <strong>Guruji Tech Global</strong>, we provide secure, scalable, and cost-efficient IT solutions for businesses of all sizes. 
-        With expertise across Cloud Services, IT Support, Microsoft 365, Cyber Security and Infrastructure Management, 
-        we help organisations modernize their technology and operate efficiently.
-      </p>
-      <p>
-        Our mission is simple: Deliver enterprise-grade IT services with transparency, speed, and reliability. 
-        Whether you need round-the-clock support, cloud migration, or complete IT management, our team is here to ensure 
-        your systems run smoothly so you can focus on growing your business.
-      </p>
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+          At <strong>Guruji Tech Global</strong>, we provide secure, scalable, and cost-efficient IT solutions for businesses of all sizes. 
+          With expertise across Cloud Services, IT Support, Microsoft 365, Cyber Security and Infrastructure Management, 
+          we help organisations modernize their technology and operate efficiently.
+        </p>
+        <p>
+          Our mission is simple: Deliver enterprise-grade IT services with transparency, speed, and reliability. 
+          Whether you need round-the-clock support, cloud migration, or complete IT management, our team is here to ensure 
+          your systems run smoothly so you can focus on growing your business.
+        </p>
 
-      <ul class="about-points">
-        <li>✔ Over 10+ years of IT industry experience</li>
-        <li>✔ Fully managed IT support & monitoring</li>
-        <li>✔ Cloud-first approach with Azure & AWS</li>
-        <li>✔ Fast response time & 24/7 availability</li>
-      </ul>
-    </div>
-    <div class="about-media">
-      <video src="about.mp4" autoplay muted loop playsinline></video>
-    </div>
-
-  </div>
-</section>
-
- <!-- WHY US (Slider Style Like Services Section) -->
-<section class="why-us-section" id="whyus">
-  <h2 class="why-title">Why Choose Us</h2>
-  <p class="why-subtitle">
-    Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.
-  </p>
-  <div class="why-slider">
-    <div class="why-card">
-      <div class="why-icon">💼</div>
-      <h3>Professional Expertise</h3>
-      <p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon">🔒</div>
-      <h3>Security First Approach</h3>
-      <p>We implement industry-standard security frameworks ensuring compliance, protection and risk reduction.</p>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon">⚡</div>
-      <h3>Fast Response & 24/7 Support</h3>
-      <p>Our helpdesk and monitoring ensure your systems remain operational at all times.</p>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon">🚀</div>
-      <h3>Scalable Solutions</h3>
-      <p>Solutions engineered to grow with your business—from cloud migrations to full IT modernisation.</p>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon">🧩</div>
-      <h3>Custom-Built IT Solutions</h3>
-      <p>We design IT systems tailored to your exact business needs for efficiency and long-term scalability.</p>
-    </div>
-
-    <div class="why-card">
-      <div class="why-icon">📊</div>
-      <h3>Data-Driven Strategy</h3>
-      <p>Decisions backed by analytics, monitoring insights and industry best-practice frameworks.</p>
-    </div>
-  </div>
-</section><!-- SERVICES -->
-<section class="services-section" id="services">
-  <h2>Our Services</h2>
-  <p>Explore our professional IT services tailored for modern businesses.</p>
-
-  <div class="services-slider">
-
-    <!-- Service Card -->
-    <div class="service-card">
-      <video src="cloud.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>Cloud Services</strong></h3>
-        <ul>
-          <li>Azure & AWS Migration</li>
-          <li>Cloud Backup</li>
-          <li>Virtual Machines</li>
+        <ul class="about-points">
+          <li>✔ Over 10+ years of IT industry experience</li>
+          <li>✔ Fully managed IT support & monitoring</li>
+          <li>✔ Cloud-first approach with Azure & AWS</li>
+          <li>✔ Fast response time & 24/7 availability</li>
         </ul>
       </div>
-    </div>
-
-    <div class="service-card">
-      <video src="ms365.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>Microsoft 365</strong></h3>
-        <ul>
-          <li>Email Hosting</li>
-          <li>SharePoint Setup</li>
-          <li>Teams Integration</li>
-        </ul>
+      <div class="about-media">
+        <video src="about.mp4" autoplay muted loop playsinline alt="About Guruji Tech Global"></video>
       </div>
     </div>
+  </section>
 
-    <div class="service-card">
-      <video src="cyber.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>Cyber Security</strong></h3>
-        <ul>
-          <li>Antivirus Management</li>
-          <li>Firewall Protection</li>
-          <li>Threat Monitoring</li>
-        </ul>
+  <!-- WHY US -->
+  <section class="why-us-section" id="whyus">
+    <h2 class="why-title">Why Choose Us</h2>
+    <p class="why-subtitle">
+      Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.
+    </p>
+    <div class="why-slider">
+      <div class="why-card">
+        <div class="why-icon">💼</div>
+        <h3>Professional Expertise</h3>
+        <p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <h3>Security First Approach</h3>
+        <p>We implement industry-standard security frameworks ensuring compliance, protection and risk reduction.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Fast Response & 24/7 Support</h3>
+        <p>Our helpdesk and monitoring ensure your systems remain operational at all times.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🚀</div>
+        <h3>Scalable Solutions</h3>
+        <p>Solutions engineered to grow with your business—from cloud migrations to full IT modernisation.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🧩</div>
+        <h3>Custom-Built IT Solutions</h3>
+        <p>We design IT systems tailored to your exact business needs for efficiency and long-term scalability.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <h3>Data-Driven Strategy</h3>
+        <p>Decisions backed by analytics, monitoring insights and industry best-practice frameworks.</p>
       </div>
     </div>
+  </section>
 
-    <div class="service-card">
-      <video src="support.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>24/7 IT Support</strong></h3>
-        <ul>
-          <li>Remote Support</li>
-          <li>On-site Visits</li>
-          <li>Device Management</li>
-        </ul>
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <h2>Our Services</h2>
+    <p>Explore our professional IT services tailored for modern businesses.</p>
+
+    <div class="services-slider">
+      <div class="slider-track">
+        <!-- First Set Services -->
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="cloud.mp4" muted loop playsinline alt="Cloud Services"></video>
+          </div>
+          <div class="service-content">
+            <h3>Cloud Services</h3>
+            <ul>
+              <li>Azure & AWS Migration</li>
+              <li>Cloud Backup</li>
+              <li>Virtual Machines</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="ms365.mp4" muted loop playsinline alt="Microsoft 365"></video>
+          </div>
+          <div class="service-content">
+            <h3>Microsoft 365</h3>
+            <ul>
+              <li>Email Hosting</li>
+              <li>SharePoint Setup</li>
+              <li>Teams Integration</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="cyber.mp4" muted loop playsinline alt="Cybersecurity"></video>
+          </div>
+          <div class="service-content">
+            <h3>Cyber Security</h3>
+            <ul>
+              <li>Antivirus Management</li>
+              <li>Firewall Protection</li>
+              <li>Threat Monitoring</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="support.mp4" muted loop playsinline alt="24/7 IT Support"></video>
+          </div>
+          <div class="service-content">
+            <h3>24/7 IT Support</h3>
+            <ul>
+              <li>Remote Support</li>
+              <li>On-site Visits</li>
+              <li>Device Management</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="network.mp4" muted loop playsinline alt="Network Solutions"></video>
+          </div>
+          <div class="service-content">
+            <h3>Network Solutions</h3>
+            <ul>
+              <li>LAN / WAN Setup</li>
+              <li>VPN Configuration</li>
+              <li>Network Monitoring</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="devops.mp4" muted loop playsinline alt="DevOps & Automation"></video>
+          </div>
+          <div class="service-content">
+            <h3>DevOps & Automation</h3>
+            <ul>
+              <li>CI/CD Pipelines</li>
+              <li>Infrastructure as Code</li>
+              <li>Deployment Automation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="telephone.mp4" muted loop playsinline alt="IP Telephony"></video>
+          </div>
+          <div class="service-content">
+            <h3>IP Telephony</h3>
+            <ul>
+              <li>Internet-based Calling</li>
+              <li>High Audio Quality</li>
+              <li>Flexible & Low-Cost VoIP</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="consulting.mp4" muted loop playsinline alt="IT Consulting"></video>
+          </div>
+          <div class="service-content">
+            <h3>IT Consulting</h3>
+            <ul>
+              <li>Strategy Planning</li>
+              <li>IT Audits</li>
+              <li>Technology Roadmaps</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Duplicate for infinite scroll -->
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="cloud.mp4" muted loop playsinline alt="Cloud Services"></video>
+          </div>
+          <div class="service-content">
+            <h3>Cloud Services</h3>
+            <ul>
+              <li>Azure & AWS Migration</li>
+              <li>Cloud Backup</li>
+              <li>Virtual Machines</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="ms365.mp4" muted loop playsinline alt="Microsoft 365"></video>
+          </div>
+          <div class="service-content">
+            <h3>Microsoft 365</h3>
+            <ul>
+              <li>Email Hosting</li>
+              <li>SharePoint Setup</li>
+              <li>Teams Integration</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="cyber.mp4" muted loop playsinline alt="Cybersecurity"></video>
+          </div>
+          <div class="service-content">
+            <h3>Cyber Security</h3>
+            <ul>
+              <li>Antivirus Management</li>
+              <li>Firewall Protection</li>
+              <li>Threat Monitoring</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="support.mp4" muted loop playsinline alt="24/7 IT Support"></video>
+          </div>
+          <div class="service-content">
+            <h3>24/7 IT Support</h3>
+            <ul>
+              <li>Remote Support</li>
+              <li>On-site Visits</li>
+              <li>Device Management</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="network.mp4" muted loop playsinline alt="Network Solutions"></video>
+          </div>
+          <div class="service-content">
+            <h3>Network Solutions</h3>
+            <ul>
+              <li>LAN / WAN Setup</li>
+              <li>VPN Configuration</li>
+              <li>Network Monitoring</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="devops.mp4" muted loop playsinline alt="DevOps & Automation"></video>
+          </div>
+          <div class="service-content">
+            <h3>DevOps & Automation</h3>
+            <ul>
+              <li>CI/CD Pipelines</li>
+              <li>Infrastructure as Code</li>
+              <li>Deployment Automation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="telephone.mp4" muted loop playsinline alt="IP Telephony"></video>
+          </div>
+          <div class="service-content">
+            <h3>IP Telephony</h3>
+            <ul>
+              <li>Internet-based Calling</li>
+              <li>High Audio Quality</li>
+              <li>Flexible & Low-Cost VoIP</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-video-container">
+            <video src="consulting.mp4" muted loop playsinline alt="IT Consulting"></video>
+          </div>
+          <div class="service-content">
+            <h3>IT Consulting</h3>
+            <ul>
+              <li>Strategy Planning</li>
+              <li>IT Audits</li>
+              <li>Technology Roadmaps</li>
+            </ul>
+          </div>
+        </article>
       </div>
     </div>
+  </section>
 
-    <!-- New Services -->
-    <div class="service-card">
-      <video src="network.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>Network Solutions</strong></h3>
-        <ul>
-          <li>LAN / WAN Setup</li>
-          <li>VPN Configuration</li>
-          <li>Network Monitoring</li>
-        </ul>
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <h2 style="text-align:center">Testimonials</h2>
+    <p style="text-align:center">What our clients say about us.</p>
+
+    <div class="testimonials-wrapper">
+      <div class="testimonials-slider">
+        <article class="test-card">
+          <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
+          <div>— David, Logistics Co.</div>
+        </article>
+        <article class="test-card">
+          <p>"Fast response, highly professional, and very knowledgeable."</p>
+          <div>— Sarah, Accounting Firm</div>
+        </article>
+        <article class="test-card">
+          <p>"Reliable team. Best experience with cloud migration so far."</p>
+          <div>— Mark, Construction Group</div>
+        </article>
+        <article class="test-card">
+          <p>"Excellent support and very knowledgeable IT team!"</p>
+          <div>— Emily, Retail Co.</div>
+        </article>
+        <article class="test-card">
+          <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
+          <div>— David, Logistics Co.</div>
+        </article>
+        <article class="test-card">
+          <p>"Fast response, highly professional, and very knowledgeable."</p>
+          <div>— Sarah, Accounting Firm</div>
+        </article>
+        <article class="test-card">
+          <p>"Reliable team. Best experience with cloud migration so far."</p>
+          <div>— Mark, Construction Group</div>
+        </article>
+        <article class="test-card">
+          <p>"Excellent support and very knowledgeable IT team!"</p>
+          <div>— Emily, Retail Co.</div>
+        </article>
       </div>
     </div>
+  </section>
 
-    <div class="service-card">
-      <video src="devops.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>DevOps & Automation</strong></h3>
-        <ul>
-          <li>CI/CD Pipelines</li>
-          <li>Infrastructure as Code</li>
-          <li>Deployment Automation</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <video src="telephone.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>IP Telephony</strong></h3>
-        <ul>
-          <li>Internet-based Calling</li>
-          <li>High Audio Quality</li>
-          <li>Flexible & Low-Cost VoIP</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <video src="consulting.mp4" muted loop playsinline></video>
-      <div class="service-overlay">
-        <h3><strong>IT Consulting</strong></h3>
-        <ul>
-          <li>Strategy Planning</li>
-          <li>IT Audits</li>
-          <li>Technology Roadmaps</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<section id="testimonials" style="padding:80px 20px">
-  <h2 style="text-align:center">Testimonials</h2>
-  <p style="text-align:center">What our clients say about us.</p>
-
-  <div class="testimonials-wrapper">
-    <div class="testimonials-slider">
-      <!-- Original Cards -->
-      <div class="test-card">
-        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
-        <div>— David, Logistics Co.</div>
-      </div>
-      <div class="test-card">
-        <p>"Fast response, highly professional, and very knowledgeable."</p>
-        <div>— Sarah, Accounting Firm</div>
-      </div>
-      <div class="test-card">
-        <p>"Reliable team. Best experience with cloud migration so far."</p>
-        <div>— Mark, Construction Group</div>
-      </div>
-      <div class="test-card">
-        <p>"Excellent support and very knowledgeable IT team!"</p>
-        <div>— Emily, Retail Co.</div>
-      </div>
-      <!-- Duplicate cards for infinite loop -->
-      <div class="test-card">
-        <p>"Guruji Tech Global transformed our IT infrastructure. Outstanding service!"</p>
-        <div>— David, Logistics Co.</div>
-      </div>
-      <div class="test-card">
-        <p>"Fast response, highly professional, and very knowledgeable."</p>
-        <div>— Sarah, Accounting Firm</div>
-      </div>
-      <div class="test-card">
-        <p>"Reliable team. Best experience with cloud migration so far."</p>
-        <div>— Mark, Construction Group</div>
-      </div>
-      <div class="test-card">
-        <p>"Excellent support and very knowledgeable IT team!"</p>
-        <div>— Emily, Retail Co.</div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="contact" style="padding:80px 60px">
+  <!-- CONTACT -->
+ <section id="contact" style="padding:80px 60px">
   <h2>Contact Us</h2>
   <p>Reach out and our team will respond shortly.</p>
 
