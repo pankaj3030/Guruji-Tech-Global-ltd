@@ -278,6 +278,13 @@
       overflow: hidden;
       box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
       aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1e40af 0%, #0c4a6e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 600;
     }
     .about-media img {
       width: 100%;
@@ -362,7 +369,6 @@
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
       transition: all 0.3s ease;
       border: 1px solid #e2e8f0;
-      position: relative;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -371,21 +377,23 @@
       transform: translateY(-5px);
       box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
     }
-
-    .service-video-container {
-      height: 220px;
+    .service-image {
+      width: 100%;
+      height: 260px;
       overflow: hidden;
       position: relative;
     }
-    .service-video-container video {
+    .service-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      transition: transform 0.3s ease;
     }
-
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
     .service-content {
-      padding: 1.25rem;
+      padding: 1.5rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -867,93 +875,10 @@
       <p>Explore our professional IT services tailored for modern businesses.</p>
     </div>
     <div class="services-grid">
+      <!-- IP Telephony -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="cloud.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>Cloud Services</h3>
-          <ul>
-            <li>Azure & AWS Migration</li>
-            <li>Cloud Backup</li>
-            <li>Virtual Machines</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="ms365.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>Microsoft 365</h3>
-          <ul>
-            <li>Email Hosting</li>
-            <li>SharePoint Setup</li>
-            <li>Teams Integration</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="cyber.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>Cyber Security</h3>
-          <ul>
-            <li>Antivirus Management</li>
-            <li>Firewall Protection</li>
-            <li>Threat Monitoring</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="support.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>24/7 IT Support</h3>
-          <ul>
-            <li>Remote Support</li>
-            <li>On-site Visits</li>
-            <li>Device Management</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="network.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>Network Solutions</h3>
-          <ul>
-            <li>LAN / WAN Setup</li>
-            <li>VPN Configuration</li>
-            <li>Network Monitoring</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="devops.mp4" muted loop playsinline></video>
-        </div>
-        <div class="service-content">
-          <h3>DevOps & Automation</h3>
-          <ul>
-            <li>CI/CD Pipelines</li>
-            <li>Infrastructure as Code</li>
-            <li>Deployment Automation</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="service-card">
-        <div class="service-video-container">
-          <video src="telephone.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="ip_telephony.jpg" alt="IP Telephony - Internet-based Calling">
         </div>
         <div class="service-content">
           <h3>IP Telephony</h3>
@@ -965,9 +890,10 @@
         </div>
       </article>
 
+      <!-- IT Consulting -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="consulting.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="it_consulting.jpg" alt="IT Consulting - Strategy Planning, Audits, Roadmaps">
         </div>
         <div class="service-content">
           <h3>IT Consulting</h3>
@@ -979,58 +905,152 @@
         </div>
       </article>
 
+      <!-- Cloud Services -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="backup.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="cloud.jpg" alt="Cloud Services - Azure & AWS Migration">
+        </div>
+        <div class="service-content">
+          <h3>Cloud Services</h3>
+          <ul>
+            <li>Azure & AWS Migration</li>
+            <li>Cloud Backup</li>
+            <li>Virtual Machines</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Microsoft 365 -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="ms365.jpg" alt="Microsoft 365 - Email, SharePoint, Teams">
+        </div>
+        <div class="service-content">
+          <h3>Microsoft 365</h3>
+          <ul>
+            <li>Email Hosting</li>
+            <li>SharePoint Setup</li>
+            <li>Teams Integration</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Cyber Security -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="cyber.jpg" alt="Cyber Security - Antivirus, Firewall, Threat Monitoring">
+        </div>
+        <div class="service-content">
+          <h3>Cyber Security</h3>
+          <ul>
+            <li>Antivirus Management</li>
+            <li>Firewall Protection</li>
+            <li>Threat Monitoring</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 24/7 IT Support -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="support.jpg" alt="24/7 IT Support - Remote, On-site, Device Management">
+        </div>
+        <div class="service-content">
+          <h3>24/7 IT Support</h3>
+          <ul>
+            <li>Remote Support</li>
+            <li>On-site Visits</li>
+            <li>Device Management</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Network Solutions -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="network.jpg" alt="Network Solutions - LAN/WAN, VPN, Monitoring">
+        </div>
+        <div class="service-content">
+          <h3>Network Solutions</h3>
+          <ul>
+            <li>LAN / WAN Setup</li>
+            <li>VPN Configuration</li>
+            <li>Network Monitoring</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- DevOps & Automation -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="devops.jpg" alt="DevOps & Automation - CI/CD, Infrastructure as Code">
+        </div>
+        <div class="service-content">
+          <h3>DevOps & Automation</h3>
+          <ul>
+            <li>CI/CD Pipelines</li>
+            <li>Infrastructure as Code</li>
+            <li>Deployment Automation</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Data Backup & Recovery -->
+      <article class="service-card">
+        <div class="service-image">
+          <img src="backup.jpg" alt="Data Backup & Recovery - Automated, Disaster Recovery">
         </div>
         <div class="service-content">
           <h3>Data Backup & Recovery</h3>
           <ul>
-            <li>Automated Backup</li>
-            <li>Disaster Recovery</li>
+            <li>Automated Backup Solutions</li>
+            <li>Disaster Recovery Planning</li>
             <li>Ransomware Protection</li>
           </ul>
         </div>
       </article>
 
+      <!-- Endpoint Management -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="endpoint.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="endpoint.jpg" alt="Endpoint Management - Mobile, Laptop, Software Deployment">
         </div>
         <div class="service-content">
           <h3>Endpoint Management</h3>
           <ul>
-            <li>MDM Solutions</li>
-            <li>Device Support</li>
+            <li>Mobile Device Management</li>
+            <li>Laptop & Desktop Support</li>
             <li>Software Deployment</li>
           </ul>
         </div>
       </article>
 
+      <!-- Compliance & Governance -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="compliance.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="compliance.jpg" alt="Compliance & Governance - GDPR, ISO 27001, Security Policies">
         </div>
         <div class="service-content">
           <h3>Compliance & Governance</h3>
           <ul>
             <li>GDPR Compliance</li>
-            <li>ISO 27001</li>
-            <li>Security Policies</li>
+            <li>ISO 27001 Implementation</li>
+            <li>Security Policy Development</li>
           </ul>
         </div>
       </article>
 
+      <!-- Business Continuity -->
       <article class="service-card">
-        <div class="service-video-container">
-          <video src="business.mp4" muted loop playsinline></video>
+        <div class="service-image">
+          <img src="business.jpg" alt="Business Continuity - Impact Analysis, Planning, Testing">
         </div>
         <div class="service-content">
           <h3>Business Continuity</h3>
           <ul>
-            <li>Impact Analysis</li>
+            <li>Business Impact Analysis</li>
             <li>Continuity Planning</li>
-            <li>Regular Testing</li>
+            <li>Regular Testing & Updates</li>
           </ul>
         </div>
       </article>
@@ -1278,15 +1298,7 @@
       }
     }
     window.addEventListener('load', type);
-    
-    // Video hover play
-    document.querySelectorAll('.service-card video').forEach(video => {
-      video.muted = true;
-      video.play().catch(e => console.log("Autoplay prevented"));
-      video.closest('.service-card').addEventListener('mouseenter', () => video.play());
-      video.closest('.service-card').addEventListener('mouseleave', () => video.pause());
-    });
-    
+
     // Cookie consent
     if (!localStorage.getItem("cookieConsent")) {
       document.getElementById("cookie-banner").style.display = "flex";
