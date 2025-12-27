@@ -196,7 +196,11 @@
 body {margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#f8fafc;color:#1e293b;scroll-behavior: smooth;line-height:1.6;}
 h1, h2, h3, h4 {margin:0;font-weight:700;}
 a {text-decoration:none;color:#3b82f6;}
-html {scroll-behavior: smooth;}
+/* Smooth scrolling with header offset */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* This fixes anchor scrolling for all sections */
+}
 /* HEADER */
 header {
 padding:1rem 5%;
@@ -210,6 +214,7 @@ top:0;
 z-index:1000;
 flex-wrap: wrap;
 transition: all 0.3s ease;
+height: 80px; /* Fixed height for consistent calculations */
 }
 header.scrolled {
 background: rgba(255, 255, 255, 0.95);
@@ -520,6 +525,39 @@ line-height: 1.7;
 font-weight: 700;
 color: #1e293b;
 font-size: 1.1rem;
+}
+/* STATISTICS SECTION */
+.stats-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+}
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+.stat-item {
+    padding: 2rem;
+}
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.stat-label {
+    color: #cbd5e1;
+    font-size: 1.1rem;
 }
 /* CALENDLY SECTION */
 .calendly-section {
@@ -866,6 +904,10 @@ nav#nav-links a::after { display: none; }
 .back-to-top {
 bottom: 80px;
 }
+/* Adjust scroll padding for mobile */
+html {
+    scroll-padding-top: 80px;
+}
 }
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -1173,24 +1215,24 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </section>
 <!-- STATISTICS SECTION -->
-<section class="stats-section" style="padding: 5rem 0; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white;">
-    <div class="stats-container" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-        <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+<section class="stats-section" id="stats">
+    <div class="stats-container">
+        <div class="stats-grid">
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                <div class="stat-number" id="projectsCounter" data-target="500" style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, #3b82f6, #1e40af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
-                <div class="stat-label" style="color: #cbd5e1; font-size: 1.1rem;">Projects Delivered</div>
+                <div class="stat-number" id="projectsCounter" data-target="500">0</div>
+                <div class="stat-label">Projects Delivered</div>
             </div>
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                <div class="stat-number" id="clientsCounter" data-target="120" style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, #3b82f6, #1e40af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
-                <div class="stat-label" style="color: #cbd5e1; font-size: 1.1rem;">Happy Clients</div>
+                <div class="stat-number" id="clientsCounter" data-target="120">0</div>
+                <div class="stat-label">Happy Clients</div>
             </div>
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                <div class="stat-number" id="engineersCounter" data-target="50" style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, #3b82f6, #1e40af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
-                <div class="stat-label" style="color: #cbd5e1; font-size: 1.1rem;">Expert Engineers</div>
+                <div class="stat-number" id="engineersCounter" data-target="50">0</div>
+                <div class="stat-label">Expert Engineers</div>
             </div>
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
-                <div class="stat-number" id="experienceCounter" data-target="10" style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(90deg, #3b82f6, #1e40af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">0</div>
-                <div class="stat-label" style="color: #cbd5e1; font-size: 1.1rem;">Years Experience</div>
+                <div class="stat-number" id="experienceCounter" data-target="10">0</div>
+                <div class="stat-label">Years Experience</div>
             </div>
         </div>
     </div>
@@ -1225,7 +1267,7 @@ your systems run smoothly so you can focus on growing your business.
 <!-- CALENDLY SECTION -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<section class="calendly-section" data-aos="fade-up">
+<section class="calendly-section" id="calendly" data-aos="fade-up">
 <h2>Ready to Optimize Your IT Infrastructure?</h2>
 <p>Let Guruji Tech Global handle your comprehensive IT needs while you focus on business growth and strategic initiatives.</p>
 <button
