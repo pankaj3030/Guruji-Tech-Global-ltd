@@ -1,682 +1,1507 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guruji Tech Global - Leading IT Solutions for Web Development, Cloud Computing, and AI Integration. Partner with us for transformative technology.">
-    <meta name="keywords" content="IT Solutions, Web Development, Cloud Computing, AI Integration, Guruji Tech Global, Software Company">
-    <meta name="author" content="Guruji Tech Global">
-    <meta property="og:title" content="Guruji Tech Global | Premier IT Solutions">
-    <meta property="og:description" content="Transforming businesses with cutting-edge technology. Contact us today.">
-    <meta property="og:type" content="website">
-    <title>Guruji Tech Global | Premier IT Solutions & Cloud Services</title>
-    
-    <!-- Tailwind CSS via CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config for Custom Colors/Fonts -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#0f172a',
-                            primary: '#3b82f6',
-                            secondary: '#8b5cf6',
-                            accent: '#06b6d4'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- AOS (Animate On Scroll) Library for Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        /* Custom CSS & Reset */
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-
-        /* Gradient Text Utility */
-        .text-gradient {
-            background: linear-gradient(to right, #3b82f6, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Glassmorphism Effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navbar Background Transition */
-        header {
-            transition: background-color 0.3s ease, padding 0.3s ease;
-        }
-        header.scrolled {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(8px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Hero Canvas Container */
-        #canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.6;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #3b82f6; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb; 
-        }
-
-        /* Form Inputs Animation */
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Loading Animation for ThreeJS fallback or content */
-        .loader {
-            border-top-color: #3b82f6;
-            -webkit-animation: spinner 1.5s linear infinite;
-            animation: spinner 1.5s linear infinite;
-        }
-        @keyframes spinner {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Service Card Hover Effect */
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #3b82f6;
-        }
-        
-        /* Button Pulse Animation */
-        .btn-pulse {
-            animation: pulse-glow 2s infinite;
-        }
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Guruji Tech Global provides fully managed IT support, cloud services, cybersecurity, Microsoft 365 and infrastructure solutions with 24/7 UK-based support. Expert IT solutions for businesses.">
+<meta name="keywords" content="IT support, cloud services, cybersecurity, Microsoft 365, managed IT services, Azure, AWS, network solutions, UK IT support, IT infrastructure">
+<meta name="author" content="Guruji Tech Global">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Guruji Tech Global - Professional IT Services & Cloud Solutions">
+<meta property="og:description" content="Enterprise-grade IT support, cloud migration, cybersecurity and Microsoft 365 services with 24/7 UK-based support">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gurujitechglobal.com">
+<meta property="og:image" content="https://www.gurujitechglobal.com/logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guruji Tech Global - Professional IT Services">
+<meta name="twitter:description" content="Enterprise IT support, cloud services & cybersecurity with 24/7 UK support">
+<meta name="twitter:image" content="https://www.gurujitechglobal.com/logo.png">
+<!-- Additional SEO Tags -->
+<link rel="canonical" href="https://www.gurujitechglobal.com">
+<link rel="apple-touch-icon" href="favicon.jpg">
+<link rel="icon" type="image/png" href="favicon.jpg">
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Structured Data - Local Business Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"name": "Guruji Tech Global",
+"image": "https://www.gurujitechglobal.com/logo.png",
+"description": "Professional IT support and managed IT services with 24/7 UK-based support",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "111 Union House, New Union Street",
+"addressLocality": "Coventry",
+"postalCode": "CV1 2NT",
+"addressCountry": "GB"
+},
+"telephone": "+44-7488564873",
+"email": "contact@gurujitechglobal.com",
+"url": "https://www.gurujitechglobal.com",
+"sameAs": [
+"https://www.facebook.com/gurujitechglobal",
+"https://www.linkedin.com/company/gurujitechglobal",
+"https://www.instagram.com/gurujitechglobal",
+"https://www.tiktok.com/@gurujitechglobal"
+],
+"priceRange": "$$",
+"knowsAbout": ["IT Support", "Cloud Services", "Cybersecurity", "Microsoft 365", "Azure", "AWS"]
+}
+</script>
+<!-- Structured Data - Organization Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "Guruji Tech Global",
+"url": "https://www.gurujitechglobal.com",
+"logo": "https://www.gurujitechglobal.com/logo.png",
+"description": "Enterprise-grade IT services including managed IT support, cloud services, and cybersecurity",
+"telephone": "+44-7488564873",
+"email": "contact@gurujitechglobal.com",
+"contactPoint": {
+"@type": "ContactPoint",
+"contactType": "Customer Service",
+"telephone": "+44-7488564873",
+"availableLanguage": "English"
+}
+}
+</script>
+<!-- Structured Data - Services Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Service",
+"name": "IT Support and Management Services",
+"description": "Comprehensive IT support, cloud services, cybersecurity, and infrastructure management",
+"provider": {
+"@type": "LocalBusiness",
+"name": "Guruji Tech Global"
+},
+"areaServed": "GB",
+"hasOfferCatalog": {
+"@type": "OfferCatalog",
+"name": "IT Services",
+"itemListElement": [
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Cloud Services",
+"description": "Azure & AWS Migration, Cloud Backup, Virtual Machines"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "24/7 IT Support",
+"description": "Remote support, on-site visits, device management"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Cybersecurity",
+"description": "Antivirus management, firewall protection, threat monitoring"
+}
+}
+]
+}
+}
+</script>
+<title>Guruji Tech Global | Professional IT Support & Cloud Services</title>
+<style>
+* {box-sizing: border-box;}
+body {margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#f8fafc;color:#1e293b;scroll-behavior: smooth;line-height:1.6;}
+h1, h2, h3, h4 {margin:0;font-weight:700;}
+a {text-decoration:none;color:#3b82f6;}
+html {scroll-behavior: smooth;}
+/* HEADER */
+header {
+padding:1rem 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:1000;
+flex-wrap: wrap;
+transition: all 0.3s ease;
+}
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.logo-container img {
+height: 70px;
+width: auto;
+display: block;
+}
+nav#nav-links a {
+margin-left: 1.5rem;
+color: #1e293b;
+font-weight: 600;
+transition: color 0.3s;
+position: relative;
+}
+nav#nav-links a:hover {
+color: #3b82f6;
+}
+nav#nav-links a::after {
+content: '';
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 2px;
+background: #3b82f6;
+transition: width 0.3s;
+}
+nav#nav-links a:hover::after {
+width: 100%;
+}
+.hamburger {
+display: none;
+flex-direction: column;
+cursor: pointer;
+gap: 4px;
+}
+.hamburger span {
+height: 2px;
+width: 25px;
+background: #1e293b;
+border-radius: 2px;
+transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+/* HERO */
+.hero {
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0 10%;
+min-height: 100vh;
+color: #fff;
+overflow: hidden;
+}
+.hero-video {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: -2;
+}
+.hero-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.9) 100%);
+z-index: -1;
+}
+.hero-left {max-width: 650px; z-index:1; animation: fadeUp 1s ease-out forwards;}
+.hero-left h1 {font-size:3.5rem;margin-bottom:1.5rem;font-weight:800;line-height:1.2;}
+.hero-left p {font-size:1.25rem;line-height:1.6;margin-bottom:2rem;opacity:0.95;}
+.hero-btn {
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
+    color:#fff;
+    padding:0.875rem 2rem;
+    border-radius:8px;
+    font-size:1.1rem;
+    font-weight:600;
+    display:inline-block;
+    transition:all 0.3s;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.2);
+}
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+.hero-btn-pulse {
+    animation: pulse-glow 2s infinite;
+}
+/* ABOUT */
+.about-section {
+padding: 5rem 5%;
+background: #fff;
+}
+.about-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+align-items: center;
+max-width: 1400px;
+margin: 0 auto;
+}
+.about-text h2 {
+font-size: 2.5rem;
+margin-bottom: 1.5rem;
+color: #1e293b;
+}
+.about-text p {
+margin-bottom: 1.25rem;
+color: #475569;
+}
+.about-points { list-style: none; padding: 0; margin: 1.5rem 0; }
+.about-points li {
+margin-bottom: 0.75rem;
+font-size: 1.05rem;
+color: #1e293b;
+display: flex;
+align-items: center;
+}
+.about-points li::before {
+content: '✓';
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 24px;
+height: 24px;
+background: #dbeafe;
+color: #1d4ed8;
+border-radius: 50%;
+margin-right: 0.75rem;
+font-weight: bold;
+}
+.about-media {
+width: 100%;
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+aspect-ratio: 16/9;
+transition: transform 0.3s ease;
+}
+.about-media:hover {
+    transform: scale(1.02);
+}
+.about-media img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 16px;
+}
+/* WHY US */
+.why-us-section {
+padding: 5rem 5%;
+background: #f8fafc;
+}
+.section-header {
+text-align: center;
+max-width: 800px;
+margin: 0 auto 3rem;
+}
+.section-header h2 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+color: #1e293b;
+}
+.section-header p {
+color: #475569;
+font-size: 1.125rem;
+}
+.why-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.why-card {
+background: #fff;
+padding: 2rem;
+border-radius: 16px;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+transition: all 0.3s ease;
+border: 1px solid #e2e8f0;
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+.why-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+border-color: #3b82f6;
+}
+.why-icon {
+font-size: 2.5rem;
+margin-bottom: 1.25rem;
+color: #3b82f6;
+}
+.why-card h3 {
+font-size: 1.5rem;
+margin-bottom: 1rem;
+color: #1e293b;
+}
+.why-card p {
+color: #475569;
+line-height: 1.6;
+flex-grow: 1;
+}
+/* SERVICES */
+.services-section {
+padding: 5rem 5%;
+background: #fff;
+}
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.service-card {
+background: #fff;
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+transition: all 0.3s ease;
+border: 1px solid #e2e8f0;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+border-color: #3b82f6;
+}
+.service-header {
+background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+color: white;
+padding: 1.5rem;
+text-align: center;
+}
+.service-header h3 {
+font-size: 1.5rem;
+margin-bottom: 0.5rem;
+}
+.service-content {
+padding: 1.5rem;
+}
+.service-content ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.service-content li {
+padding: 0.5rem 0;
+color: #475569;
+border-bottom: 1px solid #f1f5f9;
+}
+.service-content li:last-child {
+border-bottom: none;
+}
+/* TESTIMONIALS */
+.testimonials-section {
+padding: 5rem 5%;
+background: #f8fafc;
+}
+.testimonials-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.testimonial-card {
+background: #fff;
+padding: 2rem;
+border-radius: 16px;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+border: 1px solid #e2e8f0;
+transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px -2px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+.testimonial-content {
+font-style: italic;
+color: #475569;
+margin-bottom: 1.5rem;
+line-height: 1.7;
+}
+.testimonial-author {
+font-weight: 700;
+color: #1e293b;
+font-size: 1.1rem;
+}
+/* CALENDLY SECTION */
+.calendly-section {
+background: linear-gradient(90deg, #E63946 0%, #FFD166 100%);
+padding: 4rem 5%;
+text-align: center;
+color: #1e293b;
+margin-top: 2rem;
+}
+.calendly-section h2 {
+font-size: 2.2rem;
+font-weight: 800;
+margin-bottom: 1rem;
+}
+.calendly-section p {
+font-size: 1.1rem;
+max-width: 700px;
+margin: 0 auto 2rem;
+line-height: 1.6;
+}
+.calendly-btn {
+background: #FFD166;
+color: #1e293b;
+border: none;
+padding: 0.875rem 2rem;
+border-radius: 8px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s;
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.calendly-btn:hover {
+background: #ffd700;
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+/* CONTACT */
+.contact-section {
+padding: 5rem 5%;
+background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+color: #f8fafc;
+}
+.section-header-white {
+text-align: center;
+max-width: 800px;
+margin: 0 auto 3rem;
+}
+.section-header-white h2 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+color: #f8fafc;
+}
+.section-header-white p {
+color: #cbd5e1;
+font-size: 1.125rem;
+}
+.contact-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.contact-info {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+.contact-info h3 {
+font-size: 1.75rem;
+margin-bottom: 1.5rem;
+color: #f8fafc;
+}
+.contact-detail {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+padding: 1.25rem;
+background: rgba(255,255,255,0.08);
+border-radius: 12px;
+transition: background 0.3s;
+}
+.contact-detail:hover {
+background: rgba(255,255,255,0.12);
+transform: translateY(-2px);
+}
+.contact-icon {
+background: #3b82f6;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+font-size: 1.25rem;
+}
+.contact-text h4 {
+color: #f8fafc;
+margin-bottom: 0.25rem;
+font-size: 1.1rem;
+}
+.contact-text p, .contact-text a {
+color: #cbd5e1;
+margin: 0;
+text-decoration: none;
+transition: color 0.3s;
+}
+.contact-text a:hover {
+color: #3b82f6;
+}
+.map-container {
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+height: 250px;
+}
+.contact-form .form-group {
+margin-bottom: 1.25rem;
+}
+.contact-form label {
+display: block;
+margin-bottom: 0.5rem;
+font-weight: 600;
+color: #f8fafc;
+}
+.contact-form input,
+.contact-form textarea {
+width: 100%;
+padding: 0.875rem;
+border: 1px solid rgba(255,255,255,0.2);
+border-radius: 8px;
+font-size: 1rem;
+font-family: inherit;
+background: rgba(255,255,255,0.05);
+color: #f8fafc;
+transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+outline: none;
+border-color: #3b82f6;
+background: rgba(255,255,255,0.1);
+box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+.contact-form button {
+background: linear-gradient(90deg, #3b82f6, #1e40af);
+color: white;
+border: none;
+padding: 0.875rem 2rem;
+border-radius: 8px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s, transform 0.2s;
+width: 100%;
+}
+.contact-form button:hover {
+background: linear-gradient(90deg, #2563eb, #1e3a8a);
+transform: translateY(-2px);
+}
+/* WHATSAPP */
+.whatsapp-float {
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 60px;
+height: 60px;
+z-index: 9999;
+border-radius: 50%;
+background: #25D366;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+.whatsapp-float svg {
+width: 32px;
+height: 32px;
+fill: white;
+}
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+.back-to-top:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+/* FOOTER */
+footer {
+background: #0f172a;
+color: #cbd5e1;
+padding: 3rem 5%;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 2rem;
+max-width: 1400px;
+margin: 0 auto;
+}
+.footer-col h3 {
+color: #f8fafc;
+margin-bottom: 1.25rem;
+font-size: 1.25rem;
+}
+.footer-col ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.footer-col ul li {
+margin-bottom: 0.75rem;
+}
+.footer-col ul li a {
+color: #cbd5e1;
+text-decoration: none;
+transition: color 0.2s;
+}
+.footer-col ul li a:hover {
+color: #3b82f6;
+}
+.footer-contact p {
+margin: 0.5rem 0;
+display: flex;
+align-items: flex-start;
+gap: 0.75rem;
+}
+.footer-contact p svg {
+flex-shrink: 0;
+margin-top: 0.25rem;
+}
+.footer-social {
+display: flex;
+gap: 1rem;
+margin-top: 1rem;
+}
+.footer-social a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 36px;
+height: 36px;
+background: rgba(255,255,255,0.1);
+border-radius: 50%;
+color: #f8fafc;
+transition: background 0.3s, color 0.3s;
+}
+.footer-social a:hover {
+background: #3b82f6;
+color: #fff;
+}
+.footer-bottom {
+text-align: center;
+padding-top: 2rem;
+margin-top: 2rem;
+border-top: 1px solid rgba(255,255,255,0.1);
+font-size: 0.9rem;
+color: #94a3b8;
+}
+/* ANIMATIONS */
+@keyframes fadeUp {
+0% {opacity:0;transform:translateY(30px);}
+100% {opacity:1;transform:translateY(0);}
+}
+/* STATS COUNTER SECTION */
+.stats-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+}
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+.stat-item {
+    padding: 2rem;
+}
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.stat-label {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+}
+/* RESPONSIVE */
+@media (max-width:1024px){
+.hero-left h1 {font-size:2.8rem;}
+.about-container,
+.contact-container {
+grid-template-columns: 1fr;
+gap: 2rem;
+}
+}
+@media (max-width:768px){
+.hero {padding:0 5%; min-height:80vh;}
+.hero-left h1 {font-size:2.2rem;}
+.hero-left p {font-size:1rem;}
+header {padding: 1rem 5%;}
+nav#nav-links {
+display: none;
+flex-direction: column;
+width: 100%;
+margin-top: 1rem;
+background: #fff;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+border-radius: 10px;
+padding: 1rem 0;
+}
+nav#nav-links.show { display: flex; }
+nav#nav-links a { margin: 0.75rem 2rem; display: block; }
+nav#nav-links a::after { display: none; }
+.hamburger { display: flex; }
+.section-header h2,
+.section-header-white h2,
+.about-text h2,
+.contact-info h3,
+.calendly-section h2 { font-size: 2rem; }
+/* Back to top on mobile */
+.back-to-top {
+    bottom: 80px;
+}
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+}
+</style>
 </head>
-<body class="antialiased">
+<body>
+<!-- Back to Top Button -->
+<a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M13 19V13H16L12 8L8 13H11V19Z" />
+    </svg>
+</a>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/10 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-6 py-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse group">
-                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-lg shadow-lg group-hover:scale-110 transition-transform">G</div>
-                <span class="self-center text-xl font-bold whitespace-nowrap text-white tracking-tight">Guruji Tech Global</span>
-            </a>
-            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <a href="#contact" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all shadow-lg hover:shadow-blue-500/50">Get Started</a>
-                <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false" id="menu-btn">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                    </svg>
-                </button>
+<!-- HEADER -->
+<header role="banner" id="mainHeader">
+<div class="logo-container">
+<a href="/" aria-label="Guruji Tech Global - Professional IT Services">
+<img src="logo.png" alt="Guruji Tech Global IT Services Logo">
+</a>
+</div>
+<div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</div>
+<nav id="nav-links" role="navigation">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#whyus">Why Us</a>
+<a href="#services">Services</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+<!-- HERO SECTION -->
+<section class="hero" id="home" data-aos="fade-right" data-aos-duration="1000">
+<video class="hero-video" autoplay muted loop playsinline>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-left">
+<h1>We <span id="typewriter" aria-label="Manage, Support, Secure or Modernise"></span><br>IT Infrastructure</h1>
+<p>Fully managed IT support, cloud services, cybersecurity and infrastructure solutions with 24/7 UK-based support for businesses of all sizes.</p>
+<a class="hero-btn hero-btn-pulse" href="#contact">Get in Touch</a>
+</div>
+</section>
+<!-- ABOUT US SECTION -->
+<section class="about-section" id="about">
+<div class="about-container">
+<article class="about-text" data-aos="fade-right">
+<h2>About Us</h2>
+<p>
+At <strong>Guruji Tech Global</strong>, we provide secure, scalable, and cost-efficient IT solutions for businesses of all sizes.
+With expertise across Cloud Services, IT Support, Microsoft 365, Cyber Security and Infrastructure Management,
+we help organisations modernize their technology and operate efficiently.
+</p>
+<p>
+Our mission is simple: Deliver enterprise-grade IT services with transparency, speed, and reliability.
+Whether you need round-the-clock support, cloud migration, or complete IT management, our team is here to ensure
+your systems run smoothly so you can focus on growing your business.
+</p>
+<ul class="about-points">
+<li>Over 10+ years of IT industry experience</li>
+<li>Fully managed IT support & monitoring</li>
+<li>Cloud-first approach with Azure & AWS</li>
+<li>Fast response time & 24/7 availability</li>
+</ul>
+</article>
+<div class="about-media" data-aos="fade-left">
+<img src="aboutus.png" alt="Guruji Tech Global - About Our IT Infrastructure">
+</div>
+</div>
+</section>
+<!-- WHY US SECTION -->
+<section class="why-us-section" id="whyus">
+<div class="section-header" data-aos="fade-up">
+<h2>Why Choose Us</h2>
+<p>Enterprise-level reliability, proven expertise and a commitment to delivering secure, scalable IT solutions.</p>
+</div>
+<div class="why-grid">
+<article class="why-card" data-aos="fade-up" data-aos-delay="100">
+<div class="why-icon">💼</div>
+<h3>Professional Expertise</h3>
+<p>Certified IT engineers with deep experience in cloud, cybersecurity, networking and modern workplace solutions.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="200">
+<div class="why-icon">🔒</div>
+<h3>Security First Approach</h3>
+<p>We implement industry-standard security frameworks ensuring compliance, protection and risk reduction.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="300">
+<div class="why-icon">⚡</div>
+<h3>Fast Response & 24/7 Support</h3>
+<p>Our helpdesk and monitoring ensure your systems remain operational at all times.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="400">
+<div class="why-icon">🚀</div>
+<h3>Scalable Solutions</h3>
+<p>Solutions engineered to grow with your business—from cloud migrations to full IT modernisation.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="500">
+<div class="why-icon">🧩</div>
+<h3>Custom-Built IT Solutions</h3>
+<p>We design IT systems tailored to your exact business needs for efficiency and long-term scalability.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="600">
+<div class="why-icon">📊</div>
+<h3>Data-Driven Strategy</h3>
+<p>Decisions backed by analytics, monitoring insights and industry best-practice frameworks.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="700">
+<div class="why-icon">🤝</div>
+<h3>Partnership Mindset</h3>
+<p>We work as an extension of your team—aligned with your goals, culture, and success metrics.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="800">
+<div class="why-icon">💰</div>
+<h3>Transparent Pricing</h3>
+<p>No hidden fees or surprise costs—clear, predictable monthly pricing with no long-term lock-ins.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="900">
+<div class="why-icon">🌍</div>
+<h3>UK-Based Support Team</h3>
+<p>Local engineers who understand UK business regulations, time zones, and communication styles.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="1000">
+<div class="why-icon">🛡️</div>
+<h3>Proactive Monitoring</h3>
+<p>We detect and resolve issues before they impact your operations—24/7 infrastructure health checks.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="1100">
+<div class="why-icon">🔄</div>
+<h3>Seamless Onboarding</h3>
+<p>Zero-downtime transition from your current provider with full documentation and training included.</p>
+</article>
+<article class="why-card" data-aos="fade-up" data-aos-delay="1200">
+<div class="why-icon">🏆</div>
+<h3>Client-Centric Focus</h3>
+<p>Your success is our priority—regular reviews, strategic planning sessions, and continuous improvement.</p>
+</article>
+</div>
+</section>
+<!-- SERVICES SECTION -->
+<section class="services-section" id="services">
+<div class="section-header" data-aos="fade-up">
+<h2>Our Services</h2>
+<p>Explore our professional IT services tailored for modern businesses.</p>
+</div>
+<div class="services-grid">
+<article class="service-card" data-aos="fade-up" data-aos-delay="100">
+<div class="service-header">
+<h3>Cloud Services</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Azure & AWS Migration</li>
+<li>Cloud Backup</li>
+<li>Virtual Machines</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="200">
+<div class="service-header">
+<h3>Microsoft 365</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Email Hosting</li>
+<li>SharePoint Setup</li>
+<li>Teams Integration</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="300">
+<div class="service-header">
+<h3>Cyber Security</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Antivirus Management</li>
+<li>Firewall Protection</li>
+<li>Threat Monitoring</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="400">
+<div class="service-header">
+<h3>24/7 IT Support</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Remote Support</li>
+<li>On-site Visits</li>
+<li>Device Management</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="500">
+<div class="service-header">
+<h3>Network Solutions</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>LAN / WAN Setup</li>
+<li>VPN Configuration</li>
+<li>Network Monitoring</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="600">
+<div class="service-header">
+<h3>IT Consulting</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Strategy Planning</li>
+<li>IT Audits</li>
+<li>Technology Roadmaps</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="700">
+<div class="service-header">
+<h3>Data Backup & Recovery</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Automated Backup Solutions</li>
+<li>Disaster Recovery Planning</li>
+<li>Ransomware Protection</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="800">
+<div class="service-header">
+<h3>Endpoint Management</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Mobile Device Management</li>
+<li>Laptop & Desktop Support</li>
+<li>Software Deployment</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="900">
+<div class="service-header">
+<h3>Compliance & Governance</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>GDPR Compliance</li>
+<li>ISO 27001 Implementation</li>
+<li>Security Policy Development</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="1000">
+<div class="service-header">
+<h3>Business Continuity</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Business Impact Analysis</li>
+<li>Continuity Planning</li>
+<li>Regular Testing & Updates</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="1100">
+<div class="service-header">
+<h3>IT Infrastructure</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>Server Installation</li>
+<li>Storage Solutions</li>
+<li>Virtualization</li>
+</ul>
+</div>
+</article>
+<article class="service-card" data-aos="fade-up" data-aos-delay="1200">
+<div class="service-header">
+<h3>Unified Communications</h3>
+</div>
+<div class="service-content">
+<ul>
+<li>VoIP Implementation</li>
+<li>Video Conferencing</li>
+<li>Collaboration Tools</li>
+</ul>
+</div>
+</article>
+</div>
+</section>
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section" id="testimonials">
+<div class="section-header" data-aos="fade-up">
+<h2>Testimonials</h2>
+<p>What our clients say about us.</p>
+</div>
+<div class="testimonials-grid">
+<article class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+<div class="testimonial-content">
+"Guruji Tech Global transformed our IT infrastructure. Outstanding service and incredibly responsive team!"
+</div>
+<div class="testimonial-author">— David, Logistics Company</div>
+</article>
+<article class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+<div class="testimonial-content">
+"Fast response, highly professional, and very knowledgeable. They've become an essential part of our business operations."
+</div>
+<div class="testimonial-author">— Sarah, Accounting Firm</div>
+</article>
+<article class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+<div class="testimonial-content">
+"Reliable team with deep expertise. Best experience with cloud migration we've ever had."
+</div>
+<div class="testimonial-author">— Mark, Construction Group</div>
+</article>
+</div>
+</section>
+<!-- STATS SECTION -->
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="stat-number" id="projectsCounter">0</div>
+                <div class="stat-label">Projects Delivered</div>
             </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-800 rounded-lg bg-gray-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-                    <li>
-                        <a href="#home" class="block py-2 px-3 text-white rounded hover:text-blue-400 md:p-0 transition-colors">Home</a>
-                    </li>
-                    <li>
-                        <a href="#services" class="block py-2 px-3 text-gray-300 rounded hover:text-blue-400 md:p-0 transition-colors">Services</a>
-                    </li>
-                    <li>
-                        <a href="#about" class="block py-2 px-3 text-gray-300 rounded hover:text-blue-400 md:p-0 transition-colors">About</a>
-                    </li>
-                    <li>
-                        <a href="#portfolio" class="block py-2 px-3 text-gray-300 rounded hover:text-blue-400 md:p-0 transition-colors">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="block py-2 px-3 text-gray-300 rounded hover:text-blue-400 md:p-0 transition-colors">Contact</a>
-                    </li>
-                </ul>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="stat-number" id="clientsCounter">0</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="stat-number" id="engineersCounter">0</div>
+                <div class="stat-label">Expert Engineers</div>
+            </div>
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="stat-number" id="experienceCounter">0</div>
+                <div class="stat-label">Years Experience</div>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
+<!-- CALENDLY SECTION -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<section class="calendly-section" data-aos="fade-up">
+<h2>Ready to Optimize Your IT Infrastructure?</h2>
+<p>Let Guruji Tech Global handle your comprehensive IT needs while you focus on business growth and strategic initiatives.</p>
+<button
+class="calendly-btn"
+onclick="Calendly.initPopupWidget({url: 'https://calendly.com/calendly-gurujitechglobal'});return false;">
+Schedule Your Consultation
+</button>
+</section>
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+<div class="section-header-white" data-aos="fade-up">
+<h2>Contact Us</h2>
+<p>Reach out and our team will respond shortly.</p>
+</div>
+<div class="contact-container">
+<div class="contact-info">
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="100">
+<div class="contact-icon">📞</div>
+<div class="contact-text">
+<h4>Phone</h4>
+<a href="tel:+447488564873">+44-7488564873</a>
+</div>
+</div>
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="200">
+<div class="contact-icon">📧</div>
+<div class="contact-text">
+<h4>Email</h4>
+<a href="mailto:contact@gurujitechglobal.com">contact@gurujitechglobal.com</a>
+</div>
+</div>
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="300">
+<div class="contact-icon">📍</div>
+<div class="contact-text">
+<h4>Office Address</h4>
+<p>Guruji Tech Global LTD<br>111 Union House,<br>New Union Street<br>Coventry, CV1 2NT<br>United Kingdom</p>
+</div>
+</div>
+<div class="map-container" data-aos="fade-right" data-aos-delay="400">
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.378150338298!2d-1.5158029235651375!3d52.40529624661592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774bfb6a2d4ab3%3A0xa2db0f4da6af7d2!2sUnion%20House%2C%20111%20New%20Union%20St%2C%20Coventry%20CV1%202NT!5e0!3m2!1sen!2suk!4v1732473670000"
+width="100%"
+height="100%"
+style="border:0;"
+allowfullscreen
+loading="lazy"
+title="Guruji Tech Global Location">
+</iframe>
+</div>
+</div>
+<div class="contact-form" data-aos="fade-left">
+<form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" style="display:none">
+<div class="form-group">
+<label for="name">Full Name</label>
+<input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your full name">
+</div>
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
+</div>
+<div class="form-group">
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" aria-label="Phone number" placeholder="Enter your phone number">
+</div>
+<div class="form-group">
+<label for="message">Your Message</label>
+<textarea id="message" name="message" rows="5" required aria-required="true" placeholder="How can we help you?"></textarea>
+</div>
+<button type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</section>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/447488564873" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Contact Guruji Tech Global on WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+</svg>
+</a>
+<!-- FOOTER -->
+<footer>
+<div class="footer-grid">
+<div class="footer-col">
+<h3>Guruji Tech Global</h3>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:1.5rem;">
+Delivering enterprise-grade IT services with transparency, speed, and reliability to businesses across the UK.
+</p>
+<div class="footer-social">
+<a href="https://www.facebook.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+</svg>
+</a>
+<a href="https://www.linkedin.com/company/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+</svg>
+</a>
+<a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.351 2.618 6.78 6.98 6.979 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+</svg>
+</a>
+<a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+<path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+</svg>
+</a>
+</div>
+</div>
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About Us</a></li>
+<li><a href="#services">Our Services</a></li>
+<li><a href="#whyus">Why Choose Us</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Our Services</h3>
+<ul>
+<li><a href="#services">Cloud Services</a></li>
+<li><a href="#services">Microsoft 365</a></li>
+<li><a href="#services">Cyber Security</a></li>
+<li><a href="#services">24/7 IT Support</a></li>
+<li><a href="#services">Network Solutions</a></li>
+<li><a href="#services">IT Consulting</a></li>
+</ul>
+</div>
+<div class="footer-col footer-contact">
+<h3>Contact Info</h3>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+</svg>
++44-7488564873
+</p>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+<polyline points="22,6 12,13 2,6"/>
+</svg>
+contact@gurujitechglobal.com
+</p>
+<p>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+<circle cx="12" cy="10" r="3"/>
+</svg>
+111 Union House,<br>New Union Street,<br>Coventry CV1 2NT,<br>United Kingdom
+</p>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 Guruji Tech Global LTD. All Rights Reserved. | Registered in England & Wales No. 16808971</p>
+</div>
+</footer>
+<!-- Calendly Embed Script -->
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Cookie Consent + GA -->
+<div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#ffffff; padding:15px; border-top:1px solid #ccc; box-shadow:0 -2px 10px rgba(0,0,0,0.1); display:none; justify-content:space-between; align-items:center; z-index:9999; font-size:14px;">
+<p style="margin:0;">
+We use cookies to improve your experience and analyze our traffic.
+<a href="/cookie-policy.html" style="color:#1e40af; text-decoration:underline;">Learn more</a>
+</p>
+<div style="display:flex; gap:10px;">
+<button id="accept-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#4CAF50; color:white; border-radius:4px; font-weight:bold;">Accept</button>
+<button id="reject-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#f44336; color:white; border-radius:4px; font-weight:bold;">Reject</button>
+</div>
+</div>
+<script>
+// Show banner only if no consent is stored
+if (!localStorage.getItem("cookieConsent")) {
+document.getElementById("cookie-banner").style.display = "flex";
+}
+// Accept & load GA
+document.getElementById("accept-cookies").onclick = function () {
+localStorage.setItem("cookieConsent", "accepted");
+document.getElementById("cookie-banner").style.display = "none";
+loadGoogleAnalytics();
+};
+// Reject
+document.getElementById("reject-cookies").onclick = function () {
+localStorage.setItem("cookieConsent", "rejected");
+document.getElementById("cookie-banner").style.display = "none";
+};
+// Load GA if previously accepted
+if (localStorage.getItem("cookieConsent") === "accepted") {
+loadGoogleAnalytics();
+}
+// GA4 Loader Function
+function loadGoogleAnalytics() {
+if (window.dataLayer) return;
+const script = document.createElement("script");
+script.async = true;
+script.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
+document.head.appendChild(script);
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HFCKN1H30C');
+}
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize AOS
+AOS.init({
+    duration: 800,
+    offset: 100,
+    once: true
+});
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <!-- 3D Canvas Container (ThreeJS Placeholder - Fallbacks handled in script) -->
-        <div id="canvas-container"></div>
-        
-        <!-- Overlay Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-900/30 border border-blue-500/30 text-blue-300 text-sm font-semibold mb-6" data-aos="fade-down">Innovate. Integrate. Elevate.</span>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight" data-aos="zoom-in">
-                Building the <br>
-                <span class="text-gradient">Future of Technology</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Guruji Tech Global provides enterprise-grade software solutions, cloud infrastructure, and AI-driven automation tailored for your business growth.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="#contact" class="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-all hover:-translate-y-1 btn-pulse">Request a Quote</a>
-                <a href="#services" class="px-8 py-4 glass text-white rounded-full font-semibold border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-1">Our Services</a>
-            </div>
-        </div>
+// Hamburger menu toggle with auto-close on mobile
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const header = document.getElementById('mainHeader');
+const mobileLinks = navLinks.querySelectorAll('a');
 
-        <!-- Background Gradients -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-blue-900/20 via-transparent to-slate-900/80 -z-10 pointer-events-none"></div>
-        <div class="absolute -top-20 -right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute bottom-0 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -z-10"></div>
-    </section>
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+});
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Expertise</h2>
-                <p class="text-gray-400">Comprehensive IT solutions designed for the modern enterprise.</p>
-            </div>
+// Close mobile menu when any link is clicked
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+    });
+});
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                        <svg class="w-6 h-6 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Custom Web Development</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Scalable, secure, and responsive web applications built with modern frameworks like React, Node.js, and Tailwind.</p>
-                </div>
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
-                <!-- Service 2 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
-                        <svg class="w-6 h-6 text-purple-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Cloud & DevOps</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Seamless cloud migration, AWS/Azure infrastructure management, and CI/CD pipelines for rapid deployment.</p>
-                </div>
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
 
-                <!-- Service 3 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
-                        <svg class="w-6 h-6 text-cyan-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">AI Integration</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Leverage machine learning models and natural language processing to automate workflows and gain insights.</p>
-                </div>
+// Counter animation for stats section
+let counted = false;
+const statsSection = document.querySelector('.stats-section');
 
-                <!-- Service 4 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-12 h-12 bg-emerald-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors">
-                        <svg class="w-6 h-6 text-emerald-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Cybersecurity</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Proactive threat detection, vulnerability assessments, and robust security protocols to safeguard your data.</p>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
-                        <svg class="w-6 h-6 text-orange-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Data Analytics</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Transform raw data into actionable intelligence with our custom dashboard and visualization services.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="service-card glass rounded-2xl p-8 border border-white/5 transition-all duration-300 cursor-pointer group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-12 h-12 bg-pink-600/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
-                        <svg class="w-6 h-6 text-pink-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Mobile Solutions</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Cross-platform mobile applications (PWA & Native) that deliver seamless experiences on any device.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-16 border-y border-white/5 bg-slate-900/80 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="stat-item" data-aos="zoom-in">
-                    <div class="text-4xl font-bold text-blue-400 mb-2 counter" data-target="50">0</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wider">Clients Served</div>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-4xl font-bold text-purple-400 mb-2 counter" data-target="120">0</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wider">Projects Delivered</div>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-4xl font-bold text-cyan-400 mb-2 counter" data-target="98">0</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wider">Success Rate (%)</div>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-4xl font-bold text-emerald-400 mb-2 counter" data-target="24">0</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wider">Support (7/24)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Why Choose <br><span class="text-gradient">Guruji Tech Global?</span></h2>
-                <p class="text-gray-400 mb-6 leading-relaxed">
-                    We aren't just developers; we are your strategic partners in digital transformation. With a focus on agile methodologies and transparent communication, we ensure your vision is executed flawlessly.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        Certified Expert Team
-                    </li>
-                    <li class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        Agile Development Process
-                    </li>
-                    <li class="flex items-center text-gray-300">
-                        <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        Post-Launch Support
-                    </li>
-                </ul>
-            </div>
-            <div class="relative" data-aos="fade-left">
-                <!-- Decorative Card Stack -->
-                <div class="absolute -top-6 -left-6 w-full h-full border-2 border-blue-500/20 rounded-2xl transform rotate-3"></div>
-                <div class="absolute -bottom-6 -right-6 w-full h-full border-2 border-purple-500/20 rounded-2xl transform -rotate-3"></div>
-                <div class="glass p-8 rounded-2xl relative bg-slate-800/80 backdrop-blur-xl border border-white/10 shadow-2xl">
-                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold text-white">G</div>
-                        <div>
-                            <h4 class="font-bold text-white">Guruji Tech Team</h4>
-                            <p class="text-xs text-gray-400">Established 2023</p>
-                        </div>
-                    </div>
-                    <blockquote class="text-gray-300 italic">
-                        "Technology is best when it brings people together and makes processes simpler. We build bridges between your ideas and the digital reality."
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio / Case Studies -->
-    <section id="portfolio" class="py-20 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12" data-aos="fade-up">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Featured Work</h2>
-                    <p class="text-gray-400">See the impact we've made.</p>
-                </div>
-                <a href="#" class="text-blue-400 hover:text-white transition-colors hidden md:block">View All Projects &rarr;</a>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Project 1 -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-gray-800 cursor-pointer" data-aos="fade-up">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent z-10"></div>
-                    <!-- Simulated Visuals with CSS -->
-                    <div class="w-full h-full bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                        <span class="text-6xl opacity-20 font-bold text-white tracking-widest">FINTECH</span>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1 block">FinTech App</span>
-                        <h3 class="text-xl font-bold text-white">Secure Banking Portal</h3>
-                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Real-time transaction monitoring and fraud detection system.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-video bg-gray-800 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent z-10"></div>
-                    <div class="w-full h-full bg-gradient-to-br from-purple-900 to-slate-900 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                        <span class="text-6xl opacity-20 font-bold text-white tracking-widest">ECOM</span>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-6 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest mb-1 block">E-Commerce</span>
-                        <h3 class="text-xl font-bold text-white">Global Retail Platform</h3>
-                        <p class="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Scalable infrastructure handling 50k+ concurrent users.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-6 text-center md:hidden">
-                <a href="#" class="text-blue-400 hover:text-white transition-colors">View All Projects &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 relative">
-        <!-- Background glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
-
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="glass rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great</h2>
-                    <p class="text-gray-400">Fill out the form below and our team will get back to you within 24 hours.</p>
-                </div>
-
-                <form id="contactForm" class="space-y-6" onsubmit="return handleContactSubmit(event)">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                            <input type="text" id="name" required class="w-full bg-slate-900/50 border border-gray-700 text-white rounded-lg px-4 py-3 focus:border-blue-500 transition-colors placeholder-gray-600" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Work Email</label>
-                            <input type="email" id="email" required class="w-full bg-slate-900/50 border border-gray-700 text-white rounded-lg px-4 py-3 focus:border-blue-500 transition-colors placeholder-gray-600" placeholder="john@company.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Service Interested In</label>
-                        <select id="service" class="w-full bg-slate-900/50 border border-gray-700 text-white rounded-lg px-4 py-3 focus:border-blue-500 transition-colors appearance-none">
-                            <option value="Web Development">Web Development</option>
-                            <option value="Cloud & DevOps">Cloud & DevOps</option>
-                            <option value="AI Integration">AI Integration</option>
-                            <option value="Cybersecurity">Cybersecurity</option>
-                            <option value="General Inquiry">General Inquiry</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
-                        <textarea id="message" rows="4" required class="w-full bg-slate-900/50 border border-gray-700 text-white rounded-lg px-4 py-3 focus:border-blue-500 transition-colors placeholder-gray-600" placeholder="Tell us about your project goals..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-purple-500/40 transform hover:-translate-y-1">
-                        Send Message
-                    </button>
-                    <div id="formMessage" class="hidden text-center mt-4 p-3 rounded-lg"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black border-t border-white/10 pt-12 pb-6">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-lg">G</div>
-                        <span class="text-xl font-bold text-white">Guruji Tech Global</span>
-                    </div>
-                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
-                        Empowering businesses through innovative technology solutions. Your vision, our code.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#about" class="hover:text-blue-400 transition-colors">About Us</a></li>
-                        <li><a href="#portfolio" class="hover:text-blue-400 transition-colors">Careers</a></li>
-                        <li><a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-white/5 pt-6 text-center text-gray-600 text-xs">
-                &copy; 2023 Guruji Tech Global. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all opacity-0 translate-y-10 pointer-events-none z-40">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
-    </button>
-
-    <!-- Scripts -->
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
     
-    <!-- AOS Library for Scroll Animations -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <!-- Three.js for Background Effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <script>
-        // 1. Initialize AOS (Animations on Scroll)
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-
-        // 2. Navbar Logic (Sticky, Mobile Menu, Active State)
-        const navbar = document.getElementById('navbar');
-        const menuBtn = document.getElementById('menu-btn');
-        const menu = document.getElementById('navbar-sticky');
-        const navLinks = menu.querySelectorAll('a');
-
-        // Mobile Menu Toggle
-        menuBtn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('absolute');
-            menu.classList.toggle('top-full');
-            menu.classList.toggle('left-0');
-            menu.classList.toggle('w-full');
-            menu.classList.toggle('bg-slate-900');
-            menu.classList.toggle('p-4');
-            menu.classList.toggle('border-t');
-            menu.classList.toggle('border-gray-800');
-        });
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const count = parseInt(counter.innerText);
+            const increment = target / speed;
             
-            // Back to Top Visibility
-            const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 500) {
-                backToTop.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 20);
             } else {
-                backToTop.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                counter.innerText = target + (counter.id === 'experienceCounter' ? '+' : '');
             }
-        });
-
-        // Close mobile menu when clicking a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (!menu.classList.contains('hidden')) {
-                    menu.classList.add('hidden');
-                }
-            });
-        });
-
-        // 3. Counter Animation for Stats
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 20);
-                } else {
-                    counter.innerText = target + (target === 98 ? '%' : '+');
-                }
-            });
         };
+        updateCount();
+    });
+}
 
-        // Trigger counters when in view
-        const statsSection = document.querySelector('.stat-item');
-        if(statsSection) {
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) {
-                    animateCounters();
-                    observer.disconnect();
-                }
-            });
-            observer.observe(statsSection);
+// Set counter targets
+document.getElementById('projectsCounter').setAttribute('data-target', '500');
+document.getElementById('clientsCounter').setAttribute('data-target', '120');
+document.getElementById('engineersCounter').setAttribute('data-target', '50');
+document.getElementById('experienceCounter').setAttribute('data-target', '10');
+
+// Trigger counter animation when stats section is in view
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !counted) {
+            animateCounters();
+            counted = true;
         }
+    });
+}, { threshold: 0.5 });
 
-        // 4. Contact Form Handling
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const formMessage = document.getElementById('formMessage');
-            
-            // Simulate submission
-            formMessage.classList.remove('hidden', 'bg-red-500/20', 'text-red-200');
-            formMessage.classList.add('bg-green-500/20', 'text-green-200');
-            formMessage.innerText = `Thanks ${name}! Your message has been sent. We will contact you shortly.`;
-            
-            e.target.reset();
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.classList.add('hidden');
-            }, 5000);
+if (statsSection) {
+    observer.observe(statsSection);
+}
 
-            return false;
-        }
-
-        // 5. Three.js Background (Particle Network)
-        // Note: This is a lightweight implementation. 
-        // If Three.js fails to load (e.g. strict iframe), the site still looks great without it.
-        try {
-            if (typeof THREE !== 'undefined') {
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                
-                const container = document.getElementById('canvas-container');
-                if(container) {
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    container.appendChild(renderer.domElement);
-
-                    // Particles
-                    const particlesGeometry = new THREE.BufferGeometry();
-                    const particlesCount = 700;
-                    const posArray = new Float32Array(particlesCount * 3);
-
-                    for(let i = 0; i < particlesCount * 3; i++) {
-                        // Spread particles across the view
-                        posArray[i] = (Math.random() - 0.5) * 15; 
-                    }
-
-                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-                    const material = new THREE.PointsMaterial({
-                        size: 0.02,
-                        color: 0x3b82f6, // Blue particles
-                        transparent: true,
-                        opacity: 0.8
-                    });
-
-                    const particlesMesh = new THREE.Points(particlesGeometry, material);
-                    scene.add(particlesMesh);
-
-                    camera.position.z = 3;
-
-                    // Mouse interaction
-                    let mouseX = 0;
-                    let mouseY = 0;
-                    let targetX = 0;
-                    let targetY = 0;
-
-                    const windowHalfX = window.innerWidth / 2;
-                    const windowHalfY = window.innerHeight / 2;
-
-                    document.addEventListener('mousemove', (event) => {
-                        mouseX = (event.clientX - windowHalfX) * 0.001;
-                        mouseY = (event.clientY - windowHalfY) * 0.001;
-                    });
-
-                    // Animation Loop
-                    const clock = new THREE.Clock();
-
-                    const animate = () => {
-                        targetX = mouseX * 0.4;
-                        targetY = mouseY * 0.4;
-
-                        const elapsedTime = clock.getElapsedTime();
-
-                        // Continuous rotation
-                        particlesMesh.rotation.y += 0.001;
-                        particlesMesh.rotation.x += 0.0005;
-
-                        // Smooth mouse interaction
-                        particlesMesh.rotation.y += 0.05 * (targetX - particlesMesh.rotation.y);
-                        particlesMesh.rotation.x += 0.05 * (targetY - particlesMesh.rotation.x);
-
-                        renderer.render(scene, camera);
-                        requestAnimationFrame(animate);
-                    }
-
-                    animate();
-
-                    // Handle Resize
-                    window.addEventListener('resize', () => {
-                        camera.aspect = window.innerWidth / window.innerHeight;
-                        camera.updateProjectionMatrix();
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-                    });
-                }
-            }
-        } catch (error) {
-            console.log("Three.js not loaded or restricted, site runs without 3D background.");
-        }
-    </script>
+// Typewriter effect
+const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
+let i = 0, j = 0, current = "", isDeleting = false;
+function type() {
+    const element = document.getElementById("typewriter");
+    const word = words[i];
+    current = word.slice(0, j);
+    element.textContent = current;
+    if (!isDeleting && j < word.length) {
+        j++;
+        setTimeout(type, 120);
+    } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 70);
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(type, 1200);
+    }
+}
+window.addEventListener('load', type);
+</script>
 </body>
 </html>
+
