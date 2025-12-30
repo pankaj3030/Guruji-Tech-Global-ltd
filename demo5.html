@@ -394,9 +394,23 @@ flex-grow: 1;
 padding: 5rem 5%;
 background: #fff;
 }
+.section-header {
+text-align: center;
+max-width: 800px;
+margin: 0 auto 3rem;
+}
+.section-header h2 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+color: #1e293b;
+}
+.section-header p {
+color: #475569;
+font-size: 1.125rem;
+}
 .services-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 gap: 2rem;
 max-width: 1400px;
 margin: 0 auto;
@@ -420,13 +434,14 @@ border-color: #3b82f6;
 .service-header {
 background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 color: white;
-padding: 1.5rem;
+padding: 1rem;
 text-align: center;
 font-size: 1.5rem;
 font-weight: 700;
 }
 .service-content {
 display: flex;
+flex-direction: column;
 height: 100%;
 }
 .service-text {
@@ -450,7 +465,6 @@ border-bottom: 1px solid #f1f5f9;
 border-bottom: none;
 }
 .service-image {
-flex: 1;
 height: 200px;
 overflow: hidden;
 }
@@ -547,43 +561,76 @@ color: #cbd5e1;
 font-size: 1.125rem;
 }
 .contact-container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
 max-width: 1400px;
 margin: 0 auto;
+}
+.contact-info {
 display: flex;
-justify-content: center;
+flex-direction: column;
+gap: 2rem;
 }
-.contact-form {
-background: rgba(255, 255, 255, 0.05);
-border-radius: 16px;
-padding: 2rem;
-width: 100%;
-max-width: 600px;
-box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-.contact-form h2 {
-font-size: 2rem;
-margin-bottom: 1rem;
-color: #fff;
-text-align: center;
-}
-.contact-form p {
-color: #cbd5e1;
-font-size: 1rem;
-margin-bottom: 2rem;
-text-align: center;
-}
-.form-group {
+.contact-info h3 {
+font-size: 1.75rem;
 margin-bottom: 1.5rem;
+color: #f8fafc;
 }
-.form-group label {
+.contact-detail {
+display: flex;
+align-items: flex-start;
+gap: 1rem;
+padding: 1.25rem;
+background: rgba(255,255,255,0.08);
+border-radius: 12px;
+transition: background 0.3s;
+}
+.contact-detail:hover {
+background: rgba(255,255,255,0.12);
+}
+.contact-icon {
+background: #3b82f6;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+font-size: 1.25rem;
+}
+.contact-text h4 {
+color: #f8fafc;
+margin-bottom: 0.25rem;
+font-size: 1.1rem;
+}
+.contact-text p, .contact-text a {
+color: #cbd5e1;
+margin: 0;
+text-decoration: none;
+transition: color 0.3s;
+}
+.contact-text a:hover {
+color: #3b82f6;
+}
+.map-container {
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+height: 250px;
+}
+.contact-form .form-group {
+margin-bottom: 1.25rem;
+}
+.contact-form label {
 display: block;
 margin-bottom: 0.5rem;
 font-weight: 600;
 color: #f8fafc;
 }
-.form-group input,
-.form-group textarea,
-.form-group select {
+.contact-form input,
+.contact-form textarea {
 width: 100%;
 padding: 0.875rem;
 border: 1px solid rgba(255,255,255,0.2);
@@ -594,16 +641,15 @@ background: rgba(255,255,255,0.05);
 color: #f8fafc;
 transition: border-color 0.3s, background 0.3s;
 }
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.contact-form input:focus,
+.contact-form textarea:focus {
 outline: none;
 border-color: #3b82f6;
 background: rgba(255,255,255,0.1);
 box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
-.submit-btn {
-background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+.contact-form button {
+background: #3b82f6;
 color: white;
 border: none;
 padding: 0.875rem 2rem;
@@ -614,8 +660,8 @@ cursor: pointer;
 transition: all 0.3s, transform 0.2s;
 width: 100%;
 }
-.submit-btn:hover {
-background: linear-gradient(90deg, #2563eb, #7c3aed);
+.contact-form button:hover {
+background: #2563eb;
 transform: translateY(-2px);
 }
 /* WHATSAPP */
@@ -966,7 +1012,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="cloud.jpg" alt="Cloud Services visual">
+<video src="cloud.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -982,7 +1028,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="ms365.jpg" alt="Microsoft 365 visual">
+<video src="ms365.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -998,7 +1044,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="cyber.jpg" alt="Cyber Security visual">
+<video src="cyber.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -1014,7 +1060,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="support.jpg" alt="24/7 IT Support visual">
+<video src="support.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -1030,7 +1076,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="network.jpg" alt="Network Solutions visual">
+<video src="network.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -1046,7 +1092,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </div>
 <div class="service-image">
-<img src="consulting.jpg" alt="IT Consulting visual">
+<video src="consulting.mp4" muted loop playsinline></video>
 </div>
 </div>
 </article>
@@ -1098,37 +1144,61 @@ Schedule Your Consultation
 <p>Reach out and our team will respond shortly.</p>
 </div>
 <div class="contact-container">
-<div class="contact-form" data-aos="fade-up">
-<h2>Let's Build Something Great</h2>
-<p>Fill out the form below and our team will get back to you within 24 hours.</p>
+<div class="contact-info">
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="100">
+<div class="contact-icon">📞</div>
+<div class="contact-text">
+<h4>Phone</h4>
+<a href="tel:+447488564873">+44-7488564873</a>
+</div>
+</div>
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="200">
+<div class="contact-icon">📧</div>
+<div class="contact-text">
+<h4>Email</h4>
+<a href="mailto:contact@gurujitechglobal.com">contact@gurujitechglobal.com</a>
+</div>
+</div>
+<div class="contact-detail" data-aos="fade-right" data-aos-delay="300">
+<div class="contact-icon">📍</div>
+<div class="contact-text">
+<h4>Office Address</h4>
+<p>Guruji Tech Global LTD<br>111 Union House,<br>New Union Street<br>Coventry, CV1 2NT<br>United Kingdom</p>
+</div>
+</div>
+<div class="map-container" data-aos="fade-right" data-aos-delay="400">
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.378150338298!2d-1.5158029235651375!3d52.40529624661592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774bfb6a2d4ab3%3A0xa2db0f4da6af7d2!2sUnion%20House%2C%20111%20New%20Union%20St%2C%20Coventry%20CV1%202NT!5e0!3m2!1sen!2suk!4v1732473670000"
+width="100%"
+height="100%"
+style="border:0;"
+allowfullscreen
+loading="lazy"
+title="Guruji Tech Global Location">
+</iframe>
+</div>
+</div>
+<div class="contact-form" data-aos="fade-left">
 <form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
 <input type="hidden" name="_captcha" value="false">
 <input type="text" name="_honey" style="display:none">
 <div class="form-group">
 <label for="name">Full Name</label>
-<input type="text" id="name" name="name" required aria-required="true" placeholder="John Doe">
+<input type="text" id="name" name="name" required aria-required="true" placeholder="Enter your full name">
 </div>
 <div class="form-group">
-<label for="email">Work Email</label>
-<input type="email" id="email" name="email" required aria-required="true" placeholder="john@company.com">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" required aria-required="true" placeholder="Enter your email">
 </div>
 <div class="form-group">
-<label for="service">Service Interested In</label>
-<select id="service" name="service" required aria-required="true">
-<option value="" disabled selected>Select a service</option>
-<option value="Cloud Services">Cloud Services</option>
-<option value="Microsoft 365">Microsoft 365</option>
-<option value="Cyber Security">Cyber Security</option>
-<option value="24/7 IT Support">24/7 IT Support</option>
-<option value="Network Solutions">Network Solutions</option>
-<option value="IT Consulting">IT Consulting</option>
-</select>
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" aria-label="Phone number" placeholder="Enter your phone number">
 </div>
 <div class="form-group">
-<label for="message">Project Details</label>
-<textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tell us about your project goals..."></textarea>
+<label for="message">Your Message</label>
+<textarea id="message" name="message" rows="5" required aria-required="true" placeholder="How can we help you?"></textarea>
 </div>
-<button type="submit" class="submit-btn">Send Message</button>
+<button type="submit">Send Message</button>
 </form>
 </div>
 </div>
