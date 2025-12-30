@@ -1298,60 +1298,101 @@ gtag('config', 'G-HFCKN1H30C');
 }
 </script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({
-duration: 800,
-offset: 100,
-once: true
-});
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-const header = document.getElementById('mainHeader');
-const mobileLinks = navLinks.querySelectorAll('a');
-hamburger.addEventListener('click', () => {
-const isOpen = navLinks.classList.toggle('show');
-hamburger.classList.toggle('active');
-hamburger.setAttribute('aria-expanded', isOpen);
-});
-mobileLinks.forEach(link => {
-link.addEventListener('click', () => {
-navLinks.classList.remove('show');
-hamburger.classList.remove('active');
-hamburger.setAttribute('aria-expanded', 'false');
-});
-});
-window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
-});
-const backToTopButton = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 500) {
-backToTopButton.classList.add('show');
-} else {
-backToTopButton.classList.remove('show');
-}
-});
-const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
-let i = 0, j = 0, current = "", isDeleting = false;
-function type() {
-const element = document.getElementById("typewriter");
-const word = words[i];
-current = word.slice(0, j);
-element.textContent = current;
-if (!isDeleting && j < word.length) {
-j++;
-setTimeout(type, 120);
-} else if (isDeleting && j > 0) {
-j--;
-setTimeout(type, 70);
-} else {
-isDeleting = !isDeleting;
-if (!isDeleting) i = (i + 1) % words.length;
-setTimeout(type, 1200);
-}
-}
-window.addEventListener('load', type);
+<script><script>
+    // ==============
+    // MOBILE MENU AUTO-CLOSE (Issue #1 - FIXED)
+    // ==============
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const navItems = navLinks.querySelectorAll('a');
+
+    // Toggle menu on hamburger click
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('show');
+      hamburger.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close menu when any nav link is clicked (FIXED)
+    navItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ==============
+    // FORM VALIDATION FEEDBACK (Issue #2 - IMPLEMENTED)
+    // ==============
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      let isValid = true;
+
+      // Reset errors
+      document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => el.classList.remove('error'));
+
+      // Validate name
+      const name = document.getElementById('name');
+      if (!name.value.trim()) {
+        document.getElementById('nameError').style.display = 'block';
+        name.classList.add('error');
+        isValid = false;
+      }
+
+      // Validate email
+      const email = document.getElementById('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value)) {
+        document.getElementById('emailError').style.display = 'block';
+        email.classList.add('error');
+        isValid = false;
+      }
+
+      // Validate message
+      const message = document.getElementById('message');
+      if (!message.value.trim()) {
+        document.getElementById('messageError').style.display = 'block';
+        message.classList.add('error');
+        isValid = false;
+      }
+
+      // Optional: Validate phone if provided
+      const phone = document.getElementById('phone');
+      if (phone.value.trim() && !/^[+]?[0-9\s\-\(\)]{10,}$/.test(phone.value)) {
+        document.getElementById('phoneError').style.display = 'block';
+        phone.classList.add('error');
+        isValid = false;
+      }
+
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+
+    // ==============
+    // TYPOWRITER EFFECT
+    // ==============
+    const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    function type() {
+      const element = document.getElementById("typewriter");
+      const word = words[i];
+      current = word.slice(0, j);
+      element.textContent = current;
+      if (!isDeleting && j < word.length) {
+        j++;
+        setTimeout(type, 120);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 70);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(type, 1200);
+      }
+    }
+    window.addEventListener('load', type);
+  </script>
+</body>
+</html>
