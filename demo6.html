@@ -1,3 +1,10 @@
+Here is the full updated code with the `scroll-margin-top` property added to all main sections to fix the header overlap issue.
+
+The key changes are:
+1.  Added a new CSS rule targeting all section elements with an ID (like `#home`, `#about`, etc.) to apply `scroll-margin-top: 80px;`.
+2.  This ensures that when a user clicks a navigation link, the target section scrolls into view with enough space above it so the sticky header doesn't cover the content.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +16,7 @@
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="language" content="English">
 <meta name="revisit-after" content="7 days">
+<!-- Open Graph Tags -->
 <meta property="og:title" content="Guruji Tech Global - Professional IT Services & Cloud Solutions">
 <meta property="og:description" content="Enterprise-grade IT support, cloud migration, cybersecurity and Microsoft 365 services with 24/7 UK-based support">
 <meta property="og:type" content="website">
@@ -16,14 +24,18 @@
 <meta property="og:image" content="https://www.gurujitechglobal.com/logo.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Guruji Tech Global - Professional IT Services">
 <meta name="twitter:description" content="Enterprise IT support, cloud services & cybersecurity with 24/7 UK support">
 <meta name="twitter:image" content="https://www.gurujitechglobal.com/logo.png">
+<!-- Additional SEO Tags -->
 <link rel="canonical" href="https://www.gurujitechglobal.com">
 <link rel="apple-touch-icon" href="favicon.jpg">
 <link rel="icon" type="image/png" href="favicon.jpg">
+<!-- AOS Animation Library -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Structured Data - Local Business Schema -->
 <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -40,7 +52,78 @@
 },
 "telephone": "+44-7488564873",
 "email": "contact@gurujitechglobal.com",
-"url": "https://www.gurujitechglobal.com"
+"url": "https://www.gurujitechglobal.com",
+"sameAs": [
+"https://www.facebook.com/gurujitechglobal",
+"https://www.linkedin.com/company/gurujitechglobal",
+"https://www.instagram.com/gurujitechglobal",
+"https://www.tiktok.com/@gurujitechglobal"
+],
+"priceRange": "$$",
+"knowsAbout": ["IT Support", "Cloud Services", "Cybersecurity", "Microsoft 365", "Azure", "AWS"]
+}
+</script>
+<!-- Structured Data - Organization Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "Guruji Tech Global",
+"url": "https://www.gurujitechglobal.com",
+"logo": "https://www.gurujitechglobal.com/logo.png",
+"description": "Enterprise-grade IT services including managed IT support, cloud services, and cybersecurity",
+"telephone": "+44-7488564873",
+"email": "contact@gurujitechglobal.com",
+"contactPoint": {
+"@type": "ContactPoint",
+"contactType": "Customer Service",
+"telephone": "+44-7488564873",
+"availableLanguage": "English"
+}
+}
+</script>
+<!-- Structured Data - Services Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Service",
+"name": "IT Support and Management Services",
+"description": "Comprehensive IT support, cloud services, cybersecurity, and infrastructure management",
+"provider": {
+"@type": "LocalBusiness",
+"name": "Guruji Tech Global"
+},
+"areaServed": "GB",
+"hasOfferCatalog": {
+"@type": "OfferCatalog",
+"name": "IT Services",
+"itemListElement": [
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Cloud Services",
+"description": "Azure & AWS Migration, Cloud Backup, Virtual Machines"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "24/7 IT Support",
+"description": "Remote support, on-site visits, device management"
+}
+},
+{
+"@type": "Offer",
+"itemOffered": {
+"@type": "Service",
+"name": "Cybersecurity",
+"description": "Antivirus management, firewall protection, threat monitoring"
+}
+}
+]
+}
 }
 </script>
 <title>Guruji Tech Global | Professional IT Support & Cloud Services</title>
@@ -50,6 +133,7 @@ body {margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;backg
 h1, h2, h3, h4 {margin:0;font-weight:700;}
 a {text-decoration:none;color:#3b82f6;}
 html {scroll-behavior: smooth;}
+/* HEADER */
 header {
 padding:1rem 5%;
 display:flex;
@@ -112,6 +196,7 @@ transition: 0.3s;
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+/* HERO */
 .hero {
 position: relative;
 display: flex;
@@ -124,7 +209,6 @@ overflow: hidden;
 background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 text-align: center;
 padding: 2rem 5%;
-scroll-margin-top: 80px;
 }
 .hero-video {
 position: absolute;
@@ -149,7 +233,7 @@ font-size: 4rem;
 margin-bottom: 1rem;
 line-height: 1.2;
 font-weight: 800;
-max-width: 1000px;
+max-width: 800px;
 margin-left: auto;
 margin-right: auto;
 }
@@ -199,10 +283,10 @@ border: 1px solid rgba(255, 255, 255, 0.2);
 .hero-btn.secondary:hover {
 background: rgba(255, 255, 255, 0.2);
 }
+/* ABOUT */
 .about-section {
 padding: 5rem 5%;
 background: #fff;
-scroll-margin-top: 80px;
 }
 .about-container {
 display: grid;
@@ -255,10 +339,10 @@ height: 100%;
 object-fit: cover;
 border-radius: 16px;
 }
+/* WHY US */
 .why-us-section {
 padding: 5rem 5%;
 background: #f8fafc;
-scroll-margin-top: 80px;
 }
 .section-header {
 text-align: center;
@@ -312,10 +396,10 @@ color: #475569;
 line-height: 1.6;
 flex-grow: 1;
 }
+/* SERVICES */
 .services-section {
 padding: 5rem 5%;
 background: #fff;
-scroll-margin-top: 80px;
 }
 .services-grid {
 display: grid;
@@ -377,10 +461,10 @@ margin-right: 0.75rem;
 color: #3b82f6;
 font-weight: bold;
 }
+/* TESTIMONIALS */
 .testimonials-section {
 padding: 5rem 5%;
 background: #f8fafc;
-scroll-margin-top: 80px;
 }
 .testimonials-grid {
 display: grid;
@@ -407,13 +491,13 @@ font-weight: 700;
 color: #1e293b;
 font-size: 1.1rem;
 }
+/* CALENDLY SECTION */
 .calendly-section {
 background: linear-gradient(90deg, #E63946 0%, #FFD166 100%);
 padding: 4rem 5%;
 text-align: center;
 color: #1e293b;
 margin-top: 2rem;
-scroll-margin-top: 80px;
 }
 .calendly-section h2 {
 font-size: 2.2rem;
@@ -443,11 +527,11 @@ background: #ffd700;
 transform: translateY(-2px);
 box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
+/* CONTACT */
 .contact-section {
 padding: 5rem 5%;
 background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 color: #f8fafc;
-scroll-margin-top: 80px;
 }
 .section-header-white {
 text-align: center;
@@ -535,6 +619,7 @@ width: 100%;
 background: linear-gradient(90deg, #2563eb, #7c3aed);
 transform: translateY(-2px);
 }
+/* WHATSAPP */
 .whatsapp-float {
 position: fixed;
 bottom: 20px;
@@ -559,6 +644,7 @@ width: 32px;
 height: 32px;
 fill: white;
 }
+/* Back to Top Button */
 .back-to-top {
 position: fixed;
 bottom: 90px;
@@ -592,6 +678,7 @@ width: 20px;
 height: 20px;
 fill: white;
 }
+/* FOOTER */
 footer {
 background: #0f172a;
 color: #cbd5e1;
@@ -663,12 +750,14 @@ border-top: 1px solid rgba(255,255,255,0.1);
 font-size: 0.9rem;
 color: #94a3b8;
 }
+/* ANIMATIONS */
 @keyframes fadeUp {
 0% {opacity:0;transform:translateY(30px);}
 100% {opacity:1;transform:translateY(0);}
 }
+/* RESPONSIVE */
 @media (max-width:1024px){
-.hero-title {font-size:3.2rem;}
+.hero-title {font-size:2.2rem;}
 .hero-subtitle {font-size:1rem;}
 .about-container,
 .contact-container {
@@ -692,7 +781,7 @@ margin-bottom: 1rem;
 }
 @media (max-width:768px){
 .hero {padding:0 5%; min-height:80vh;}
-.hero-title {font-size:2.2rem;}
+.hero-title {font-size:2rem;}
 .hero-subtitle {font-size:0.9rem;}
 header {padding: 1rem 5%;}
 nav#nav-links {
@@ -739,6 +828,7 @@ margin-bottom: 0.75rem;
 padding: 0.5rem 0;
 font-size: 0.9rem;
 }
+/* Back to top on mobile */
 .back-to-top {
 bottom: 80px;
 }
@@ -761,6 +851,7 @@ padding: 1.25rem 1.25rem;
 font-size: 1.75rem;
 }
 }
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
 width: 10px;
 }
@@ -774,14 +865,28 @@ border-radius: 5px;
 ::-webkit-scrollbar-thumb:hover {
 background: #2563eb;
 }
+
+/* Add scroll-margin-top to all main sections to account for the sticky header */
+/* Targeting sections by their IDs used in the navigation links */
+#home,
+#about,
+#whyus,
+#services,
+#testimonials,
+#contact {
+    scroll-margin-top: 80px; /* Adjust this value based on your header height */
+}
+
 </style>
 </head>
 <body>
+<!-- Back to Top Button -->
 <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 <path d="M13 19V13H16L12 8L8 13H11V19Z" />
 </svg>
 </a>
+<!-- HEADER -->
 <header role="banner" id="mainHeader">
 <div class="logo-container">
 <a href="/" aria-label="Guruji Tech Global - Professional IT Services">
@@ -802,7 +907,7 @@ background: #2563eb;
 <a href="#contact">Contact</a>
 </nav>
 </header>
-
+<!-- HERO SECTION -->
 <section class="hero" id="home" data-aos="fade-up">
 <video class="hero-video" autoplay muted loop playsinline>
 <source src="video.mp4" type="video/mp4">
@@ -816,7 +921,7 @@ background: #2563eb;
 </div>
 </div>
 </section>
-
+<!-- ABOUT US SECTION -->
 <section class="about-section" id="about">
 <div class="about-container">
 <article class="about-text" data-aos="fade-right">
@@ -843,7 +948,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </div>
 </section>
-
+<!-- WHY US SECTION -->
 <section class="why-us-section" id="whyus">
 <div class="section-header" data-aos="fade-up">
 <h2>Why Choose Us</h2>
@@ -912,7 +1017,7 @@ your systems run smoothly so you can focus on growing your business.
 </article>
 </div>
 </section>
-
+<!-- SERVICES SECTION -->
 <section class="services-section" id="services">
 <div class="section-header" data-aos="fade-up">
 <h2>Our Services</h2>
@@ -1101,7 +1206,7 @@ your systems run smoothly so you can focus on growing your business.
 </article>
 </div>
 </section>
-
+<!-- TESTIMONIALS SECTION -->
 <section class="testimonials-section" id="testimonials">
 <div class="section-header" data-aos="fade-up">
 <h2>Testimonials</h2>
@@ -1128,17 +1233,19 @@ your systems run smoothly so you can focus on growing your business.
 </article>
 </div>
 </section>
-
+<!-- CALENDLY SECTION -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <section class="calendly-section" data-aos="fade-up">
 <h2>Ready to Optimize Your IT Infrastructure?</h2>
 <p>Let Guruji Tech Global handle your comprehensive IT needs while you focus on business growth and strategic initiatives.</p>
-<button class="calendly-btn" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/calendly-gurujitechglobal'});return false;">
+<button
+class="calendly-btn"
+onclick="Calendly.initPopupWidget({url: 'https://calendly.com/calendly-gurujitechglobal'});return false;">
 Schedule Your Consultation
 </button>
 </section>
-
+<!-- CONTACT SECTION -->
 <section class="contact-section" id="contact">
 <div class="section-header-white" data-aos="fade-up">
 <h2>Contact Us</h2>
@@ -1180,13 +1287,13 @@ Schedule Your Consultation
 </div>
 </div>
 </section>
-
+<!-- WhatsApp Button -->
 <a href="https://wa.me/447488564873" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Contact Guruji Tech Global on WhatsApp">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
 </svg>
 </a>
-
+<!-- FOOTER -->
 <footer>
 <div class="footer-grid">
 <div class="footer-col">
@@ -1207,7 +1314,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </a>
 <a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.073 4.354-.2 6.782-2.618 6.979-6.98.059-1.281.073-1.689.073-4.948 0-3.259-.014-3.667-.073-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.351 2.618 6.78 6.98 6.979 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
 </svg>
 </a>
 <a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
@@ -1267,24 +1374,40 @@ contact@gurujitechglobal.com
 <p>&copy; 2025 Guruji Tech Global LTD. All Rights Reserved. | Registered in England & Wales No. 16808971</p>
 </div>
 </footer>
-
+<!-- Calendly Embed Script -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Cookie Consent + GA -->
+<div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#ffffff; padding:15px; border-top:1px solid #ccc; box-shadow:0 -2px 10px rgba(0,0,0,0.1); display:none; justify-content:space-between; align-items:center; z-index:9999; font-size:14px;">
+<p style="margin:0;">
+We use cookies to improve your experience and analyze our traffic.
+<a href="/cookie-policy.html" style="color:#1e40af; text-decoration:underline;">Learn more</a>
+</p>
+<div style="display:flex; gap:10px;">
+<button id="accept-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#4CAF50; color:white; border-radius:4px; font-weight:bold;">Accept</button>
+<button id="reject-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#f44336; color:white; border-radius:4px; font-weight:bold;">Reject</button>
+</div>
+</div>
 <script>
+// Show banner only if no consent is stored
 if (!localStorage.getItem("cookieConsent")) {
 document.getElementById("cookie-banner").style.display = "flex";
 }
+// Accept & load GA
 document.getElementById("accept-cookies").onclick = function () {
 localStorage.setItem("cookieConsent", "accepted");
-if(document.getElementById("cookie-banner")) document.getElementById("cookie-banner").style.display = "none";
+document.getElementById("cookie-banner").style.display = "none";
 loadGoogleAnalytics();
 };
+// Reject
 document.getElementById("reject-cookies").onclick = function () {
 localStorage.setItem("cookieConsent", "rejected");
-if(document.getElementById("cookie-banner")) document.getElementById("cookie-banner").style.display = "none";
+document.getElementById("cookie-banner").style.display = "none";
 };
+// Load GA if previously accepted
 if (localStorage.getItem("cookieConsent") === "accepted") {
 loadGoogleAnalytics();
 }
+// GA4 Loader Function
 function loadGoogleAnalytics() {
 if (window.dataLayer) return;
 const script = document.createElement("script");
@@ -1298,101 +1421,71 @@ gtag('config', 'G-HFCKN1H30C');
 }
 </script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script><script>
-    // ==============
-    // MOBILE MENU AUTO-CLOSE (Issue #1 - FIXED)
-    // ==============
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    const navItems = navLinks.querySelectorAll('a');
-
-    // Toggle menu on hamburger click
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('show');
-      hamburger.classList.toggle('active');
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Close menu when any nav link is clicked (FIXED)
-    navItems.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('show');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // ==============
-    // FORM VALIDATION FEEDBACK (Issue #2 - IMPLEMENTED)
-    // ==============
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      let isValid = true;
-
-      // Reset errors
-      document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => el.classList.remove('error'));
-
-      // Validate name
-      const name = document.getElementById('name');
-      if (!name.value.trim()) {
-        document.getElementById('nameError').style.display = 'block';
-        name.classList.add('error');
-        isValid = false;
-      }
-
-      // Validate email
-      const email = document.getElementById('email');
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email.value.trim() || !emailRegex.test(email.value)) {
-        document.getElementById('emailError').style.display = 'block';
-        email.classList.add('error');
-        isValid = false;
-      }
-
-      // Validate message
-      const message = document.getElementById('message');
-      if (!message.value.trim()) {
-        document.getElementById('messageError').style.display = 'block';
-        message.classList.add('error');
-        isValid = false;
-      }
-
-      // Optional: Validate phone if provided
-      const phone = document.getElementById('phone');
-      if (phone.value.trim() && !/^[+]?[0-9\s\-\(\)]{10,}$/.test(phone.value)) {
-        document.getElementById('phoneError').style.display = 'block';
-        phone.classList.add('error');
-        isValid = false;
-      }
-
-      if (!isValid) {
-        e.preventDefault();
-      }
-    });
-
-    // ==============
-    // TYPOWRITER EFFECT
-    // ==============
-    const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
-    let i = 0, j = 0, current = "", isDeleting = false;
-    function type() {
-      const element = document.getElementById("typewriter");
-      const word = words[i];
-      current = word.slice(0, j);
-      element.textContent = current;
-      if (!isDeleting && j < word.length) {
-        j++;
-        setTimeout(type, 120);
-      } else if (isDeleting && j > 0) {
-        j--;
-        setTimeout(type, 70);
-      } else {
-        isDeleting = !isDeleting;
-        if (!isDeleting) i = (i + 1) % words.length;
-        setTimeout(type, 1200);
-      }
-    }
-    window.addEventListener('load', type);
-  </script>
+<script>
+// Initialize AOS
+AOS.init({
+duration: 800,
+offset: 100,
+once: true
+});
+// Hamburger menu toggle with auto-close on mobile
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const header = document.getElementById('mainHeader');
+const mobileLinks = navLinks.querySelectorAll('a');
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+const isOpen = navLinks.classList.toggle('show');
+hamburger.classList.toggle('active');
+hamburger.setAttribute('aria-expanded', isOpen);
+});
+// Close mobile menu when any link is clicked
+mobileLinks.forEach(link => {
+link.addEventListener('click', () => {
+navLinks.classList.remove('show');
+hamburger.classList.remove('active');
+hamburger.setAttribute('aria-expanded', 'false');
+});
+});
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+if (window.scrollY > 50) {
+header.classList.add('scrolled');
+} else {
+header.classList.remove('scrolled');
+}
+});
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 500) {
+backToTopButton.classList.add('show');
+} else {
+backToTopButton.classList.remove('show');
+}
+});
+// Typewriter effect
+const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
+let i = 0, j = 0, current = "", isDeleting = false;
+function type() {
+const element = document.getElementById("typewriter");
+const word = words[i];
+current = word.slice(0, j);
+element.textContent = current;
+if (!isDeleting && j < word.length) {
+j++;
+setTimeout(type, 120);
+} else if (isDeleting && j > 0) {
+j--;
+setTimeout(type, 70);
+} else {
+isDeleting = !isDeleting;
+if (!isDeleting) i = (i + 1) % words.length;
+setTimeout(type, 1200);
+}
+}
+window.addEventListener('load', type);
+</script>
 </body>
 </html>
+```
