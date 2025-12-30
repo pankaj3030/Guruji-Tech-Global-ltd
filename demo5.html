@@ -396,19 +396,19 @@ background: #fff;
 }
 .services-grid {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 2rem;
+grid-template-columns: repeat(2, 1fr);
+gap: 2.5rem;
 max-width: 1400px;
 margin: 0 auto;
 }
 .service-card {
-background: #fff;
-border-radius: 16px;
+display: flex;
+height: 300px;
+border-radius: 8px;
 overflow: hidden;
 box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 transition: all 0.3s ease;
-border: 1px solid #e2e8f0;
-position: relative;
+border: 2px solid #e2e8f0;
 }
 .service-card:hover {
 transform: translateY(-5px);
@@ -416,30 +416,23 @@ box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 border-color: #3b82f6;
 }
 .service-video-bg {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
+width: 40%;
 height: 100%;
 object-fit: cover;
-z-index: -1;
+flex-shrink: 0;
 }
-.service-header {
-background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-color: white;
-padding: 1.5rem;
-text-align: center;
-position: relative;
-z-index: 1;
+.service-content {
+width: 60%;
+padding: 2rem 1.75rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+background: #fff;
 }
 .service-header h3 {
 font-size: 1.5rem;
-margin-bottom: 0.5rem;
-}
-.service-content {
-padding: 1.5rem;
-position: relative;
-z-index: 1;
+margin-bottom: 1.25rem;
+color: #1e293b;
 }
 .service-content ul {
 list-style: none;
@@ -447,12 +440,19 @@ padding: 0;
 margin: 0;
 }
 .service-content li {
-padding: 0.5rem 0;
+padding: 0.6rem 0;
 color: #475569;
 border-bottom: 1px solid #f1f5f9;
+font-size: 0.95rem;
 }
 .service-content li:last-child {
 border-bottom: none;
+}
+.service-content li::before {
+content: '•';
+margin-right: 0.75rem;
+color: #3b82f6;
+font-weight: bold;
 }
 /* TESTIMONIALS */
 .testimonials-section {
@@ -757,6 +757,20 @@ color: #94a3b8;
 grid-template-columns: 1fr;
 gap: 2rem;
 }
+.services-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+}
+.service-card {
+height: 280px;
+}
+.service-content {
+padding: 1.5rem 1.5rem;
+}
+.service-header h3 {
+font-size: 1.35rem;
+margin-bottom: 1rem;
+}
 }
 @media (max-width:768px){
 .hero {padding:0 5%; min-height:80vh;}
@@ -782,9 +796,52 @@ nav#nav-links a::after { display: none; }
 .about-text h2,
 .contact-info h3,
 .calendly-section h2 { font-size: 2rem; }
+.services-section {
+padding: 3rem 5%;
+}
+.services-grid {
+grid-template-columns: 1fr;
+gap: 1.5rem;
+}
+.service-card {
+height: 280px;
+}
+.service-video-bg {
+width: 50%;
+}
+.service-content {
+width: 50%;
+padding: 1.5rem 1rem;
+}
+.service-header h3 {
+font-size: 1.25rem;
+margin-bottom: 0.75rem;
+}
+.service-content li {
+padding: 0.5rem 0;
+font-size: 0.9rem;
+}
 /* Back to top on mobile */
 .back-to-top {
 bottom: 80px;
+}
+}
+@media (max-width: 640px) {
+.service-card {
+flex-direction: column;
+height: auto;
+min-height: 400px;
+}
+.service-video-bg {
+width: 100%;
+height: 150px;
+}
+.service-content {
+width: 100%;
+padding: 1.25rem 1.25rem;
+}
+.section-header h2 {
+font-size: 1.75rem;
 }
 }
 /* Custom Scrollbar */
@@ -949,11 +1006,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 <div class="services-grid">
 <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" src="cloud.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="cloud.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Cloud Services</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Azure & AWS Migration</li>
 <li>Cloud Backup</li>
@@ -962,11 +1021,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" src="ms365.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="ms365.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Microsoft 365</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Email Hosting</li>
 <li>SharePoint Setup</li>
@@ -975,11 +1036,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" src="cyber.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="cyber.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Cyber Security</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Antivirus Management</li>
 <li>Firewall Protection</li>
@@ -988,11 +1051,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" src="support.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="support.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>24/7 IT Support</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Remote Support</li>
 <li>On-site Visits</li>
@@ -1001,11 +1066,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" src="network.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="network.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Network Solutions</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>LAN / WAN Setup</li>
 <li>VPN Configuration</li>
@@ -1014,11 +1081,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" src="consulting.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="consulting.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>IT Consulting</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Strategy Planning</li>
 <li>IT Audits</li>
@@ -1027,11 +1096,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" src="backup.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="backup.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Data Backup & Recovery</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Automated Backup Solutions</li>
 <li>Disaster Recovery Planning</li>
@@ -1040,11 +1111,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" src="endpoint.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="endpoint.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Endpoint Management</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Mobile Device Management</li>
 <li>Laptop & Desktop Support</li>
@@ -1053,11 +1126,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="900">
-<video class="service-video-bg" src="compliance.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="compliance.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Compliance & Governance</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>GDPR Compliance</li>
 <li>ISO 27001 Implementation</li>
@@ -1066,11 +1141,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="1000">
-<video class="service-video-bg" src="business.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="business.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Business Continuity</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Business Impact Analysis</li>
 <li>Continuity Planning</li>
@@ -1079,11 +1156,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="1100">
-<video class="service-video-bg" src="infrastructure.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="infrastructure.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>IT Infrastructure</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>Server Installation</li>
 <li>Storage Solutions</li>
@@ -1092,11 +1171,13 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="1200">
-<video class="service-video-bg" src="unified.mp4" muted loop playsinline></video>
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="unified.mp4" type="video/mp4">
+</video>
+<div class="service-content">
 <div class="service-header">
 <h3>Unified Communications</h3>
 </div>
-<div class="service-content">
 <ul>
 <li>VoIP Implementation</li>
 <li>Video Conferencing</li>
