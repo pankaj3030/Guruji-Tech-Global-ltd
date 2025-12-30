@@ -415,7 +415,7 @@ transform: translateY(-5px);
 box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 border-color: #3b82f6;
 }
-.service-img-bg {
+.service-video-bg {
 width: 40%;
 height: 100%;
 object-fit: cover;
@@ -807,7 +807,7 @@ gap: 1.5rem;
 .service-card {
 height: 280px;
 }
-.service-img-bg {
+.service-video-bg {
 width: 50%;
 }
 .service-content {
@@ -833,7 +833,7 @@ flex-direction: column;
 height: auto;
 min-height: 400px;
 }
-.service-img-bg {
+.service-video-bg {
 width: 100%;
 height: 150px;
 }
@@ -843,6 +843,31 @@ padding: 1.25rem 1.25rem;
 }
 .section-header h2 {
 font-size: 1.75rem;
+}
+/* Enhanced mobile service card styling */
+.service-card {
+border-radius: 12px;
+margin-bottom: 1.5rem;
+}
+.service-video-bg {
+width: 100%;
+height: 150px;
+object-fit: cover;
+}
+.service-content {
+width: 100%;
+padding: 1.5rem;
+}
+.service-header h3 {
+font-size: 1.3rem;
+margin-bottom: 0.75rem;
+}
+.service-content ul {
+margin-top: 1rem;
+}
+.service-content li {
+padding: 0.5rem 0;
+font-size: 0.95rem;
 }
 }
 /* Custom Scrollbar */
@@ -1017,7 +1042,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 <div class="services-grid">
 <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<img class="service-img-bg" src="cloud.jpg" alt="Cloud Services">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="cloud.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>Cloud Services</strong></h3>
@@ -1030,7 +1057,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<img class="service-img-bg" src="ms365.jpg" alt="Microsoft 365">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="ms365.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>Microsoft 365</strong></h3>
@@ -1043,7 +1072,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<img class="service-img-bg" src="cyber.jpg" alt="Cyber Security">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="cyber.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>Cyber Security</strong></h3>
@@ -1056,7 +1087,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<img class="service-img-bg" src="support.jpg" alt="24/7 IT Support">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="support.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>24/7 IT Support</strong></h3>
@@ -1069,7 +1102,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<img class="service-img-bg" src="network.jpg" alt="Network Solutions">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="network.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>Network Solutions</strong></h3>
@@ -1082,7 +1117,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<img class="service-img-bg" src="devops.jpg" alt="DevOps & Automation">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="devops.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>DevOps & Automation</strong></h3>
@@ -1095,7 +1132,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<img class="service-img-bg" src="telephone.jpg" alt="IP Telephony">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="telephone.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>IP Telephony</strong></h3>
@@ -1108,7 +1147,9 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<img class="service-img-bg" src="consulting.jpg" alt="IT Consulting">
+<video class="service-video-bg" autoplay muted loop playsinline>
+<source src="consulting.mp4" type="video/mp4">
+</video>
 <div class="service-content">
 <div class="service-header">
 <h3><strong>IT Consulting</strong></h3>
