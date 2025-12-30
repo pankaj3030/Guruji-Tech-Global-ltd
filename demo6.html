@@ -433,6 +433,7 @@ background: #fff;
 font-size: 1.5rem;
 margin-bottom: 1.25rem;
 color: #1e293b;
+font-weight: 700;
 }
 .service-content ul {
 list-style: none;
@@ -858,7 +859,6 @@ border-radius: 5px;
 ::-webkit-scrollbar-thumb:hover {
 background: #2563eb;
 }
-
 /* Add scroll-margin-top to all main sections to account for the sticky header */
 /* Targeting sections by their IDs used in the navigation links */
 #home,
@@ -867,9 +867,8 @@ background: #2563eb;
 #services,
 #testimonials,
 #contact {
-    scroll-margin-top: 80px; /* Adjust this value based on your header height */
+scroll-margin-top: 80px; /* Adjust this value based on your header height */
 }
-
 </style>
 </head>
 <body>
@@ -1010,195 +1009,144 @@ your systems run smoothly so you can focus on growing your business.
 </article>
 </div>
 </section>
-<!-- SERVICES SECTION -->
+
+<!-- SERVICES SECTION (UPDATED WITH NEW 8 SERVICES) -->
 <section class="services-section" id="services">
-<div class="section-header" data-aos="fade-up">
-<h2>Our Services</h2>
-<p>Explore our professional IT services tailored for modern businesses.</p>
-</div>
-<div class="services-grid">
-<article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="cloud.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Cloud Services</h3>
-</div>
-<ul>
-<li>Azure & AWS Migration</li>
-<li>Cloud Backup</li>
-<li>Virtual Machines</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="ms365.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Microsoft 365</h3>
-</div>
-<ul>
-<li>Email Hosting</li>
-<li>SharePoint Setup</li>
-<li>Teams Integration</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="cyber.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Cyber Security</h3>
-</div>
-<ul>
-<li>Antivirus Management</li>
-<li>Firewall Protection</li>
-<li>Threat Monitoring</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="support.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>24/7 IT Support</h3>
-</div>
-<ul>
-<li>Remote Support</li>
-<li>On-site Visits</li>
-<li>Device Management</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="network.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Network Solutions</h3>
-</div>
-<ul>
-<li>LAN / WAN Setup</li>
-<li>VPN Configuration</li>
-<li>Network Monitoring</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="consulting.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>IT Consulting</h3>
-</div>
-<ul>
-<li>Strategy Planning</li>
-<li>IT Audits</li>
-<li>Technology Roadmaps</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="backup.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Data Backup & Recovery</h3>
-</div>
-<ul>
-<li>Automated Backup Solutions</li>
-<li>Disaster Recovery Planning</li>
-<li>Ransomware Protection</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="endpoint.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Endpoint Management</h3>
-</div>
-<ul>
-<li>Mobile Device Management</li>
-<li>Laptop & Desktop Support</li>
-<li>Software Deployment</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="900">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="compliance.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Compliance & Governance</h3>
-</div>
-<ul>
-<li>GDPR Compliance</li>
-<li>ISO 27001 Implementation</li>
-<li>Security Policy Development</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="1000">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="business.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Business Continuity</h3>
-</div>
-<ul>
-<li>Business Impact Analysis</li>
-<li>Continuity Planning</li>
-<li>Regular Testing & Updates</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="1100">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="infrastructure.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>IT Infrastructure</h3>
-</div>
-<ul>
-<li>Server Installation</li>
-<li>Storage Solutions</li>
-<li>Virtualization</li>
-</ul>
-</div>
-</article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="1200">
-<video class="service-video-bg" autoplay muted loop playsinline>
-<source src="unified.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3>Unified Communications</h3>
-</div>
-<ul>
-<li>VoIP Implementation</li>
-<li>Video Conferencing</li>
-<li>Collaboration Tools</li>
-</ul>
-</div>
-</article>
-</div>
+  <div class="section-header" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <p>Explore our professional IT services tailored for modern businesses.</p>
+  </div>
+  <div class="services-grid">
+    <article class="service-card" data-aos="fade-up" data-aos-delay="100">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="cloud.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>Cloud Services</strong></h3>
+        </div>
+        <ul>
+          <li>Azure & AWS Migration</li>
+          <li>Cloud Backup</li>
+          <li>Virtual Machines</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="ms365.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>Microsoft 365</strong></h3>
+        </div>
+        <ul>
+          <li>Email Hosting</li>
+          <li>SharePoint Setup</li>
+          <li>Teams Integration</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="300">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="cyber.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>Cyber Security</strong></h3>
+        </div>
+        <ul>
+          <li>Antivirus Management</li>
+          <li>Firewall Protection</li>
+          <li>Threat Monitoring</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="400">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="support.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>24/7 IT Support</strong></h3>
+        </div>
+        <ul>
+          <li>Remote Support</li>
+          <li>On-site Visits</li>
+          <li>Device Management</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="500">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="network.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>Network Solutions</strong></h3>
+        </div>
+        <ul>
+          <li>LAN / WAN Setup</li>
+          <li>VPN Configuration</li>
+          <li>Network Monitoring</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="600">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="devops.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>DevOps & Automation</strong></h3>
+        </div>
+        <ul>
+          <li>CI/CD Pipelines</li>
+          <li>Infrastructure as Code</li>
+          <li>Deployment Automation</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="700">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="telephone.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>IP Telephony</strong></h3>
+        </div>
+        <ul>
+          <li>Internet-based Calling</li>
+          <li>High Audio Quality</li>
+          <li>Flexible & Low-Cost VoIP</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="service-card" data-aos="fade-up" data-aos-delay="800">
+      <video class="service-video-bg" autoplay muted loop playsinline>
+        <source src="consulting.mp4" type="video/mp4">
+      </video>
+      <div class="service-content">
+        <div class="service-header">
+          <h3><strong>IT Consulting</strong></h3>
+        </div>
+        <ul>
+          <li>Strategy Planning</li>
+          <li>IT Audits</li>
+          <li>Technology Roadmaps</li>
+        </ul>
+      </div>
+    </article>
+  </div>
 </section>
+
 <!-- TESTIMONIALS SECTION -->
 <section class="testimonials-section" id="testimonials">
 <div class="section-header" data-aos="fade-up">
@@ -1268,6 +1216,8 @@ Schedule Your Consultation
 <option value="Cyber Security">Cyber Security</option>
 <option value="24/7 IT Support">24/7 IT Support</option>
 <option value="Network Solutions">Network Solutions</option>
+<option value="DevOps & Automation">DevOps & Automation</option>
+<option value="IP Telephony">IP Telephony</option>
 <option value="IT Consulting">IT Consulting</option>
 </select>
 </div>
@@ -1336,6 +1286,8 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 <li><a href="#services">Cyber Security</a></li>
 <li><a href="#services">24/7 IT Support</a></li>
 <li><a href="#services">Network Solutions</a></li>
+<li><a href="#services">DevOps & Automation</a></li>
+<li><a href="#services">IP Telephony</a></li>
 <li><a href="#services">IT Consulting</a></li>
 </ul>
 </div>
@@ -1481,4 +1433,3 @@ window.addEventListener('load', type);
 </script>
 </body>
 </html>
-```
