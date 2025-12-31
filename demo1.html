@@ -350,7 +350,7 @@ aspect-ratio: 16/9;
 }
 .about-media img {
 width: 100%;
-height: 100%;
+height: auto;
 object-fit: cover;
 border-radius: 16px;
 }
@@ -442,6 +442,7 @@ width: 40%;
 height: 100%;
 object-fit: cover;
 flex-shrink: 0;
+background-color: #0f172a;
 }
 .service-content {
 width: 60%;
@@ -909,6 +910,52 @@ background: #2563eb;
 #contact {
 scroll-margin-top: 80px;
 }
+/* Cookie Banner Styles */
+.cookie-banner {
+position: fixed;
+bottom: 0;
+width: 100%;
+background: #ffffff;
+padding: 15px;
+border-top: 1px solid #ccc;
+box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+display: none;
+justify-content: space-between;
+align-items: center;
+z-index: 9999;
+font-size: 14px;
+flex-wrap: wrap;
+gap: 10px;
+}
+.cookie-banner.show {
+display: flex;
+}
+.cookie-banner p {
+margin: 0;
+}
+.cookie-banner a {
+color: #1e40af;
+text-decoration: underline;
+}
+.cookie-actions {
+display: flex;
+gap: 10px;
+}
+.cookie-btn {
+padding: 8px 15px;
+cursor: pointer;
+border: none;
+border-radius: 4px;
+font-weight: bold;
+}
+.accept-cookies {
+background: #4CAF50;
+color: white;
+}
+.reject-cookies {
+background: #f44336;
+color: white;
+}
 </style>
 </head>
 <body>
@@ -922,7 +969,7 @@ scroll-margin-top: 80px;
 <header role="banner" id="mainHeader">
 <div class="logo-container">
 <a href="/" aria-label="Guruji Tech Global - Professional IT Services">
-<img src="logo.png" alt="Guruji Tech Global IT Services Logo">
+<img src="logo.png" alt="Guruji Tech Global IT Services Logo" width="70" height="70" loading="lazy">
 </a>
 </div>
 <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -976,7 +1023,7 @@ your systems run smoothly so you can focus on growing your business.
 </ul>
 </article>
 <div class="about-media" data-aos="fade-left">
-<img src="aboutus.png" alt="Guruji Tech Global - About Our IT Infrastructure">
+<img src="aboutus.png" alt="Guruji Tech Global - About Our IT Infrastructure" width="800" height="450" loading="lazy">
 </div>
 </div>
 </section>
@@ -1057,7 +1104,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 <div class="services-grid">
 <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy">
 <source src="cloud.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1072,7 +1119,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy">
 <source src="ms365.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1087,7 +1134,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy">
 <source src="cyber.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1102,7 +1149,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy">
 <source src="support.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1117,7 +1164,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy">
 <source src="network.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1132,7 +1179,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy">
 <source src="devops.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1147,7 +1194,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy">
 <source src="telephone.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1162,7 +1209,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" autoplay muted loop playsinline>
+<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy">
 <source src="consulting.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1227,7 +1274,7 @@ Schedule Your Consultation
 <div class="contact-form" data-aos="fade-up">
 <h2>Let's Build Something Great</h2>
 <p>Fill out the form below and our team will get back to you within 24 hours.</p>
-<form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST">
+<form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST" id="contactForm">
 <input type="text" name="_honey" style="display:none">
 <div class="form-group">
 <label for="name">Full Name</label>
@@ -1292,7 +1339,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </a>
 <a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.351 2.618 6.78 6.98 6.979 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.351 2.618 6.78 6.98 6.979 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
 </svg>
 </a>
 <a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
@@ -1329,7 +1376,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </svg>
 +44-7488564873
 </p>
-<p>
+<p class="contact-email">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
 <polyline points="22,6 12,13 2,6"/>
@@ -1349,131 +1396,236 @@ Coventry, United Kingdom.
 <p>&copy; 2025 Guruji Tech Global LTD. All Rights Reserved. | Registered in England & Wales No. 16808971</p>
 </div>
 </footer>
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner">
+<p>
+We use cookies to improve your experience and analyze our traffic.
+<a href="/cookie-policy.html">Learn more</a>
+</p>
+<div class="cookie-actions">
+<button id="accept-cookies" class="cookie-btn accept-cookies">Accept</button>
+<button id="reject-cookies" class="cookie-btn reject-cookies">Reject</button>
+</div>
+</div>
 <!-- Calendly Embed Script -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<!-- Cookie Consent + GA -->
-<div id="cookie-banner" style="position:fixed; bottom:0; width:100%; background:#ffffff; padding:15px; border-top:1px solid #ccc; box-shadow:0 -2px 10px rgba(0,0,0,0.1); display:none; justify-content:space-between; align-items:center; z-index:9999; font-size:14px;">
-<p style="margin:0;">
-We use cookies to improve your experience and analyze our traffic.
-<a href="/cookie-policy.html" style="color:#1e40af; text-decoration:underline;">Learn more</a>
-</p>
-<div style="display:flex; gap:10px;">
-<button id="accept-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#4CAF50; color:white; border-radius:4px; font-weight:bold;">Accept</button>
-<button id="reject-cookies" style="padding:8px 15px; cursor:pointer; border:none; background:#f44336; color:white; border-radius:4px; font-weight:bold;">Reject</button>
-</div>
-</div>
 <script>
-(function() {
-  // GDPR-compliant cookie consent (only stores if accepted)
-  function showBanner() {
-    document.getElementById("cookie-banner").style.display = "flex";
+// GA4 Loader Function
+function loadGoogleAnalytics() {
+  if (typeof gtag !== 'undefined') return;
+  const existingScript = document.querySelector('script[src*="gtag/js"]');
+  if (existingScript) return;
+  
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
+  document.head.appendChild(script);
+  
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HFCKN1H30C');
+}
+
+// Form validation
+function validateForm(e) {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const gdpr = document.getElementById('gdpr_consent').checked;
+  
+  if (!name || name.length < 2) {
+    e.preventDefault();
+    alert('Name must be at least 2 characters');
+    return false;
   }
-
-  function hideBanner() {
-    document.getElementById("cookie-banner").style.display = "none";
+  
+  if (!email || !email.includes('@')) {
+    e.preventDefault();
+    alert('Please enter a valid email address');
+    return false;
   }
-
-  function loadGoogleAnalytics() {
-    if (window.gtag) return;
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
-    document.head.appendChild(script);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HFCKN1H30C');
+  
+  if (!gdpr) {
+    e.preventDefault();
+    alert('Please accept the GDPR consent');
+    return false;
   }
-
-  // Check for prior consent (only if accepted)
-  const consent = localStorage.getItem("cookieConsent");
-  if (consent === "accepted") {
-    loadGoogleAnalytics();
-  } else {
-    showBanner();
+  
+  // Track form submission
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'contact_form_submit', {
+      'service_type': document.getElementById('service').value,
+      'form_name': 'contact'
+    });
   }
+  
+  return true;
+}
 
-  // Handle consent
-  document.getElementById("accept-cookies").onclick = function() {
-    localStorage.setItem("cookieConsent", "accepted");
-    hideBanner();
-    loadGoogleAnalytics();
-  };
-
-  document.getElementById("reject-cookies").onclick = function() {
-    localStorage.setItem("cookieConsent", "rejected");
-    hideBanner();
-  };
-})();
-</script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
 // Initialize AOS
-AOS.init({
-duration: 800,
-offset: 100,
-once: true
+document.addEventListener('DOMContentLoaded', function() {
+  // Load AOS library
+  const aosScript = document.createElement('script');
+  aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+  aosScript.onload = function() {
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      once: true
+    });
+  };
+  document.head.appendChild(aosScript);
+  
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const mobileLinks = navLinks.querySelectorAll('a');
+  
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Navbar scroll effect
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+  
+  // Back to top button
+  const backToTopButton = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+  
+  // Typewriter effect
+  const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
+  let i = 0, j = 0, current = "", isDeleting = false;
+  const typewriterElement = document.getElementById("typewriter");
+  
+  function type() {
+    const word = words[i];
+    current = word.slice(0, j);
+    typewriterElement.textContent = current;
+    
+    if (!isDeleting && j < word.length) {
+      j++;
+      setTimeout(type, 120);
+    } else if (isDeleting && j > 0) {
+      j--;
+      setTimeout(type, 70);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) i = (i + 1) % words.length;
+      setTimeout(type, 1200);
+    }
+  }
+  
+  if (typewriterElement) {
+    type();
+  }
+  
+  // Form validation
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', validateForm);
+  }
+  
+  // Cookie banner - Use session-based approach
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
+  
+  // Check if user has already made a choice in this session
+  if (!sessionStorage.getItem("cookieConsent")) {
+    cookieBanner.classList.add('show');
+  }
+  
+  acceptBtn.addEventListener('click', function() {
+    sessionStorage.setItem("cookieConsent", "accepted");
+    cookieBanner.classList.remove('show');
+    loadGoogleAnalytics();
+  });
+  
+  rejectBtn.addEventListener('click', function() {
+    sessionStorage.setItem("cookieConsent", "rejected");
+    cookieBanner.classList.remove('show');
+  });
+  
+  // If previously accepted in this session
+  if (sessionStorage.getItem("cookieConsent") === "accepted") {
+    loadGoogleAnalytics();
+  }
+  
+  // Lazy load videos
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.play();
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.service-video-bg').forEach(video => {
+    videoObserver.observe(video);
+    
+    // Play on hover
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+    
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+    });
+  });
+  
+  // Track CTA clicks
+  document.querySelectorAll('.hero-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+          'button_text': btn.textContent.trim(),
+          'section': 'hero'
+        });
+      }
+    });
+  });
+  
+  // Track Calendly events
+  document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('message', (e) => {
+      if (e.origin !== 'https://calendly.com') return;
+      if (e.data.event && e.data.event === 'calendly.event_type_viewed') {
+        // Event type viewed
+      }
+      if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'booking_scheduled', {
+            'value': 200,
+            'currency': 'GBP'
+          });
+        }
+      }
+    });
+  });
 });
-// Hamburger menu toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-const header = document.getElementById('mainHeader');
-const mobileLinks = navLinks.querySelectorAll('a');
-
-hamburger.addEventListener('click', () => {
-const isOpen = navLinks.classList.toggle('show');
-hamburger.classList.toggle('active');
-hamburger.setAttribute('aria-expanded', isOpen);
-});
-
-mobileLinks.forEach(link => {
-link.addEventListener('click', () => {
-navLinks.classList.remove('show');
-hamburger.classList.remove('active');
-hamburger.setAttribute('aria-expanded', 'false');
-});
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
-});
-
-// Back to top button
-const backToTopButton = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 500) {
-backToTopButton.classList.add('show');
-} else {
-backToTopButton.classList.remove('show');
-}
-});
-
-// Typewriter effect
-const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
-let i = 0, j = 0, current = "", isDeleting = false;
-function type() {
-const element = document.getElementById("typewriter");
-const word = words[i];
-current = word.slice(0, j);
-element.textContent = current;
-if (!isDeleting && j < word.length) {
-j++;
-setTimeout(type, 120);
-} else if (isDeleting && j > 0) {
-j--;
-setTimeout(type, 70);
-} else {
-isDeleting = !isDeleting;
-if (!isDeleting) i = (i + 1) % words.length;
-setTimeout(type, 1200);
-}
-}
-window.addEventListener('load', type);
 </script>
 </body>
 </html>
