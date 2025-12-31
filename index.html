@@ -168,7 +168,7 @@ backdrop-filter: blur(8px);
 box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 .logo-container img {
-height: 70px;
+height: 90px; /* ✅ Updated from 70px to match thank-you page */
 width: auto;
 display: block;
 }
@@ -350,7 +350,7 @@ aspect-ratio: 16/9;
 }
 .about-media img {
 width: 100%;
-height: auto;
+height: 100%;
 object-fit: cover;
 border-radius: 16px;
 }
@@ -442,7 +442,6 @@ width: 40%;
 height: 100%;
 object-fit: cover;
 flex-shrink: 0;
-background-color: #0f172a;
 }
 .service-content {
 width: 60%;
@@ -830,7 +829,7 @@ box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 border-radius: 10px;
 padding: 1rem 0;
 }
-nav#nav-links.show { display: flex; }
+.nav#nav-links.show { display: flex; }
 nav#nav-links a { margin: 0.75rem 2rem; display: block; }
 nav#nav-links a::after { display: none; }
 .hamburger { display: flex; }
@@ -908,53 +907,7 @@ background: #2563eb;
 #services,
 #testimonials,
 #contact {
-scroll-margin-top: 80px;
-}
-/* Cookie Banner Styles */
-.cookie-banner {
-position: fixed;
-bottom: 0;
-width: 100%;
-background: #ffffff;
-padding: 15px;
-border-top: 1px solid #ccc;
-box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-display: none;
-justify-content: space-between;
-align-items: center;
-z-index: 9999;
-font-size: 14px;
-flex-wrap: wrap;
-gap: 10px;
-}
-.cookie-banner.show {
-display: flex;
-}
-.cookie-banner p {
-margin: 0;
-}
-.cookie-banner a {
-color: #1e40af;
-text-decoration: underline;
-}
-.cookie-actions {
-display: flex;
-gap: 10px;
-}
-.cookie-btn {
-padding: 8px 15px;
-cursor: pointer;
-border: none;
-border-radius: 4px;
-font-weight: bold;
-}
-.accept-cookies {
-background: #4CAF50;
-color: white;
-}
-.reject-cookies {
-background: #f44336;
-color: white;
+scroll-margin-top: 100px; /* Slightly increased to account for taller header */
 }
 </style>
 </head>
@@ -969,7 +922,7 @@ color: white;
 <header role="banner" id="mainHeader">
 <div class="logo-container">
 <a href="/" aria-label="Guruji Tech Global - Professional IT Services">
-<img src="logo.png" alt="Guruji Tech Global IT Services Logo" width="70" height="70" loading="lazy">
+<img src="logo.png" alt="Guruji Tech Global IT Services Logo" loading="lazy">
 </a>
 </div>
 <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -1346,7 +1299,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </a>
 <a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-<path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+<path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4 1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
 </svg>
 </a>
 </div>
