@@ -1276,6 +1276,8 @@ Schedule Your Consultation
 <p>Fill out the form below and our team will get back to you within 24 hours.</p>
 <form action="https://formsubmit.co/contact@gurujitechglobal.com" method="POST" id="contactForm">
 <input type="text" name="_honey" style="display:none">
+<input type="hidden" name="_next" value="https://www.gurujitechglobal.com/thank-you">
+<input type="hidden" name="_subject" value="New Contact Form Submission - Guruji Tech Global">
 <div class="form-group">
 <label for="name">Full Name</label>
 <input type="text" id="name" name="name" required aria-required="true" placeholder="John Doe">
@@ -1376,7 +1378,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </svg>
 +44-7488564873
 </p>
-<p class="contact-email">
+<p>
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
 <polyline points="22,6 12,13 2,6"/>
@@ -1462,7 +1464,7 @@ function validateForm(e) {
   return true;
 }
 
-// Initialize AOS
+// Advanced GA4 Tracking
 document.addEventListener('DOMContentLoaded', function() {
   // Load AOS library
   const aosScript = document.createElement('script');
@@ -1475,6 +1477,92 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
   document.head.appendChild(aosScript);
+  
+  // Section visibility tracking
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && typeof gtag !== 'undefined') {
+        gtag('event', 'section_view', {
+          'section_id': entry.target.id,
+          'section_name': entry.target.querySelector('h2')?.innerText || entry.target.id
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('section[id]').forEach(section => {
+    sectionObserver.observe(section);
+  });
+  
+  // Scroll depth tracking
+  let scrollTracked = { '25%': false, '50%': false, '75%': false, '90%': false };
+  window.addEventListener('scroll', () => {
+    if (typeof gtag === 'undefined') return;
+    
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    
+    Object.keys(scrollTracked).forEach(percent => {
+      const threshold = parseInt(percent);
+      if (!scrollTracked[percent] && scrollPercent >= threshold) {
+        scrollTracked[percent] = true;
+        gtag('event', 'scroll_depth', { 'percent_scrolled': threshold });
+      }
+    });
+  });
+  
+  // Time on page tracking
+  let timeOnPage = 0;
+  const timeInterval = setInterval(() => {
+    timeOnPage += 10;
+    if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+      gtag('event', 'time_on_page', { 'seconds': timeOnPage });
+    }
+  }, 10000);
+  
+  // Video engagement tracking
+  const videos = document.querySelectorAll('video');
+  videos.forEach(video => {
+    let hasTrackedPlay = false;
+    
+    video.addEventListener('play', () => {
+      if (!hasTrackedPlay && typeof gtag !== 'undefined') {
+        hasTrackedPlay = true;
+        const src = video.querySelector('source')?.src || 'unknown';
+        gtag('event', 'video_play', {
+          'video_title': src.split('/').pop().replace('.mp4', ''),
+          'video_url': src
+        });
+      }
+    });
+    
+    video.addEventListener('ended', () => {
+      if (typeof gtag !== 'undefined') {
+        const src = video.querySelector('source')?.src || 'unknown';
+        gtag('event', 'video_complete', {
+          'video_title': src.split('/').pop().replace('.mp4', ''),
+          'video_url': src
+        });
+      }
+    });
+    
+    // Progress tracking at 25%, 50%, 75%
+    let progressTracked = { '25': false, '50': false, '75': false };
+    video.addEventListener('timeupdate', () => {
+      if (video.duration > 0 && typeof gtag !== 'undefined') {
+        const percent = Math.floor((video.currentTime / video.duration) * 100);
+        [25, 50, 75].forEach(p => {
+          if (!progressTracked[p] && percent >= p) {
+            progressTracked[p] = true;
+            const src = video.querySelector('source')?.src || 'unknown';
+            gtag('event', 'video_progress', {
+              'video_title': src.split('/').pop().replace('.mp4', ''),
+              'percent_complete': p
+            });
+          }
+        });
+      }
+    });
+  });
   
   // Hamburger menu toggle
   const hamburger = document.getElementById('hamburger');
@@ -1612,9 +1700,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('message', (e) => {
       if (e.origin !== 'https://calendly.com') return;
-      if (e.data.event && e.data.event === 'calendly.event_type_viewed') {
-        // Event type viewed
-      }
       if (e.data.event && e.data.event === 'calendly.event_scheduled') {
         if (typeof gtag !== 'undefined') {
           gtag('event', 'booking_scheduled', {
