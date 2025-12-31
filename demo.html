@@ -1282,7 +1282,9 @@ onclick="Calendly.initPopupWidget({url: 'https://calendly.com/calendly-gurujitec
 Schedule Your Consultation
 </button>
 </section>
+  
 <!-- CONTACT SECTION -->
+  
 <section class="contact-section" id="contact">
 <div class="section-header-white" data-aos="fade-up">
 <h2>Contact Us</h2>
@@ -1297,6 +1299,8 @@ Schedule Your Consultation
   <!-- Honeypot fields for spam protection -->
   <input type="text" name="_honey" style="display:none">
   <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+  <!-- Enable reCAPTCHA -->
+  <input type="hidden" name="_captcha" value="true">
   
   <!-- ✅ Redirect to YOUR thank-you page -->
   <input type="hidden" name="_next" value="https://www.gurujitechglobal.com/thank-you">
@@ -1328,12 +1332,6 @@ Schedule Your Consultation
   <div class="form-group">
     <label for="message">Project Details</label>
     <textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tell us about your project goals..."></textarea>
-  </div>
-  
-  <!-- ✅ MATH CAPTCHA -->
-  <div class="captcha-group">
-    <label for="captcha">Please solve: <strong>What is 7 + 4?</strong></label>
-    <input type="text" id="captcha" name="captcha" required aria-required="true" placeholder="Enter your answer (e.g., 11)">
   </div>
   
   <div class="gdpr-consent">
@@ -1467,7 +1465,6 @@ function validateForm(e) {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const gdpr = document.getElementById('gdpr_consent').checked;
-  const captcha = document.getElementById('captcha').value.trim();
 
   // Name validation
   if (!name || name.length < 2) {
@@ -1487,13 +1484,6 @@ function validateForm(e) {
   if (!gdpr) {
     e.preventDefault();
     alert('Please accept the GDPR consent');
-    return false;
-  }
-
-  // CAPTCHA validation (7 + 4 = 11)
-  if (captcha !== "11") {
-    e.preventDefault();
-    alert('Please answer the CAPTCHA correctly.');
     return false;
   }
 
