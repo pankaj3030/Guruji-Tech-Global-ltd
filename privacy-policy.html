@@ -291,6 +291,308 @@
             Registered in England & Wales No. 16808971</p>
         </footer>
     </div>
+    <script>
+// GA4 Loader Function
+function loadGoogleAnalytics() {
+  if (typeof gtag !== 'undefined') return;
+  const existingScript = document.querySelector('script[src*="gtag/js"]');
+  if (existingScript) return;
+  
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-HFCKN1H30C";
+  document.head.appendChild(script);
+  
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HFCKN1H30C');
+}
+
+// Form validation
+function validateForm(e) {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const gdpr = document.getElementById('gdpr_consent').checked;
+  
+  if (!name || name.length < 2) {
+    e.preventDefault();
+    alert('Name must be at least 2 characters');
+    return false;
+  }
+  
+  if (!email || !email.includes('@')) {
+    e.preventDefault();
+    alert('Please enter a valid email address');
+    return false;
+  }
+  
+  if (!gdpr) {
+    e.preventDefault();
+    alert('Please accept the GDPR consent');
+    return false;
+  }
+  
+  // Track form submission
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'contact_form_submit', {
+      'service_type': document.getElementById('service').value,
+      'form_name': 'contact'
+    });
+  }
+  
+  return true;
+}
+
+// Advanced GA4 Tracking
+document.addEventListener('DOMContentLoaded', function() {
+  // Load AOS library
+  const aosScript = document.createElement('script');
+  aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+  aosScript.onload = function() {
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      once: true
+    });
+  };
+  document.head.appendChild(aosScript);
+  
+  // Section visibility tracking
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && typeof gtag !== 'undefined') {
+        gtag('event', 'section_view', {
+          'section_id': entry.target.id,
+          'section_name': entry.target.querySelector('h2')?.innerText || entry.target.id
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  document.querySelectorAll('section[id]').forEach(section => {
+    sectionObserver.observe(section);
+  });
+  
+  // Scroll depth tracking
+  let scrollTracked = { '25%': false, '50%': false, '75%': false, '90%': false };
+  window.addEventListener('scroll', () => {
+    if (typeof gtag === 'undefined') return;
+    
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    
+    Object.keys(scrollTracked).forEach(percent => {
+      const threshold = parseInt(percent);
+      if (!scrollTracked[percent] && scrollPercent >= threshold) {
+        scrollTracked[percent] = true;
+        gtag('event', 'scroll_depth', { 'percent_scrolled': threshold });
+      }
+    });
+  });
+  
+  // Time on page tracking
+  let timeOnPage = 0;
+  const timeInterval = setInterval(() => {
+    timeOnPage += 10;
+    if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
+      gtag('event', 'time_on_page', { 'seconds': timeOnPage });
+    }
+  }, 10000);
+  
+  // Video engagement tracking
+  const videos = document.querySelectorAll('video');
+  videos.forEach(video => {
+    let hasTrackedPlay = false;
+    
+    video.addEventListener('play', () => {
+      if (!hasTrackedPlay && typeof gtag !== 'undefined') {
+        hasTrackedPlay = true;
+        const src = video.querySelector('source')?.src || 'unknown';
+        gtag('event', 'video_play', {
+          'video_title': src.split('/').pop().replace('.mp4', ''),
+          'video_url': src
+        });
+      }
+    });
+    
+    video.addEventListener('ended', () => {
+      if (typeof gtag !== 'undefined') {
+        const src = video.querySelector('source')?.src || 'unknown';
+        gtag('event', 'video_complete', {
+          'video_title': src.split('/').pop().replace('.mp4', ''),
+          'video_url': src
+        });
+      }
+    });
+    
+    // Progress tracking at 25%, 50%, 75%
+    let progressTracked = { '25': false, '50': false, '75': false };
+    video.addEventListener('timeupdate', () => {
+      if (video.duration > 0 && typeof gtag !== 'undefined') {
+        const percent = Math.floor((video.currentTime / video.duration) * 100);
+        [25, 50, 75].forEach(p => {
+          if (!progressTracked[p] && percent >= p) {
+            progressTracked[p] = true;
+            const src = video.querySelector('source')?.src || 'unknown';
+            gtag('event', 'video_progress', {
+              'video_title': src.split('/').pop().replace('.mp4', ''),
+              'percent_complete': p
+            });
+          }
+        });
+      }
+    });
+  });
+  
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const mobileLinks = navLinks.querySelectorAll('a');
+  
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Navbar scroll effect
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+  
+  // Back to top button
+  const backToTopButton = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+  
+  // Typewriter effect
+  const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
+  let i = 0, j = 0, current = "", isDeleting = false;
+  const typewriterElement = document.getElementById("typewriter");
+  
+  function type() {
+    const word = words[i];
+    current = word.slice(0, j);
+    typewriterElement.textContent = current;
+    
+    if (!isDeleting && j < word.length) {
+      j++;
+      setTimeout(type, 120);
+    } else if (isDeleting && j > 0) {
+      j--;
+      setTimeout(type, 70);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) i = (i + 1) % words.length;
+      setTimeout(type, 1200);
+    }
+  }
+  
+  if (typewriterElement) {
+    type();
+  }
+  
+  // Form validation
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', validateForm);
+  }
+  
+  // Cookie banner - Use session-based approach
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
+  
+  // Check if user has already made a choice in this session
+  if (!sessionStorage.getItem("cookieConsent")) {
+    cookieBanner.classList.add('show');
+  }
+  
+  acceptBtn.addEventListener('click', function() {
+    sessionStorage.setItem("cookieConsent", "accepted");
+    cookieBanner.classList.remove('show');
+    loadGoogleAnalytics();
+  });
+  
+  rejectBtn.addEventListener('click', function() {
+    sessionStorage.setItem("cookieConsent", "rejected");
+    cookieBanner.classList.remove('show');
+  });
+  
+  // If previously accepted in this session
+  if (sessionStorage.getItem("cookieConsent") === "accepted") {
+    loadGoogleAnalytics();
+  }
+  
+  // Lazy load videos
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.play();
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.service-video-bg').forEach(video => {
+    videoObserver.observe(video);
+    
+    // Play on hover
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+    
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+    });
+  });
+  
+  // Track CTA clicks
+  document.querySelectorAll('.hero-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'cta_click', {
+          'button_text': btn.textContent.trim(),
+          'section': 'hero'
+        });
+      }
+    });
+  });
+  
+  // Track Calendly events
+  document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('message', (e) => {
+      if (e.origin !== 'https://calendly.com') return;
+      if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'booking_scheduled', {
+            'value': 200,
+            'currency': 'GBP'
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
 
