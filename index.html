@@ -168,7 +168,7 @@ backdrop-filter: blur(8px);
 box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 .logo-container img {
-height: 90px;
+height: 90px; /* ✅ Unified size with thank-you page */
 width: auto;
 display: block;
 }
@@ -963,20 +963,12 @@ background: #f44336;
 color: white;
 }
 </style>
-
 <!-- Google Tag Manager -->
 <script>
-  // Initialize dataLayer and set default consent state
+  // Initialize dataLayer
   window.dataLayer = window.dataLayer || [];
   
-  // Default: deny analytics until consent
-  window.dataLayer.push({
-    'event': 'default_consent',
-    'analytics_storage': 'denied',
-    'ad_storage': 'denied',
-    'wait_for_update': 500
-  });
-
+  // Load GTM
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -1364,7 +1356,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </a>
 <a href="https://www.linkedin.com/company/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M19 0h-14c-2.761 0-5 2.239-5 12v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
 </svg>
 </a>
 <a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -1442,14 +1434,11 @@ We use cookies to improve your experience and analyze our traffic.
 <script>
 // GA4 Loader Function
 function loadGoogleAnalytics() {
-  // Load GA4 script only once
-  if (document.querySelector('script[src*="gtag/js"]')) return;
-  
+  if (typeof gtag !== 'undefined') return;
   const script = document.createElement("script");
   script.async = true;
   script.src = "https://www.googletagmanager.com/gtag/js?id=G-EKKVPQMREZ";
   document.head.appendChild(script);
-  
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -1488,7 +1477,6 @@ function validateForm(e) {
   return true;
 }
 
-// Advanced GA4 Tracking
 document.addEventListener('DOMContentLoaded', function() {
   // Load AOS library
   const aosScript = document.createElement('script');
@@ -1563,42 +1551,27 @@ document.addEventListener('DOMContentLoaded', function() {
     type();
   }
 
-  // Cookie consent logic using sessionStorage (since localStorage is not supported)
+  // Cookie consent logic using sessionStorage
   const cookieBanner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
   const rejectBtn = document.getElementById('reject-cookies');
 
-  // Check if user has already made a choice in this session
   if (!sessionStorage.getItem("cookieConsent")) {
     cookieBanner.classList.add('show');
-  }
-
-  function updateConsent(granted) {
-    const status = granted ? 'granted' : 'denied';
-    // Update GTM consent
-    window.dataLayer.push({
-      'event': 'consent_update',
-      'analytics_storage': status,
-      'ad_storage': status
-    });
   }
 
   acceptBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "accepted");
     cookieBanner.classList.remove('show');
-    updateConsent(true);
-    loadGoogleAnalytics(); // Load GA4 only after consent
+    loadGoogleAnalytics();
   });
 
   rejectBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "rejected");
     cookieBanner.classList.remove('show');
-    updateConsent(false);
   });
 
-  // If already accepted in this session
   if (sessionStorage.getItem("cookieConsent") === "accepted") {
-    updateConsent(true);
     loadGoogleAnalytics();
   }
 
