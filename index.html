@@ -836,7 +836,7 @@ box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 border-radius: 10px;
 padding: 1rem 0;
 }
-nav#nav-links.show { display: flex; }
+.nav#nav-links.show { display: flex; }
 nav#nav-links a { margin: 0.75rem 2rem; display: block; }
 nav#nav-links a::after { display: none; }
 .hamburger { display: flex; }
@@ -965,10 +965,7 @@ color: white;
 </style>
 <!-- Google Tag Manager -->
 <script>
-  // Initialize dataLayer
   window.dataLayer = window.dataLayer || [];
-  
-  // Load GTM
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -1432,19 +1429,20 @@ We use cookies to improve your experience and analyze our traffic.
 <!-- Calendly Embed Script -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-// GA4 Loader Function
+// GA4 Loader Function — loads only after consent
 function loadGoogleAnalytics() {
-  if (typeof gtag !== 'undefined') return;
+  if (window.gtagLoaded) return;
+  window.gtagLoaded = true;
+
   const script = document.createElement("script");
   script.async = true;
   script.src = "https://www.googletagmanager.com/gtag/js?id=G-EKKVPQMREZ";
   document.head.appendChild(script);
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-EKKVPQMREZ', {
-    'consent': 'granted'
-  });
+  gtag('config', 'G-EKKVPQMREZ', { 'consent': 'granted' });
 }
 
 // Form validation
@@ -1467,7 +1465,6 @@ function validateForm(e) {
     alert('Please accept the GDPR consent');
     return false;
   }
-  // Track form submission
   if (typeof gtag !== 'undefined') {
     gtag('event', 'contact_form_submit', {
       'service_type': document.getElementById('service').value,
@@ -1478,28 +1475,21 @@ function validateForm(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Load AOS library
+  // AOS Animation
   const aosScript = document.createElement('script');
   aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-  aosScript.onload = function() {
-    AOS.init({
-      duration: 800,
-      offset: 100,
-      once: true
-    });
-  };
+  aosScript.onload = () => AOS.init({ duration: 800, offset: 100, once: true });
   document.head.appendChild(aosScript);
 
-  // Hamburger menu toggle
+  // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
-  const mobileLinks = navLinks.querySelectorAll('a');
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('show');
     hamburger.classList.toggle('active');
     hamburger.setAttribute('aria-expanded', isOpen);
   });
-  mobileLinks.forEach(link => {
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('show');
       hamburger.classList.remove('active');
@@ -1507,68 +1497,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Navbar scroll effect
+  // Header scroll effect
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Back to top button
+  // Back to top
   const backToTopButton = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      backToTopButton.classList.add('show');
-    } else {
-      backToTopButton.classList.remove('show');
-    }
+    backToTopButton.classList.toggle('show', window.scrollY > 500);
   });
 
   // Typewriter effect
   const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
-  let i = 0, j = 0, current = "", isDeleting = false;
-  const typewriterElement = document.getElementById("typewriter");
-  function type() {
-    const word = words[i];
-    current = word.slice(0, j);
-    typewriterElement.textContent = current;
-    if (!isDeleting && j < word.length) {
-      j++;
-      setTimeout(type, 120);
-    } else if (isDeleting && j > 0) {
-      j--;
-      setTimeout(type, 70);
-    } else {
-      isDeleting = !isDeleting;
-      if (!isDeleting) i = (i + 1) % words.length;
-      setTimeout(type, 1200);
+  let i = 0, j = 0, isDeleting = false;
+  const typewriter = document.getElementById("typewriter");
+  if (typewriter) {
+    function type() {
+      const word = words[i];
+      const current = word.slice(0, j);
+      typewriter.textContent = current;
+      if (!isDeleting && j < word.length) {
+        j++;
+        setTimeout(type, 120);
+      } else if (isDeleting && j > 0) {
+        j--;
+        setTimeout(type, 70);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+        setTimeout(type, 1200);
+      }
     }
-  }
-  if (typewriterElement) {
     type();
   }
 
-  // Cookie consent logic using sessionStorage
-  const cookieBanner = document.getElementById('cookie-banner');
+  // Cookie consent using sessionStorage
+  const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
   const rejectBtn = document.getElementById('reject-cookies');
 
   if (!sessionStorage.getItem("cookieConsent")) {
-    cookieBanner.classList.add('show');
+    banner.classList.add('show');
   }
 
   acceptBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "accepted");
-    cookieBanner.classList.remove('show');
+    banner.classList.remove('show');
     loadGoogleAnalytics();
   });
 
   rejectBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "rejected");
-    cookieBanner.classList.remove('show');
+    banner.classList.remove('show');
   });
 
   if (sessionStorage.getItem("cookieConsent") === "accepted") {
@@ -1576,41 +1558,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Form validation
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', validateForm);
-  }
+  const form = document.getElementById('contactForm');
+  if (form) form.addEventListener('submit', validateForm);
 
-  // Lazy load videos
-  const serviceVideos = document.querySelectorAll('.service-video-bg');
-  serviceVideos.forEach(video => {
+  // Lazy play videos
+  document.querySelectorAll('.service-video-bg').forEach(video => {
     video.addEventListener('mouseenter', () => video.play());
     video.addEventListener('mouseleave', () => video.pause());
-  });
-
-  // Track CTA clicks
-  document.querySelectorAll('.hero-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'cta_click', {
-          'button_text': btn.textContent.trim(),
-          'section': 'hero'
-        });
-      }
-    });
-  });
-
-  // Track Calendly events
-  window.addEventListener('message', (e) => {
-    if (e.origin !== 'https://calendly.com') return;
-    if (e.data.event && e.data.event === 'calendly.event_scheduled') {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'booking_scheduled', {
-          'value': 200,
-          'currency': 'GBP'
-        });
-      }
-    }
   });
 });
 </script>
