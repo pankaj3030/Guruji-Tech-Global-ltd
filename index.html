@@ -168,7 +168,7 @@ backdrop-filter: blur(8px);
 box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 .logo-container img {
-height: 90px; /* ✅ Unified size with thank-you page */
+height: 90px;
 width: auto;
 display: block;
 }
@@ -787,10 +787,10 @@ color: #94a3b8;
 }
 /* White Footer Logo */
 .footer-logo-white {
-  filter: brightness(0) invert(1);
-  height: 70px;
-  width: auto;
-  margin-bottom: 1rem;
+filter: brightness(0) invert(1);
+height: 70px;
+width: auto;
+margin-bottom: 1rem;
 }
 /* ANIMATIONS */
 @keyframes fadeUp {
@@ -963,12 +963,26 @@ background: #f44336;
 color: white;
 }
 </style>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MN592CV2');</script>
+
+<!-- Google Tag Manager -->
+<script>
+  // Initialize dataLayer and set default consent state
+  window.dataLayer = window.dataLayer || [];
+  
+  // Default: deny analytics until consent
+  window.dataLayer.push({
+    'event': 'default_consent',
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MN592CV2');
+</script>
 <!-- End Google Tag Manager -->
 </head>
 <body>
@@ -1350,7 +1364,7 @@ Delivering enterprise-grade IT services with transparency, speed, and reliabilit
 </a>
 <a href="https://www.linkedin.com/company/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+<path d="M19 0h-14c-2.761 0-5 2.239-5 12v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
 </svg>
 </a>
 <a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
@@ -1408,7 +1422,7 @@ Coventry, United Kingdom.
 </p>
 </div>
 </div>
-  <div class="footer-bottom">
+<div class="footer-bottom">
 <p>&copy; 2025 Guruji Tech Global LTD. All Rights Reserved. | Registered in England & Wales No. 16808971</p>
 </div>
 </footer>
@@ -1428,9 +1442,8 @@ We use cookies to improve your experience and analyze our traffic.
 <script>
 // GA4 Loader Function
 function loadGoogleAnalytics() {
-  if (typeof gtag !== 'undefined') return;
-  const existingScript = document.querySelector('script[src*="gtag/js"]');
-  if (existingScript) return;
+  // Load GA4 script only once
+  if (document.querySelector('script[src*="gtag/js"]')) return;
   
   const script = document.createElement("script");
   script.async = true;
@@ -1440,7 +1453,9 @@ function loadGoogleAnalytics() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-EKKVPQMREZ');
+  gtag('config', 'G-EKKVPQMREZ', {
+    'consent': 'granted'
+  });
 }
 
 // Form validation
@@ -1448,25 +1463,21 @@ function validateForm(e) {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const gdpr = document.getElementById('gdpr_consent').checked;
-  
   if (!name || name.length < 2) {
     e.preventDefault();
     alert('Name must be at least 2 characters');
     return false;
   }
-  
   if (!email || !email.includes('@')) {
     e.preventDefault();
     alert('Please enter a valid email address');
     return false;
   }
-  
   if (!gdpr) {
     e.preventDefault();
     alert('Please accept the GDPR consent');
     return false;
   }
-  
   // Track form submission
   if (typeof gtag !== 'undefined') {
     gtag('event', 'contact_form_submit', {
@@ -1474,7 +1485,6 @@ function validateForm(e) {
       'form_name': 'contact'
     });
   }
-  
   return true;
 }
 
@@ -1491,104 +1501,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   };
   document.head.appendChild(aosScript);
-  
-  // Section visibility tracking
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && typeof gtag !== 'undefined') {
-        gtag('event', 'section_view', {
-          'section_id': entry.target.id,
-          'section_name': entry.target.querySelector('h2')?.innerText || entry.target.id
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-  
-  document.querySelectorAll('section[id]').forEach(section => {
-    sectionObserver.observe(section);
-  });
-  
-  // Scroll depth tracking
-  let scrollTracked = { '25%': false, '50%': false, '75%': false, '90%': false };
-  window.addEventListener('scroll', () => {
-    if (typeof gtag === 'undefined') return;
-    
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    
-    Object.keys(scrollTracked).forEach(percent => {
-      const threshold = parseInt(percent);
-      if (!scrollTracked[percent] && scrollPercent >= threshold) {
-        scrollTracked[percent] = true;
-        gtag('event', 'scroll_depth', { 'percent_scrolled': threshold });
-      }
-    });
-  });
-  
-  // Time on page tracking
-  let timeOnPage = 0;
-  const timeInterval = setInterval(() => {
-    timeOnPage += 10;
-    if (timeOnPage % 30 === 0 && typeof gtag !== 'undefined') {
-      gtag('event', 'time_on_page', { 'seconds': timeOnPage });
-    }
-  }, 10000);
-  
-  // Video engagement tracking
-  const videos = document.querySelectorAll('video');
-  videos.forEach(video => {
-    let hasTrackedPlay = false;
-    
-    video.addEventListener('play', () => {
-      if (!hasTrackedPlay && typeof gtag !== 'undefined') {
-        hasTrackedPlay = true;
-        const src = video.querySelector('source')?.src || 'unknown';
-        gtag('event', 'video_play', {
-          'video_title': src.split('/').pop().replace('.mp4', ''),
-          'video_url': src
-        });
-      }
-    });
-    
-    video.addEventListener('ended', () => {
-      if (typeof gtag !== 'undefined') {
-        const src = video.querySelector('source')?.src || 'unknown';
-        gtag('event', 'video_complete', {
-          'video_title': src.split('/').pop().replace('.mp4', ''),
-          'video_url': src
-        });
-      }
-    });
-    
-    // Progress tracking at 25%, 50%, 75%
-    let progressTracked = { '25': false, '50': false, '75': false };
-    video.addEventListener('timeupdate', () => {
-      if (video.duration > 0 && typeof gtag !== 'undefined') {
-        const percent = Math.floor((video.currentTime / video.duration) * 100);
-        [25, 50, 75].forEach(p => {
-          if (!progressTracked[p] && percent >= p) {
-            progressTracked[p] = true;
-            const src = video.querySelector('source')?.src || 'unknown';
-            gtag('event', 'video_progress', {
-              'video_title': src.split('/').pop().replace('.mp4', ''),
-              'percent_complete': p
-            });
-          }
-        });
-      }
-    });
-  });
-  
+
   // Hamburger menu toggle
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
   const mobileLinks = navLinks.querySelectorAll('a');
-  
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('show');
     hamburger.classList.toggle('active');
     hamburger.setAttribute('aria-expanded', isOpen);
   });
-  
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('show');
@@ -1596,7 +1518,7 @@ document.addEventListener('DOMContentLoaded', function() {
       hamburger.setAttribute('aria-expanded', 'false');
     });
   });
-  
+
   // Navbar scroll effect
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
@@ -1606,7 +1528,7 @@ document.addEventListener('DOMContentLoaded', function() {
       header.classList.remove('scrolled');
     }
   });
-  
+
   // Back to top button
   const backToTopButton = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
@@ -1616,17 +1538,15 @@ document.addEventListener('DOMContentLoaded', function() {
       backToTopButton.classList.remove('show');
     }
   });
-  
+
   // Typewriter effect
   const words = ["Manage Your", "Support Your", "Secure Your", "Modernise Your"];
   let i = 0, j = 0, current = "", isDeleting = false;
   const typewriterElement = document.getElementById("typewriter");
-  
   function type() {
     const word = words[i];
     current = word.slice(0, j);
     typewriterElement.textContent = current;
-    
     if (!isDeleting && j < word.length) {
       j++;
       setTimeout(type, 120);
@@ -1639,65 +1559,62 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(type, 1200);
     }
   }
-  
   if (typewriterElement) {
     type();
   }
-  
+
+  // Cookie consent logic using sessionStorage (since localStorage is not supported)
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('accept-cookies');
+  const rejectBtn = document.getElementById('reject-cookies');
+
+  // Check if user has already made a choice in this session
+  if (!sessionStorage.getItem("cookieConsent")) {
+    cookieBanner.classList.add('show');
+  }
+
+  function updateConsent(granted) {
+    const status = granted ? 'granted' : 'denied';
+    // Update GTM consent
+    window.dataLayer.push({
+      'event': 'consent_update',
+      'analytics_storage': status,
+      'ad_storage': status
+    });
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    sessionStorage.setItem("cookieConsent", "accepted");
+    cookieBanner.classList.remove('show');
+    updateConsent(true);
+    loadGoogleAnalytics(); // Load GA4 only after consent
+  });
+
+  rejectBtn.addEventListener('click', () => {
+    sessionStorage.setItem("cookieConsent", "rejected");
+    cookieBanner.classList.remove('show');
+    updateConsent(false);
+  });
+
+  // If already accepted in this session
+  if (sessionStorage.getItem("cookieConsent") === "accepted") {
+    updateConsent(true);
+    loadGoogleAnalytics();
+  }
+
   // Form validation
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', validateForm);
   }
-  
-  // Cookie banner - Use session-based approach
-  const cookieBanner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('accept-cookies');
-  const rejectBtn = document.getElementById('reject-cookies');
-  
-  // Check if user has already made a choice in this session
-  if (!sessionStorage.getItem("cookieConsent")) {
-    cookieBanner.classList.add('show');
-  }
-  
-  acceptBtn.addEventListener('click', function() {
-    sessionStorage.setItem("cookieConsent", "accepted");
-    cookieBanner.classList.remove('show');
-    loadGoogleAnalytics();
-  });
-  
-  rejectBtn.addEventListener('click', function() {
-    sessionStorage.setItem("cookieConsent", "rejected");
-    cookieBanner.classList.remove('show');
-  });
-  
-  // If previously accepted in this session
-  if (sessionStorage.getItem("cookieConsent") === "accepted") {
-    loadGoogleAnalytics();
-  }
-  
+
   // Lazy load videos
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.play();
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.service-video-bg').forEach(video => {
-    videoObserver.observe(video);
-    
-    // Play on hover
-    video.addEventListener('mouseenter', () => {
-      video.play();
-    });
-    
-    video.addEventListener('mouseleave', () => {
-      video.pause();
-    });
+  const serviceVideos = document.querySelectorAll('.service-video-bg');
+  serviceVideos.forEach(video => {
+    video.addEventListener('mouseenter', () => video.play());
+    video.addEventListener('mouseleave', () => video.pause());
   });
-  
+
   // Track CTA clicks
   document.querySelectorAll('.hero-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1709,26 +1626,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
+
   // Track Calendly events
-  document.addEventListener('DOMContentLoaded', () => {
-    window.addEventListener('message', (e) => {
-      if (e.origin !== 'https://calendly.com') return;
-      if (e.data.event && e.data.event === 'calendly.event_scheduled') {
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'booking_scheduled', {
-            'value': 200,
-            'currency': 'GBP'
-          });
-        }
+  window.addEventListener('message', (e) => {
+    if (e.origin !== 'https://calendly.com') return;
+    if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'booking_scheduled', {
+          'value': 200,
+          'currency': 'GBP'
+        });
       }
-    });
+    }
   });
 });
 </script>
-  <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN592CV2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 </body>
 </html>
+
