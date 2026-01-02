@@ -965,12 +965,12 @@ color: white;
 </style>
 <!-- Google Tag Manager -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MN592CV2');
+window.dataLayer = window.dataLayer || [];
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MN592CV2');
 </script>
 <!-- End Google Tag Manager -->
 </head>
@@ -1537,22 +1537,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('accept-cookies');
   const rejectBtn = document.getElementById('reject-cookies');
-
   if (!sessionStorage.getItem("cookieConsent")) {
     banner.classList.add('show');
   }
-
   acceptBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "accepted");
     banner.classList.remove('show');
     loadGoogleAnalytics();
   });
-
   rejectBtn.addEventListener('click', () => {
     sessionStorage.setItem("cookieConsent", "rejected");
     banner.classList.remove('show');
   });
-
   if (sessionStorage.getItem("cookieConsent") === "accepted") {
     loadGoogleAnalytics();
   }
@@ -1561,10 +1557,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('contactForm');
   if (form) form.addEventListener('submit', validateForm);
 
-  // Lazy play videos
+  // AUTOMATICALLY PLAY SERVICE VIDEOS ON LOAD (FIXED)
   document.querySelectorAll('.service-video-bg').forEach(video => {
-    video.addEventListener('mouseenter', () => video.play());
-    video.addEventListener('mouseleave', () => video.pause());
+    // Attempt to autoplay on load
+    video.play().catch(e => {
+      console.warn('Autoplay prevented for service video:', e);
+      // Fallback to hover play if autoplay fails
+      video.addEventListener('mouseenter', () => video.play());
+      video.addEventListener('mouseleave', () => video.pause());
+    });
   });
 });
 </script>
@@ -1572,6 +1573,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN592CV2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script>
+document.querySelectorAll('.service-video-bg').forEach(video => {
+video.play().catch(e => {
+console.warn('Autoplay prevented:', e);
+// Fallback to hover if autoplay fails
+video.addEventListener('mouseenter', () => video.play());
+video.addEventListener('mouseleave', () => video.pause());
+});
+});
+</script>
 </body>
 </html>
-
