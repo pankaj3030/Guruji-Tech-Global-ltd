@@ -777,6 +777,84 @@ transition: background 0.3s, color 0.3s;
 background: #3b82f6;
 color: #fff;
 }
+
+/* Updated Social Media Card Style */
+.social-media-card {
+  width: 320px;
+  background: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 24px;
+  background-color: hsl(210deg 15% 95%);
+  box-shadow: 8px 8px 16px 0px rgba(124, 134, 124, 0.5), 
+    inset -4px -4px 8px 0px rgba(117, 133, 117, 0.7), 
+    inset 0px 8px 16px 0px hsl(210deg 15% 95%);
+  gap: 20px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 4px 4px 8px 0px rgba(124, 134, 124, 0.3), 
+    inset -4px -4px 8px 0px rgba(117, 133, 117, 0.3), 
+    inset 0px 8px 16px 0px white;
+  transition: all 0.3s ease;
+}
+
+.social-icons:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 12px 0px rgba(124, 134, 124, 0.4), 
+    inset -6px -6px 12px 0px rgba(117, 133, 117, 0.5), 
+    inset 0px 12px 24px 0px white;
+}
+
+.social-icons p {
+  margin: 0;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.social-icons a {
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-icons a:hover {
+  background: linear-gradient(90deg, #2563eb, #1e3a8a);
+  transform: scale(1.05);
+}
+
+.social-icons svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.social-icons:nth-child(1) svg {
+  fill: #F61C0D;
+}
+
+.social-icons:nth-child(2) svg {
+  fill: #000000;
+}
+
+.social-icons:nth-child(3) svg {
+  fill: #FF1493;
+}
+
 .footer-bottom {
 text-align: center;
 padding-top: 2rem;
@@ -975,6 +1053,9 @@ bottom: 80px;
   width: 320px;
   padding: 30px;
 }
+.social-media-card {
+  width: 280px;
+}
 }
 @media (max-width: 640px) {
 .service-card {
@@ -999,6 +1080,27 @@ font-size: 1.75rem;
 }
 .card .title {
   font-size: 1.5rem;
+}
+.social-media-card {
+  width: 260px;
+  padding: 20px;
+}
+.social-icons {
+  padding: 10px 12px;
+}
+.social-icons p {
+  font-size: 0.9rem;
+}
+.social-icons a {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+.social-icons svg {
+  width: 24px;
+  height: 24px;
+}
+.footer-social {
+  justify-content: center;
 }
 }
 /* Custom Scrollbar */
@@ -1407,27 +1509,79 @@ Schedule Your Consultation
 <p style="color:#cbd5e1; line-height:1.6; margin-bottom:1.5rem;">
 Delivering enterprise-grade IT services with transparency, speed, and reliability to businesses across the UK.
 </p>
-<div class="footer-social">
-<a href="https://www.facebook.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-</svg>
-</a>
-<a href="https://www.linkedin.com/company/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-</svg>
-</a>
-<a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.23 1.664-4.782 4.919-4.92 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.351 2.618 6.78 6.98 6.979 1.28.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-</svg>
-</a>
-<a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-<path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4 1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
-</svg>
-</a>
+<!-- Added Social Media Card -->
+<div class="social-media-card">
+  <div class="social-icons">
+    <p>@YouTube</p>
+    <a href="https://www.youtube.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer">Follow</a>
+    <svg
+      fill="#000000"
+      xml:space="preserve"
+      viewBox="0 0 461.001 461.001"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns="http://www.w3.org/2000/svg"
+      id="Layer_1"
+      version="1.1"
+    >
+      <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+      <g
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        id="SVGRepo_tracerCarrier"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <path
+            d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728 c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137 C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607 c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"
+            style="fill:#F61C0D;"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="social-icons">
+    <p>@TikTok</p>
+    <a href="https://www.tiktok.com/@gurujitechglobal" target="_blank" rel="noopener noreferrer">Follow</a>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="icons"
+      viewBox="0 0 512 512"
+      fill="#000000"
+    >
+      <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+      <g
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        id="SVGRepo_tracerCarrier"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M412.19,118.66a109.27,109.27,0,0,1-9.45-5.5,132.87,132.87,0,0,1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14,23.9,350,16,350.13,16H267.69V334.78c0,4.28,0,8.51-.18,12.69,0,.52-.05,1-.08,1.56,0,.23,0,.47-.05.71,0,.06,0,.12,0,.18a70,70,0,0,1-35.22,55.56,68.8,68.8,0,0,1-34.11,9c-38.41,0-69.54-31.32-69.54-70s31.13-70,69.54-70a68.9,68.9,0,0,1,21.41,3.39l.1-83.94a153.14,153.14,0,0,0-118,34.52,161.79,161.79,0,0,0-35.3,43.53c-3.48,6-16.61,30.11-18.2,69.24-1,22.21,5.67,45.22,8.85,54.73v.2c2,5.6,9.75,24.71,22.38,40.82A167.53,167.53,0,0,0,115,470.66v-.2l.2.2C155.11,497.78,199.36,496,199.36,496c7.66-.31,33.32,0,62.46-13.81,32.32-15.31,50.72-38.12,50.72-38.12a158.46,158.46,0,0,0,27.64-45.93c7.46-19.61,9.95-43.13,9.95-52.53V176.49c1,.6,14.32,9.41,14.32,9.41s19.19,12.3,49.13,20.31c21.48,5.7,50.42,6.9,50.42,6.9V131.27C453.86,132.37,433.27,129.17,412.19,118.66Z"
+        ></path>
+      </g>
+    </svg>
+  </div>
+  <div class="social-icons">
+    <p>@Instagram</p>
+    <a href="https://www.instagram.com/gurujitechglobal" target="_blank" rel="noopener noreferrer">Follow</a>
+    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+      <g
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        id="SVGRepo_tracerCarrier"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <path
+            fill-rule="nonzero"
+            fill="#FF1493"
+            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  </div>
 </div>
 </div>
 <div class="footer-col">
