@@ -411,72 +411,172 @@ color: #475569;
 line-height: 1.6;
 flex-grow: 1;
 }
-/* SERVICES */
+/* SERVICES - Updated with 3D Cards */
 .services-section {
 padding: 5rem 5%;
 background: #fff;
 }
+.section-header {
+text-align: center;
+max-width: 800px;
+margin: 0 auto 3rem;
+}
+.section-header h2 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+color: #1e293b;
+}
+.section-header p {
+color: #475569;
+font-size: 1.125rem;
+}
 .services-grid {
 display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 2.5rem;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 3rem;
 max-width: 1400px;
 margin: 0 auto;
-}
-.service-card {
-display: flex;
-height: 300px;
-border-radius: 8px;
-overflow: hidden;
-box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-transition: all 0.3s ease;
-border: 2px solid #e2e8f0;
-}
-.service-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-border-color: #3b82f6;
-}
-.service-video-bg {
-width: 40%;
-height: 100%;
-object-fit: cover;
-flex-shrink: 0;
-}
-.service-content {
-width: 60%;
-padding: 2rem 1.75rem;
-display: flex;
-flex-direction: column;
 justify-content: center;
-background: #fff;
 }
-.service-header h3 {
-font-size: 1.5rem;
-margin-bottom: 1.25rem;
-color: #1e293b;
-font-weight: 700;
+
+/* 3D Card Styles */
+@keyframes autoRun3d {
+  from {
+    transform: perspective(800px) rotateY(-360deg);
+  }
+  to {
+    transform: perspective(800px) rotateY(0deg);
+  }
 }
-.service-content ul {
-list-style: none;
-padding: 0;
-margin: 0;
+
+@keyframes animateBrightness {
+  10% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(0.1);
+  }
+  90% {
+    filter: brightness(1);
+  }
 }
-.service-content li {
-padding: 0.6rem 0;
-color: #475569;
-border-bottom: 1px solid #f1f5f9;
-font-size: 0.95rem;
+
+.service-3d-card {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  transform-style: preserve-3d;
+  transform: perspective(800px);
+  animation: autoRun3d 20s linear infinite;
+  will-change: transform;
+  margin: 0 auto;
 }
-.service-content li:last-child {
-border-bottom: none;
+
+.service-3d-card div {
+  position: absolute;
+  width: 64px;
+  height: 90px;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  border: solid 2px rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  animation: animateBrightness 20s linear infinite;
+  transition-duration: 200ms;
+  will-change: transform, filter;
 }
-.service-content li::before {
-content: '•';
-margin-right: 0.75rem;
-color: #3b82f6;
-font-weight: bold;
+
+.service-3d-card:hover {
+  animation-play-state: paused !important;
 }
+
+.service-3d-card:hover div {
+  animation-play-state: paused !important;
+}
+
+.service-3d-card div:nth-child(1) {
+  transform: translate(-50%, -50%) rotateY(0deg) translateZ(120px);
+  animation-delay: -0s;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+}
+
+.service-3d-card div:nth-child(2) {
+  transform: translate(-50%, -50%) rotateY(36deg) translateZ(120px);
+  animation-delay: -2s;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.service-3d-card div:nth-child(3) {
+  transform: translate(-50%, -50%) rotateY(72deg) translateZ(120px);
+  animation-delay: -4s;
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}
+
+.service-3d-card div:nth-child(4) {
+  transform: translate(-50%, -50%) rotateY(108deg) translateZ(120px);
+  animation-delay: -6s;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.service-3d-card div:nth-child(5) {
+  transform: translate(-50%, -50%) rotateY(144deg) translateZ(120px);
+  animation-delay: -8s;
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.service-3d-card div:nth-child(6) {
+  transform: translate(-50%, -50%) rotateY(180deg) translateZ(120px);
+  animation-delay: -10s;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.service-3d-card div:nth-child(7) {
+  transform: translate(-50%, -50%) rotateY(216deg) translateZ(120px);
+  animation-delay: -12s;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.service-3d-card div:nth-child(8) {
+  transform: translate(-50%, -50%) rotateY(252deg) translateZ(120px);
+  animation-delay: -14s;
+  background: linear-gradient(135deg, #84cc16, #65a30d);
+}
+
+.service-3d-card div:nth-child(9) {
+  transform: translate(-50%, -50%) rotateY(288deg) translateZ(120px);
+  animation-delay: -16s;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.service-3d-card div:nth-child(10) {
+  transform: translate(-50%, -50%) rotateY(324deg) translateZ(120px);
+  animation-delay: -18s;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+.service-card-content {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+.service-card-content h3 {
+  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.service-card-content p {
+  color: #475569;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 /* TESTIMONIALS */
 .testimonials-section {
 padding: 5rem 5%;
@@ -979,18 +1079,21 @@ grid-template-columns: 1fr;
 gap: 2rem;
 }
 .services-grid {
-grid-template-columns: repeat(2, 1fr);
 gap: 2rem;
 }
-.service-card {
-height: 280px;
+.service-3d-card {
+  width: 280px;
+  height: 160px;
 }
-.service-content {
-padding: 1.5rem 1.5rem;
+.service-3d-card div {
+  width: 56px;
+  height: 80px;
 }
-.service-header h3 {
-font-size: 1.35rem;
-margin-bottom: 1rem;
+.service-card-content h3 {
+  font-size: 1.1rem;
+}
+.service-card-content p {
+  font-size: 0.85rem;
 }
 }
 @media (max-width:768px){
@@ -1021,26 +1124,25 @@ nav#nav-links a::after { display: none; }
 padding: 3rem 5%;
 }
 .services-grid {
-grid-template-columns: 1fr;
 gap: 1.5rem;
 }
-.service-card {
-height: 280px;
+.service-3d-card {
+  width: 240px;
+  height: 140px;
 }
-.service-video-bg {
-width: 50%;
+.service-3d-card div {
+  width: 48px;
+  height: 68px;
+  transform: translate(-50%, -50%) rotateY(var(--rotate)) translateZ(100px);
 }
-.service-content {
-width: 50%;
-padding: 1.5rem 1rem;
+.service-card-content {
+  bottom: -50px;
 }
-.service-header h3 {
-font-size: 1.25rem;
-margin-bottom: 0.75rem;
+.service-card-content h3 {
+  font-size: 1rem;
 }
-.service-content li {
-padding: 0.5rem 0;
-font-size: 0.9rem;
+.service-card-content p {
+  font-size: 0.8rem;
 }
 .back-to-top {
 bottom: 80px;
@@ -1055,52 +1157,6 @@ bottom: 80px;
 }
 .social-media-card {
   width: 280px;
-}
-}
-@media (max-width: 640px) {
-.service-card {
-flex-direction: column;
-height: auto;
-min-height: 400px;
-}
-.service-video-bg {
-width: 100%;
-height: 150px;
-}
-.service-content {
-width: 100%;
-padding: 1.25rem 1.25rem;
-}
-.section-header h2 {
-font-size: 1.75rem;
-}
-.card {
-  width: 280px;
-  padding: 25px;
-}
-.card .title {
-  font-size: 1.5rem;
-}
-.social-media-card {
-  width: 260px;
-  padding: 20px;
-}
-.social-icons {
-  padding: 10px 12px;
-}
-.social-icons p {
-  font-size: 0.9rem;
-}
-.social-icons a {
-  padding: 6px 12px;
-  font-size: 0.8rem;
-}
-.social-icons svg {
-  width: 24px;
-  height: 24px;
-}
-.footer-social {
-  justify-content: center;
 }
 }
 /* Custom Scrollbar */
@@ -1276,132 +1332,156 @@ your systems run smoothly so you can focus on growing your business.
 </article>
 </div>
 </section>
-<!-- SERVICES SECTION -->
+<!-- SERVICES SECTION - Updated with 3D Cards -->
 <section class="services-section" id="services">
 <div class="section-header" data-aos="fade-up">
 <h2>Our Services</h2>
 <p>Explore our professional IT services tailored for modern businesses.</p>
 </div>
 <div class="services-grid">
-<article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy">
-<source src="cloud.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>Cloud Services</strong></h3>
-</div>
-<ul>
-<li>Azure & AWS Migration</li>
-<li>Cloud Backup</li>
-<li>Virtual Machines</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="100">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>Cloud Services</h3>
+    <p>Azure & AWS Migration, Cloud Backup, Virtual Machines</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy">
-<source src="ms365.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>Microsoft 365</strong></h3>
-</div>
-<ul>
-<li>Email Hosting</li>
-<li>SharePoint Setup</li>
-<li>Teams Integration</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="200">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>Microsoft 365</h3>
+    <p>Email Hosting, SharePoint Setup, Teams Integration</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy">
-<source src="cyber.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>Cyber Security</strong></h3>
-</div>
-<ul>
-<li>Antivirus Management</li>
-<li>Firewall Protection</li>
-<li>Threat Monitoring</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="300">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>Cyber Security</h3>
+    <p>Antivirus Management, Firewall Protection, Threat Monitoring</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy">
-<source src="support.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>24/7 IT Support</strong></h3>
-</div>
-<ul>
-<li>Remote Support</li>
-<li>On-site Visits</li>
-<li>Device Management</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="400">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>24/7 IT Support</h3>
+    <p>Remote Support, On-site Visits, Device Management</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy">
-<source src="network.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>Network Solutions</strong></h3>
-</div>
-<ul>
-<li>LAN / WAN Setup</li>
-<li>VPN Configuration</li>
-<li>Network Monitoring</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="500">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>Network Solutions</h3>
+    <p>LAN / WAN Setup, VPN Configuration, Network Monitoring</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy">
-<source src="devops.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>DevOps & Automation</strong></h3>
-</div>
-<ul>
-<li>CI/CD Pipelines</li>
-<li>Infrastructure as Code</li>
-<li>Deployment Automation</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="600">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>DevOps & Automation</h3>
+    <p>CI/CD Pipelines, Infrastructure as Code, Deployment Automation</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy">
-<source src="telephone.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>IP Telephony</strong></h3>
-</div>
-<ul>
-<li>Internet-based Calling</li>
-<li>High Audio Quality</li>
-<li>Flexible & Low-Cost VoIP</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="700">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>IP Telephony</h3>
+    <p>Internet-based Calling, High Audio Quality, Flexible & Low-Cost VoIP</p>
+  </div>
 </article>
-<article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy">
-<source src="consulting.mp4" type="video/mp4">
-</video>
-<div class="service-content">
-<div class="service-header">
-<h3><strong>IT Consulting</strong></h3>
-</div>
-<ul>
-<li>Strategy Planning</li>
-<li>IT Audits</li>
-<li>Technology Roadmaps</li>
-</ul>
-</div>
+<article class="service-item" data-aos="fade-up" data-aos-delay="800">
+  <div class="service-3d-card">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="service-card-content">
+    <h3>IT Consulting</h3>
+    <p>Strategy Planning, IT Audits, Technology Roadmaps</p>
+  </div>
 </article>
 </div>
 </section>
@@ -1771,32 +1851,12 @@ loadGoogleAnalytics();
 // Form validation
 const form = document.getElementById('contactForm');
 if (form) form.addEventListener('submit', validateForm);
-// AUTOMATICALLY PLAY SERVICE VIDEOS ON LOAD (FIXED)
-document.querySelectorAll('.service-video-bg').forEach(video => {
-// Attempt to autoplay on load
-video.play().catch(e => {
-console.warn('Autoplay prevented for service video:', e);
-// Fallback to hover play if autoplay fails
-video.addEventListener('mouseenter', () => video.play());
-video.addEventListener('mouseleave', () => video.pause());
-});
-});
 });
 </script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MN592CV2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<script>
-document.querySelectorAll('.service-video-bg').forEach(video => {
-video.play().catch(e => {
-console.warn('Autoplay prevented:', e);
-// Fallback to hover if autoplay fails
-video.addEventListener('mouseenter', () => video.play());
-video.addEventListener('mouseleave', () => video.pause());
-});
-});
-</script>
 </body>
 </html>
 
