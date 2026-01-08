@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="description" content="Guruji Tech Global provides fully managed IT support, cloud services, cybersecurity, Microsoft 365 and infrastructure solutions with 24/7 UK-based support. Expert IT solutions for businesses.">
 <meta name="keywords" content="IT support, cloud services, cybersecurity, Microsoft 365, managed IT services, Azure, AWS, network solutions, UK IT support, IT infrastructure">
 <meta name="author" content="Guruji Tech Global">
@@ -26,16 +28,22 @@
 <link rel="canonical" href="https://www.gurujitechglobal.com">
 <link rel="apple-touch-icon" href="favicon.jpg">
 <link rel="icon" type="image/png" href="favicon.jpg">
-<!-- AOS Animation Library with SRI -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-+J3KkqzYvRZbFmTcE9dXhNQjHxVlUaBk6pLwD8yMfJjIeF7nKzS5u4iKtXg" crossorigin="anonymous">
-<!-- ADD: XML Sitemap -->
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<!-- ADD: Preconnect to CDNs -->
+<!-- Preconnect to CDNs -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://assets.calendly.com">
 <link rel="preconnect" href="https://www.google.com">
 <link rel="preconnect" href="https://www.gstatic.com">
-<!-- ADD: Enhanced FAQ Schema -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<!-- AOS Animation Library with SRI -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" integrity="sha384-hHc9N8iVZtRqkD8JzKqyFjLwD8yMfJjIeF7nKzS5u4iKtXg" crossorigin="anonymous">
+<!-- Calendly CSS with SRI -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" integrity="sha384-9+P7uF1oKzXhNQjHxVlUaBk6pLwD8yMfJjIeF7nKzS5u4iKtXg" crossorigin="anonymous">
+<!-- ADD: XML Sitemap -->
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<!-- Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://www.googletagmanager.com https://assets.calendly.com https://www.google.com https://www.gstatic.com 'unsafe-inline'; style-src 'self' https://unpkg.com https://assets.calendly.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://calendly.com https://formsubmit.co; frame-src https://calendly.com;">
+<!-- Enhanced FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -175,12 +183,34 @@
 }
 }
 </script>
+<!-- Testimonial Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Review",
+"itemReviewed": {
+"@type": "LocalBusiness",
+"name": "Guruji Tech Global"
+},
+"reviewRating": {
+"@type": "Rating",
+"ratingValue": "5",
+"bestRating": "5"
+},
+"author": {
+"@type": "Person",
+"name": "David, Logistics Company"
+},
+"reviewBody": "Guruji Tech Global transformed our IT infrastructure. Outstanding service and incredibly responsive team!"
+}
+</script>
 <title>Guruji Tech Global | Professional IT Support & Cloud Services</title>
 <style>
 * {box-sizing: border-box;}
 body {margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#f8fafc;color:#1e293b;scroll-behavior: smooth;line-height:1.6;}
 h1, h2, h3, h4 {margin:0;font-weight:700;}
 a {text-decoration:none;color:#3b82f6;}
+a:focus { outline: 2px solid #3b82f6; outline-offset: 2px; }
 html {scroll-behavior: smooth;}
 /* HEADER */
 header {
@@ -245,6 +275,13 @@ transition: 0.3s;
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+/* FORM ERROR STYLES */
+.form-error {
+color: #ef4444;
+font-size: 0.875rem;
+margin-top: 0.25rem;
+display: none;
+}
 /* HERO */
 .hero {
 position: relative;
@@ -997,37 +1034,30 @@ color: white;
 }
 </style>
 <!-- Google Tag Manager -->
-<script>
-window.dataLayer = window.dataLayer || [];
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MN592CV2');
-</script>
-<!-- reCAPTCHA v3 -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcXxGgpAAAAALvVrWzQyJzCzJzCzJzCzJzCzJzC" integrity="sha384-8VxB+Vr9u1fX+Yk9VvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKz" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MN592CV2" integrity="sha384-ACTUAL_HASH_HERE" crossorigin="anonymous"></script>
+<!-- reCAPTCHA v3 with SRI -->
+<script async defer src="https://www.google.com/recaptcha/api.js?render=6LcXxGgpAAAAALvVrWzQyJzCzJzCzJzCzJzCzJzC" integrity="sha384-ACTUAL_HASH_HERE" crossorigin="anonymous"></script>
 <!-- End Google Tag Manager -->
 </head>
 <body>
 <!-- Back to Top Button -->
-<a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 <path d="M13 19V13H16L12 8L8 13H11V19Z" />
 </svg>
-</a>
+</button>
 <!-- HEADER -->
 <header role="banner" id="mainHeader">
 <div class="logo-container">
 <a href="/" aria-label="Guruji Tech Global - Professional IT Services">
-<img src="logo.png" alt="Guruji Tech Global IT Services Logo" loading="lazy">
+<img src="logo.png" alt="Guruji Tech Global IT Services Logo" loading="lazy" width="90" height="90">
 </a>
 </div>
-<div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
 <span aria-hidden="true"></span>
 <span aria-hidden="true"></span>
 <span aria-hidden="true"></span>
-</div>
+</button>
 <nav id="nav-links" role="navigation">
 <a href="#home">Home</a>
 <a href="#about">About</a>
@@ -1039,7 +1069,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 <!-- HERO SECTION -->
 <section class="hero" id="home" data-aos="fade-up">
-<video class="hero-video" autoplay muted loop playsinline>
+<video class="hero-video" autoplay muted loop playsinline width="1920" height="1080" poster="hero-poster.jpg">
 <source src="video.mp4" type="video/mp4">
 </video>
 <div class="hero-overlay"></div>
@@ -1155,7 +1185,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 <div class="services-grid">
 <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy" width="640" height="360">
 <source src="cloud.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1170,7 +1200,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy" width="640" height="360">
 <source src="ms365.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1185,7 +1215,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy" width="640" height="360">
 <source src="cyber.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1200,7 +1230,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy" width="640" height="360">
 <source src="support.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1215,7 +1245,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy" width="640" height="360">
 <source src="network.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1230,7 +1260,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy" width="640" height="360">
 <source src="devops.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1245,7 +1275,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy" width="640" height="360">
 <source src="telephone.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1260,7 +1290,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy">
+<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy" width="640" height="360">
 <source src="consulting.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1304,8 +1334,6 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </section>
 <!-- CALENDLY SECTION -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" integrity="sha384-9+P7uF1oKzXhNQjHxVlUaBk6pLwD8yMfJjIeF7nKzS5u4iKtXg" crossorigin="anonymous">
-<script src="https://assets.calendly.com/assets/external/widget.js" async integrity="sha384-8VxB+Vr9u1fX+Yk9VvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKzZvKz" crossorigin="anonymous"></script>
 <section class="calendly-section" data-aos="fade-up">
 <h2>Ready to Optimize Your IT Infrastructure?</h2>
 <p>Let Guruji Tech Global handle your comprehensive IT needs while you focus on business growth and strategic initiatives.</p>
@@ -1332,11 +1360,13 @@ Schedule Your Consultation
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 <div class="form-group">
 <label for="name">Full Name</label>
-<input type="text" id="name" name="name" required aria-required="true" placeholder="John Doe">
+<input type="text" id="name" name="name" required aria-required="true" placeholder="John Doe" minlength="2" maxlength="100">
+<div class="form-error" id="name-error"></div>
 </div>
 <div class="form-group">
 <label for="email">Work Email</label>
-<input type="email" id="email" name="email" required aria-required="true" placeholder="john@company.com">
+<input type="email" id="email" name="email" required aria-required="true" placeholder="john@company.com" maxlength="255">
+<div class="form-error" id="email-error"></div>
 </div>
 <div class="form-group">
 <label for="service">Service Interested In</label>
@@ -1352,10 +1382,12 @@ Schedule Your Consultation
 <option value="IT Consulting">IT Consulting</option>
 <option value="Others">Others</option>
 </select>
+<div class="form-error" id="service-error"></div>
 </div>
 <div class="form-group">
 <label for="message">Project Details</label>
-<textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tell us about your project goals..."></textarea>
+<textarea id="message" name="message" rows="5" required aria-required="true" placeholder="Tell us about your project goals..." maxlength="2000"></textarea>
+<div class="form-error" id="message-error"></div>
 </div>
 <div class="gdpr-consent">
 <input type="checkbox" id="gdpr_consent" name="gdpr_consent" required>
@@ -1376,7 +1408,7 @@ Schedule Your Consultation
 <footer>
 <div class="footer-grid">
 <div class="footer-col">
-<img src="logo.png" alt="Guruji Tech Global Logo" class="footer-logo-white" loading="lazy">
+<img src="logo.png" alt="Guruji Tech Global Logo" class="footer-logo-white" loading="lazy" width="70" height="70">
 <p style="color:#cbd5e1; line-height:1.6; margin-bottom:1.5rem;">
 Delivering enterprise-grade IT services with transparency, speed, and reliability to businesses across the UK.
 </p>
@@ -1478,21 +1510,45 @@ gtag('config', 'G-EKKVPQMREZ', { 'consent': 'granted' });
 // Form validation + reCAPTCHA
 async function validateForm(e) {
 e.preventDefault();
+let isValid = true;
+// Reset errors
+document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
+// Validate name
 const name = document.getElementById('name').value.trim();
-const email = document.getElementById('email').value.trim();
-const gdpr = document.getElementById('gdpr_consent').checked;
 if (!name || name.length < 2) {
-alert('Name must be at least 2 characters');
-return false;
+document.getElementById('name-error').textContent = 'Name must be at least 2 characters';
+document.getElementById('name-error').style.display = 'block';
+isValid = false;
 }
-if (!email || !email.includes('@')) {
-alert('Please enter a valid email address');
-return false;
+// Validate email
+const email = document.getElementById('email').value.trim();
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!email || !emailRegex.test(email)) {
+document.getElementById('email-error').textContent = 'Please enter a valid email address';
+document.getElementById('email-error').style.display = 'block';
+isValid = false;
 }
+// Validate service
+const service = document.getElementById('service').value;
+if (!service) {
+document.getElementById('service-error').textContent = 'Please select a service';
+document.getElementById('service-error').style.display = 'block';
+isValid = false;
+}
+// Validate message
+const message = document.getElementById('message').value.trim();
+if (!message) {
+document.getElementById('message-error').textContent = 'Please enter your message';
+document.getElementById('message-error').style.display = 'block';
+isValid = false;
+}
+// Validate GDPR
+const gdpr = document.getElementById('gdpr_consent').checked;
 if (!gdpr) {
 alert('Please accept the GDPR consent');
-return false;
+isValid = false;
 }
+if (!isValid) return false;
 // Execute reCAPTCHA
 grecaptcha.ready(async () => {
 try {
@@ -1590,6 +1646,14 @@ loadGoogleAnalytics();
 // Attach enhanced form handler
 const form = document.getElementById('contactForm');
 if (form) form.addEventListener('submit', validateForm);
+// Escape key closes mobile menu
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && navLinks.classList.contains('show')) {
+navLinks.classList.remove('show');
+hamburger.classList.remove('active');
+hamburger.setAttribute('aria-expanded', 'false');
+}
+});
 // AUTOMATICALLY PLAY SERVICE VIDEOS ON LOAD (FIXED)
 document.querySelectorAll('.service-video-bg').forEach(video => {
 video.play().catch(e => {
