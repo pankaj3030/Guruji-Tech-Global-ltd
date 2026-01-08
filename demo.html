@@ -42,7 +42,7 @@
 <!-- ADD: XML Sitemap -->
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <!-- Content Security Policy -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://www.googletagmanager.com https://assets.calendly.com https://www.google.com https://www.gstatic.com 'unsafe-inline'; style-src 'self' https://unpkg.com https://assets.calendly.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://calendly.com https://formsubmit.co; frame-src https://calendly.com;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://www.googletagmanager.com https://assets.calendly.com https://www.google.com https://www.gstatic.com 'unsafe-inline'; style-src 'self' https://unpkg.com https://assets.calendly.com 'unsafe-inline'; img-src 'self'  https:; font-src 'self' https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://calendly.com https://formsubmit.co; frame-src https://calendly.com;">
 <!-- Enhanced FAQ Schema -->
 <script type="application/ld+json">
 {
@@ -496,7 +496,7 @@ margin: 0 auto;
 }
 .service-card {
 display: flex;
-height: 300px;
+height: 350px; /* Increased from 300px */
 border-radius: 8px;
 overflow: hidden;
 box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
@@ -509,21 +509,21 @@ box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
 border-color: #3b82f6;
 }
 .service-video-bg {
-width: 40%;
+width: 45%; /* Increased from 40% */
 height: 100%;
 object-fit: cover;
 flex-shrink: 0;
 }
 .service-content {
-width: 60%;
-padding: 2rem 1.75rem;
+width: 55%; /* Adjusted to match video width change */
+padding: 2.25rem 2rem; /* Slightly increased padding */
 display: flex;
 flex-direction: column;
 justify-content: center;
 background: #fff;
 }
 .service-header h3 {
-font-size: 1.5rem;
+font-size: 1.6rem; /* Slightly increased */
 margin-bottom: 1.25rem;
 color: #1e293b;
 font-weight: 700;
@@ -534,7 +534,7 @@ padding: 0;
 margin: 0;
 }
 .service-content li {
-padding: 0.6rem 0;
+padding: 0.7rem 0; /* Slightly increased */
 color: #475569;
 border-bottom: 1px solid #f1f5f9;
 font-size: 0.95rem;
@@ -882,13 +882,13 @@ grid-template-columns: repeat(2, 1fr);
 gap: 2rem;
 }
 .service-card {
-height: 280px;
+height: 320px; /* Adjusted for tablet */
 }
 .service-content {
-padding: 1.5rem 1.5rem;
+padding: 1.75rem 1.75rem;
 }
 .service-header h3 {
-font-size: 1.35rem;
+font-size: 1.45rem;
 margin-bottom: 1rem;
 }
 }
@@ -924,7 +924,7 @@ grid-template-columns: 1fr;
 gap: 1.5rem;
 }
 .service-card {
-height: 280px;
+height: 300px; /* Mobile height */
 }
 .service-video-bg {
 width: 50%;
@@ -934,7 +934,7 @@ width: 50%;
 padding: 1.5rem 1rem;
 }
 .service-header h3 {
-font-size: 1.25rem;
+font-size: 1.3rem;
 margin-bottom: 0.75rem;
 }
 .service-content li {
@@ -949,15 +949,15 @@ bottom: 80px;
 .service-card {
 flex-direction: column;
 height: auto;
-min-height: 400px;
+min-height: 420px; /* Increased mobile height */
 }
 .service-video-bg {
 width: 100%;
-height: 150px;
+height: 180px; /* Increased from 150px */
 }
 .service-content {
 width: 100%;
-padding: 1.25rem 1.25rem;
+padding: 1.5rem 1.5rem; /* Increased padding */
 }
 .section-header h2 {
 font-size: 1.75rem;
@@ -1185,7 +1185,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 <div class="services-grid">
 <article class="service-card" data-aos="fade-up" data-aos-delay="100">
-<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="cloud-poster.jpg" loading="lazy" width="720" height="405">
 <source src="cloud.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1200,7 +1200,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="200">
-<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="ms365-poster.jpg" loading="lazy" width="720" height="405">
 <source src="ms365.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1215,7 +1215,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="300">
-<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="cyber-poster.jpg" loading="lazy" width="720" height="405">
 <source src="cyber.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1230,7 +1230,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="400">
-<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="support-poster.jpg" loading="lazy" width="720" height="405">
 <source src="support.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1245,7 +1245,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="500">
-<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="network-poster.jpg" loading="lazy" width="720" height="405">
 <source src="network.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1260,7 +1260,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="600">
-<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="devops-poster.jpg" loading="lazy" width="720" height="405">
 <source src="devops.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1275,7 +1275,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="700">
-<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="telephone-poster.jpg" loading="lazy" width="720" height="405">
 <source src="telephone.mp4" type="video/mp4">
 </video>
 <div class="service-content">
@@ -1290,7 +1290,7 @@ your systems run smoothly so you can focus on growing your business.
 </div>
 </article>
 <article class="service-card" data-aos="fade-up" data-aos-delay="800">
-<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy" width="640" height="360">
+<video class="service-video-bg" muted loop playsinline poster="consulting-poster.jpg" loading="lazy" width="720" height="405">
 <source src="consulting.mp4" type="video/mp4">
 </video>
 <div class="service-content">
