@@ -95,7 +95,7 @@ export const services: Service[] = [
     ]
   },
   {
-    id: "5",
+    id: "9",
     title: "Network Solutions",
     slug: "network-solutions",
     description: "Network design and implementation. LAN, WAN, and WiFi solutions.",
