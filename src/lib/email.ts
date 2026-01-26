@@ -9,7 +9,11 @@ let resend: Resend | null = null;
 
 function getResendClient() {
   if (!resend && process.env.RESEND_API_KEY) {
+    console.log('[Email Service] Initializing Resend client...');
     resend = new Resend(process.env.RESEND_API_KEY);
+    console.log('[Email Service] Resend client initialized successfully');
+  } else if (!process.env.RESEND_API_KEY) {
+    console.error('[Email Service] RESEND_API_KEY is missing from environment variables');
   }
   return resend;
 }
@@ -28,22 +32,27 @@ export class EmailService {
    */
   static async sendEmail(options: EmailOptions, from?: string): Promise<boolean> {
     try {
-      console.log('Sending to:', options.to.join(', '), 'Subject:', options.subject);
+      console.log('[Email Service] Attempting to send email...');
+      console.log('[Email Service] To:', options.to.join(', '));
+      console.log('[Email Service] Subject:', options.subject);
 
       if (!process.env.RESEND_API_KEY) {
-        console.warn('RESEND_API_KEY not configured. Email will not be sent.');
-        console.warn('Please set RESEND_API_KEY in your .env file');
+        console.error('[Email Service] ERROR: RESEND_API_KEY not configured. Email will not be sent.');
+        console.error('[Email Service] Please set RESEND_API_KEY in environment variables');
         return false;
       }
 
       const client = getResendClient();
       if (!client) {
-        console.error('Failed to get Resend client');
+        console.error('[Email Service] ERROR: Failed to get Resend client');
         return false;
       }
 
+      const fromAddress = from || process.env.RESEND_FROM_GENERAL || 'info@gurujitechglobal.com';
+      console.log('[Email Service] From:', fromAddress);
+
       const emailData: any = {
-        from: from || process.env.RESEND_FROM_GENERAL || 'info@gurujitechglobal.com',
+        from: fromAddress,
         to: options.to,
         subject: options.subject,
       };
@@ -51,6 +60,7 @@ export class EmailService {
       // Add CC if present
       if (options.cc && options.cc.length > 0) {
         emailData.cc = options.cc;
+        console.log('[Email Service] CC:', options.cc.join(', '));
       }
 
       // Add text content
@@ -63,17 +73,25 @@ export class EmailService {
         emailData.html = options.html;
       }
 
+      console.log('[Email Service] Sending email via Resend API...');
       const response = await client.emails.send(emailData);
 
       if (response.error) {
-        console.error('Resend API error:', response.error);
+        console.error('[Email Service] Resend API returned error:', response.error);
+        console.error('[Email Service] Error details:', JSON.stringify(response.error, null, 2));
         return false;
       }
 
-      console.log('Email sent successfully via Resend:', response.data?.id);
+      console.log('[Email Service] SUCCESS: Email sent via Resend');
+      console.log('[Email Service] Email ID:', response.data?.id);
       return true;
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error('[Email Service] EXCEPTION: Failed to send email');
+      console.error('[Email Service] Error details:', error);
+      if (error instanceof Error) {
+        console.error('[Email Service] Error message:', error.message);
+        console.error('[Email Service] Error stack:', error.stack);
+      }
       return false;
     }
   }
