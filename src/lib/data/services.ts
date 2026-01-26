@@ -15,7 +15,7 @@ export const services: Service[] = [
     title: "Cloud Services",
     slug: "cloud-services",
     description: "Cloud infrastructure design and deployment. Public, private, and hybrid cloud solutions.",
-    image: "https://www.gurujitechglobal.com/services/cloud-services.png",
+    image: "service-cloud-services.png",
     features: [
       "Cloud infrastructure design and deployment",
       "Public, private, and hybrid cloud solutions",
@@ -36,7 +36,7 @@ export const services: Service[] = [
     title: "Microsoft 365",
     slug: "microsoft-365",
     description: "Microsoft 365 setup and migration. Exchange, SharePoint, OneDrive, and Teams management.",
-    image: "https://www.gurujitechglobal.com/services/microsoft-365.png",
+    image: "service-microsoft-365.png",
     features: [
       "Microsoft 365 setup and migration",
       "Exchange, SharePoint, OneDrive, and Teams management",
@@ -57,7 +57,7 @@ export const services: Service[] = [
     title: "Web Development",
     slug: "web-development",
     description: "Custom website and web application development. Responsive UI UX design and SEO and performance optimization.",
-    image: "https://www.gurujitechglobal.com/services/web-development.png",
+    image: "service-web-development.png",
     features: [
       "Custom website and web application development",
       "Responsive UI UX design",
@@ -78,7 +78,7 @@ export const services: Service[] = [
     title: "DevOps & Automation",
     slug: "devops-automation",
     description: "CI/CD pipeline implementation and Infrastructure as code. Automated deployments and System monitoring and optimization.",
-    image: "https://www.gurujitechglobal.com/services/devops-automation.png",
+    image: "service-devops-automation.png",
     features: [
       "CI/CD pipeline implementation",
       "Infrastructure as code",
@@ -99,7 +99,7 @@ export const services: Service[] = [
     title: "Network Solutions",
     slug: "network-solutions",
     description: "Network design and implementation. LAN, WAN, and WiFi solutions.",
-    image: "https://www.gurujitechglobal.com/services/network-solutions.png",
+    image: "service-network-solutions.png",
     features: [
       "Network design and implementation",
       "LAN, WAN, and WiFi solutions",
@@ -120,7 +120,7 @@ export const services: Service[] = [
     title: "Cyber Security",
     slug: "cyber-security",
     description: "Threat detection and prevention. Endpoint and network security and Vulnerability assessments.",
-    image: "https://www.gurujitechglobal.com/services/cyber-security.png",
+    image: "service-cyber-security.png",
     features: [
       "Threat detection and prevention",
       "Endpoint and network security",
@@ -141,7 +141,7 @@ export const services: Service[] = [
     title: "IT Support & Maintenance",
     slug: "it-support",
     description: "Proactive system monitoring and Issue resolution and troubleshooting.",
-    image: "https://www.gurujitechglobal.com/services/it-support.png",
+    image: "service-it-support.png",
     features: [
       "Proactive system monitoring",
       "Issue resolution and troubleshooting",
@@ -162,7 +162,7 @@ export const services: Service[] = [
     title: "IP Telephony",
     slug: "ip-telephony",
     description: "VoIP and IP telephony solutions and Unified communications and Call routing and management.",
-    image: "https://www.gurujitechglobal.com/services/ip-telephony.png",
+    image: "service-ip-telephony.png",
     features: [
       "VoIP and IP telephony solutions",
       "Unified communications",
@@ -183,7 +183,7 @@ export const services: Service[] = [
     title: "IT Consulting",
     slug: "it-consulting",
     description: "IT strategy and roadmap planning and Digital transformation advisory and Infrastructure and system assessment.",
-    image: "https://www.gurujitechglobal.com/services/it-consulting.png",
+    image: "service-it-consulting.png",
     features: [
       "IT strategy and roadmap planning",
       "Digital transformation advisory",
@@ -204,7 +204,7 @@ export const services: Service[] = [
     title: "Backup & Disaster Recovery",
     slug: "backup-disaster-recovery",
     description: "Automated data backup solutions and Disaster recovery planning and Business continuity management.",
-    image: "https://www.gurujitechglobal.com/services/backup-recovery.png",
+    image: "service-backup-disaster-recovery.png",
     features: [
       "Automated data backup solutions",
       "Disaster recovery planning",
@@ -225,7 +225,7 @@ export const services: Service[] = [
     title: "Endpoint Management",
     slug: "endpoint-management",
     description: "Device monitoring and control and Security policy enforcement and Software deployment and updates.",
-    image: "https://www.gurujitechglobal.com/services/endpoint-management.png",
+    image: "service-endpoint-management.png",
     features: [
       "Device monitoring and control",
       "Security policy enforcement",
@@ -246,7 +246,7 @@ export const services: Service[] = [
     title: "Virtualization Services",
     slug: "virtualization",
     description: "Server and desktop virtualization and Resource optimization and High availability solutions.",
-    image: "https://www.gurujitechglobal.com/services/virtualization.png",
+    image: "service-virtualization.png",
     features: [
       "Server and desktop virtualization",
       "Resource optimization",
@@ -267,7 +267,7 @@ export const services: Service[] = [
     title: "CCTV Configuration & Maintenance",
     slug: "cctv",
     description: "CCTV system design and configuration and Installation and setup of IP cameras and Monitoring and access management.",
-    image: "https://www.gurujitechglobal.com/services/cctv.png",
+    image: "service-cctv.png",
     features: [
       "CCTV system design and configuration",
       "Installation and setup of IP cameras",

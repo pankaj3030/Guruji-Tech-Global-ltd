@@ -5,7 +5,14 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend: Resend | null = null;
+
+function getResendClient() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 interface EmailOptions {
   to: string[];
@@ -26,6 +33,12 @@ export class EmailService {
       if (!process.env.RESEND_API_KEY) {
         console.warn('RESEND_API_KEY not configured. Email will not be sent.');
         console.warn('Please set RESEND_API_KEY in your .env file');
+        return false;
+      }
+
+      const client = getResendClient();
+      if (!client) {
+        console.error('Failed to get Resend client');
         return false;
       }
 
@@ -50,7 +63,7 @@ export class EmailService {
         emailData.html = options.html;
       }
 
-      const response = await resend.emails.send(emailData);
+      const response = await client.emails.send(emailData);
 
       if (response.error) {
         console.error('Resend API error:', response.error);
