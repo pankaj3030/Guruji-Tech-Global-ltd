@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import ServiceSchema from '@/components/ServiceSchema';
+import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle2, Users, Calendar, FileText, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Microsoft 365 | Setup & Migration | Guruji Tech Global',
-  description: 'Microsoft 365 setup, migration, and management services. Exchange, SharePoint, OneDrive, and Teams deployment for UK businesses.',
-  keywords: ['Microsoft 365', 'Office 365', 'Exchange Online', 'SharePoint', 'OneDrive', 'Teams'],
+  title: 'Microsoft 365 | Setup & Migration Coventry | Guruji Tech Global',
+  description: 'Microsoft 365 setup, migration, and management services in Coventry, UK. Exchange, SharePoint, OneDrive, and Teams deployment for UK businesses.',
+  keywords: ['Microsoft 365 setup Coventry', 'Office 365 Coventry', 'Exchange Online', 'SharePoint', 'OneDrive', 'Teams Coventry'],
 };
 
 export default function Microsoft365Page() {
@@ -24,20 +24,20 @@ export default function Microsoft365Page() {
     {
       icon: FileText,
       title: 'SharePoint & OneDrive',
-      description: 'Document management and cloud storage for seamless collaboration',
+      description: 'Document management and cloud storage for collaboration',
     },
     {
       icon: MessageSquare,
       title: 'Microsoft Teams',
-      description: 'Unified communications and collaboration platform setup and configuration',
+      description: 'Unified communications and collaboration platform setup',
     },
   ];
 
   const benefits = [
-    'Enhanced team collaboration with integrated tools',
-    'Improved productivity with cloud-based productivity suite',
-    'Anywhere, anytime access to files and applications',
-    'Enterprise-grade security and compliance',
+    'Enhanced team collaboration with integrated productivity suite',
+    'Improved productivity with cloud-based tools',
+    'Seamless email and calendar management',
+    'Access to enterprise-grade security and compliance',
     'Reduced IT maintenance overhead',
     'Seamless integration with existing Microsoft infrastructure',
   ];
@@ -62,7 +62,7 @@ export default function Microsoft365Page() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
@@ -74,7 +74,7 @@ export default function Microsoft365Page() {
             Microsoft 365
           </h1>
           <p className="text-xl text-white/90 max-w-3xl">
-            Complete Microsoft 365 setup, migration, and management solutions
+            Setup, migration, and management solutions in Coventry
           </p>
         </div>
       </section>
@@ -91,14 +91,14 @@ export default function Microsoft365Page() {
                 Our Microsoft 365 services help organizations leverage the full power of Microsoft's productivity suite. From initial planning and migration to ongoing management and optimization, we ensure your team can collaborate effectively and securely. We specialize in seamless migrations from on-premises Exchange and legacy systems to Microsoft 365.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether you need a simple email setup, complete Teams deployment, or full migration including SharePoint and OneDrive, our experts deliver solutions that enhance productivity while maintaining security and compliance.
+                We understand that productivity is essential for business success. Our 365 services include Exchange Online, SharePoint, OneDrive, Microsoft Teams, and more. We help UK businesses enable remote work, improve collaboration, and boost productivity with Microsoft's leading business applications.
               </p>
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
                 src="/about-hero.png"
-                alt="Microsoft 365"
+                alt="Microsoft 365 Setup"
                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
               />
             </div>
@@ -111,10 +111,10 @@ export default function Microsoft365Page() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Microsoft 365 <span className="text-[oklch(0.35_0.12_260)]">Expertise</span>
+              Our Microsoft 365 <span className="text-[oklch(0.35_0.12_260)]">Capabilities</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Complete setup, migration, and management for all Microsoft 365 services
+              End-to-end Microsoft 365 solutions for modern businesses
             </p>
           </div>
 
@@ -140,8 +140,8 @@ export default function Microsoft365Page() {
               <h2 className="text-4xl font-bold mb-6">
                 Why Choose Our <span className="text-[oklch(0.35_0.12_260)]">Microsoft 365 Services?</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                We combine deep Microsoft expertise with proven methodologies to deliver smooth migrations and ongoing management.
+              <p className="text-lg text-muted-mb-8">
+                We combine deep Microsoft expertise with proven methodologies to deliver migration that exceeds expectations.
               </p>
             </div>
             <div className="bg-white p-8 rounded-3xl shadow-lg border border-border">
@@ -163,10 +163,10 @@ export default function Microsoft365Page() {
       <section className="py-20 bg-gradient-to-r from-[oklch(0.35_0.12_260)] to-[oklch(0.5_0.2_25)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform Your Workspace?
+            Ready to Enhance Your Team Productivity?
           </h2>
           <p className="text-xl opacity-90 mb-8">
-            Let's discuss how Microsoft 365 can enhance your team's productivity
+            Let's discuss how Microsoft 365 can transform your workspace
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -181,6 +181,7 @@ export default function Microsoft365Page() {
               className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white font-semibold rounded-full hover:bg-white/30 transition-all"
             >
               Learn More
+              <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

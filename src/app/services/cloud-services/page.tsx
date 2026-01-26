@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import ServiceSchema from '@/components/ServiceSchema';
+import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle2, Cloud, Server, Database, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cloud Services | Infrastructure Design & Deployment | Guruji Tech Global',
-  description: 'Cloud infrastructure design, deployment, and management. Public, private, and hybrid cloud solutions tailored for UK businesses. AWS, Azure, Google Cloud expertise.',
-  keywords: ['cloud services', 'cloud infrastructure', 'AWS', 'Azure', 'Google Cloud', 'cloud migration', 'cloud deployment'],
+  title: 'Cloud Services | Infrastructure Design & Deployment Coventry | Guruji Tech Global',
+  description: 'Cloud infrastructure design, deployment, and management in Coventry, UK. Public, private, and hybrid cloud solutions tailored for UK businesses. AWS, Azure, Google Cloud expertise.',
+  keywords: ['cloud services Coventry', 'cloud infrastructure UK', 'AWS Coventry', 'Azure cloud setup', 'Google Cloud migration', 'cloud deployment UK'],
 };
 
 export default function CloudServicesPage() {
@@ -74,7 +74,7 @@ export default function CloudServicesPage() {
             Cloud Services
           </h1>
           <p className="text-xl text-white/90 max-w-3xl">
-            Comprehensive cloud infrastructure design, deployment, and management solutions
+            Comprehensive cloud infrastructure design, deployment, and management solutions in Coventry
           </p>
         </div>
       </section>
@@ -91,7 +91,7 @@ export default function CloudServicesPage() {
                 At Guruji Tech Global, we provide comprehensive cloud services that help businesses transform their IT infrastructure. Our cloud solutions enable organizations to scale resources on-demand, reduce capital expenditures, and improve operational efficiency. We work with leading cloud providers including AWS, Azure, and Google Cloud to deliver tailored solutions that meet your specific business requirements.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether you're looking to migrate existing applications, build new cloud-native solutions, or optimize your current cloud setup, our experts have the knowledge and experience to guide you through every step of your cloud journey.
+                We understand that every business faces unique technology challenges. Our experts work closely with you to assess your needs, design tailored strategies, and ensure your technology investments deliver maximum value. From initial assessment to implementation and ongoing management, we're your trusted partner for digital transformation.
               </p>
             </div>
             <div className="relative">
@@ -120,7 +120,7 @@ export default function CloudServicesPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg border border-border">
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg border-border">
                 <div className="w-16 h-16 bg-gradient-to-br from-[oklch(0.5_0.2_25)] to-[oklch(0.35_0.12_260)] rounded-2xl flex items-center justify-center mb-6">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
@@ -141,10 +141,10 @@ export default function CloudServicesPage() {
                 Why Choose Our <span className="text-[oklch(0.35_0.12_260)]">Cloud Services?</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Our cloud services are designed to help UK businesses leverage the power of cloud computing while maintaining security, compliance, and cost-efficiency.
+                We combine deep expertise with proven methodologies to deliver cloud transformation that accelerates your delivery pipeline.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-border">
+            <div className="bg-white p-8 rounded-3xl shadow-lg border-border">
               <h3 className="text-2xl font-bold mb-6">Key Benefits</h3>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -163,10 +163,10 @@ export default function CloudServicesPage() {
       <section className="py-20 bg-gradient-to-r from-[oklch(0.35_0.12_260)] to-[oklch(0.5_0.2_25)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Move to the Cloud?
+            Ready to Move to Cloud?
           </h2>
           <p className="text-xl opacity-90 mb-8">
-            Let's discuss how our cloud solutions can transform your business
+            Let's discuss how cloud can transform your business
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

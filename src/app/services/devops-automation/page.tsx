@@ -1,63 +1,63 @@
 import type { Metadata } from 'next';
 import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, CheckCircle2, Cloud, Server, Database, Shield } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, GitBranch, Rocket, Cpu, Layers, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cloud Services | Infrastructure Design & Deployment Coventry | Guruji Tech Global',
-  description: 'Cloud infrastructure design, deployment, and management in Coventry, UK. Public, private, and hybrid cloud solutions tailored for UK businesses. AWS, Azure, Google Cloud expertise.',
-  keywords: ['cloud services Coventry', 'cloud infrastructure UK', 'AWS Coventry', 'Azure cloud setup', 'Google Cloud migration', 'cloud deployment UK'],
+  title: 'DevOps & Automation | CI/CD Pipelines Coventry | Guruji Tech Global',
+  description: 'CI/CD pipeline implementation, infrastructure as code, and automation services in Coventry, UK. Automated deployments and system monitoring solutions.',
+  keywords: ['DevOps services Coventry', 'CI/CD pipeline', 'Infrastructure as code', 'automated deployment', 'system monitoring Coventry', 'IT automation UK'],
 };
 
-export default function CloudServicesPage() {
+export default function DevOpsPage() {
   const features = [
     {
-      icon: Cloud,
-      title: 'Cloud Infrastructure Design',
-      description: 'Custom cloud architectures designed for scalability, performance, and cost-efficiency',
+      icon: GitBranch,
+      title: 'CI/CD Pipeline',
+      description: 'Automated build, test, and deployment pipelines for faster releases',
     },
     {
-      icon: Server,
-      title: 'Deployment Solutions',
-      description: 'Seamless deployment of applications and workloads to public, private, or hybrid clouds',
+      icon: Layers,
+      title: 'Infrastructure as Code',
+      description: 'Terraform and Ansible for consistent, reproducible infrastructure',
     },
     {
-      icon: Database,
-      title: 'Migration Services',
-      description: 'Expert cloud migration from on-premises to cloud environments with minimal disruption',
+      icon: Rocket,
+      title: 'Automated Deployments',
+      description: 'Zero-downtime deployments with rollback capabilities',
     },
     {
-      icon: Shield,
-      title: 'Security & Compliance',
-      description: 'Enterprise-grade security and compliance management for cloud resources',
+      icon: Cpu,
+      title: 'System Monitoring',
+      description: 'Real-time monitoring and alerting for proactive issue resolution',
     },
   ];
 
   const benefits = [
-    'Reduced IT infrastructure costs with pay-as-you-go model',
-    'Enhanced scalability to grow with your business',
-    'Improved disaster recovery and business continuity',
-    'Access to enterprise-grade security and compliance',
-    'Faster deployment of applications and services',
-    '24/7 monitoring and support',
+    'Faster release cycles with automated pipelines',
+    'Improved software quality with automated testing',
+    'Reduced manual errors through automation',
+    'Better collaboration between development and operations',
+    'Scalable and repeatable deployments',
+    'Infrastructure version control and disaster recovery',
   ];
 
   return (
     <>
       <ServiceSchema
-        name="Cloud Services"
-        description="Cloud infrastructure design and deployment. Public, private, and hybrid cloud solutions."
-        url="https://gurujitechglobal.com/services/cloud-services"
-        imageUrl="https://gurujitechglobal.com/service-cloud-services.png"
-        serviceType="Cloud Infrastructure"
+        name="DevOps & Automation"
+        description="CI/CD pipeline implementation and Infrastructure as code. Automated deployments and System monitoring."
+        url="https://gurujitechglobal.com/services/devops-automation"
+        imageUrl="https://gurujitechglobal.com/service-devops-automation.png"
+        serviceType="DevOps Services"
       />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/service-cloud-services.png"
-            alt="Cloud Services"
+            src="/service-devops-automation.png"
+            alt="DevOps Automation"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
@@ -71,10 +71,10 @@ export default function CloudServicesPage() {
             Back to Services
           </Link>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white">
-            Cloud Services
+            DevOps & Automation
           </h1>
           <p className="text-xl text-white/90 max-w-3xl">
-            Comprehensive cloud infrastructure design, deployment, and management solutions in Coventry
+            CI/CD pipeline implementation, infrastructure as code, and automated deployments in Coventry
           </p>
         </div>
       </section>
@@ -85,20 +85,20 @@ export default function CloudServicesPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6">
-                Transform Your Business with <span className="text-[oklch(0.35_0.12_260)]">Cloud Solutions</span>
+                Streamline Your <span className="text-[oklch(0.35_0.12_260)]">Development Workflow</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                At Guruji Tech Global, we provide comprehensive cloud services that help businesses transform their IT infrastructure. Our cloud solutions enable organizations to scale resources on-demand, reduce capital expenditures, and improve operational efficiency. We work with leading cloud providers including AWS, Azure, and Google Cloud to deliver tailored solutions that meet your specific business requirements.
+                Our DevOps and automation services help organizations streamline their software development and deployment processes. We implement industry-standard CI/CD pipelines, containerization with Docker and Kubernetes, and infrastructure-as-code using Terraform and Ansible. This results in faster time-to-market and improved software quality.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We understand that every business faces unique technology challenges. Our experts work closely with you to assess your needs, design tailored strategies, and ensure your technology investments deliver maximum value. From initial assessment to implementation and ongoing management, we're your trusted partner for digital transformation.
+                We help UK businesses adopt DevOps best practices to achieve continuous integration, delivery, and deployment. Our services scale from initial setup to full DevOps transformation, ensuring your development workflow becomes more efficient, reliable, and scalable.
               </p>
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
-                src="/hero-image.png"
-                alt="Cloud Infrastructure"
+                src="/about-hero.png"
+                alt="DevOps Automation"
                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
               />
             </div>
@@ -111,16 +111,16 @@ export default function CloudServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Cloud <span className="text-[oklch(0.35_0.12_260)]">Capabilities</span>
+              Our DevOps <span className="text-[oklch(0.35_0.12_260)]">Capabilities</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              End-to-end cloud services tailored to your needs
+              End-to-end automation for modern development teams
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg border-border">
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg border border-border">
                 <div className="w-16 h-16 bg-gradient-to-br from-[oklch(0.5_0.2_25)] to-[oklch(0.35_0.12_260)] rounded-2xl flex items-center justify-center mb-6">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
@@ -138,10 +138,10 @@ export default function CloudServicesPage() {
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-4xl font-bold mb-6">
-                Why Choose Our <span className="text-[oklch(0.35_0.12_260)]">Cloud Services?</span>
+                Why Choose Our <span className="text-[oklch(0.35_0.12_260)]">DevOps Services?</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                We combine deep expertise with proven methodologies to deliver cloud transformation that accelerates your delivery pipeline.
+                We combine deep expertise with proven methodologies to deliver DevOps transformation that accelerates your delivery pipeline.
               </p>
             </div>
             <div className="bg-white p-8 rounded-3xl shadow-lg border-border">
@@ -163,10 +163,10 @@ export default function CloudServicesPage() {
       <section className="py-20 bg-gradient-to-r from-[oklch(0.35_0.12_260)] to-[oklch(0.5_0.2_25)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Move to Cloud?
+            Ready to Accelerate Development?
           </h2>
           <p className="text-xl opacity-90 mb-8">
-            Let's discuss how cloud can transform your business
+            Let's discuss how DevOps can transform your development process
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -181,6 +181,7 @@ export default function CloudServicesPage() {
               className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white font-semibold rounded-full hover:bg-white/30 transition-all"
             >
               Learn More
+              <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

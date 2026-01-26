@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import ServiceSchema from '@/components/ServiceSchema';
+import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, CheckCircle2, Headphones, AlertCircle, Clock, Wrench } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Monitor, Lock, RefreshCw, Clock, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'IT Support & Maintenance | 24/7 Help Desk | Guruji Tech Global',
-  description: 'Proactive system monitoring, issue resolution, and troubleshooting. 24/7 IT support and maintenance services for UK businesses.',
-  keywords: ['IT support', 'help desk', 'IT maintenance', 'system monitoring', 'technical support'],
+  title: 'IT Support & Maintenance | 24/7 Help Desk Coventry | Guruji Tech Global',
+  description: 'Proactive system monitoring, issue resolution, and troubleshooting in Coventry, UK. 24/7 IT support and maintenance services for UK businesses.',
+  keywords: ['IT support Coventry', 'help desk', 'IT maintenance', 'system monitoring', 'technical support Coventry', '24/7 IT support UK'],
 };
 
 export default function ITSupportPage() {
@@ -19,7 +19,7 @@ export default function ITSupportPage() {
     {
       icon: AlertCircle,
       title: 'Proactive Monitoring',
-      description: 'Continuous monitoring to detect and prevent issues before they impact your business',
+      description: 'Continuous monitoring to detect and prevent issues before they occur',
     },
     {
       icon: Clock,
@@ -41,12 +41,12 @@ export default function ITSupportPage() {
     'Focus on your core business while we handle IT',
     'Cost-effective support model',
   ];
-
+    
   return (
     <>
       <ServiceSchema
         name="IT Support & Maintenance"
-        description="Proactive system monitoring and Issue resolution and troubleshooting."
+        description="Proactive system monitoring and Issue resolution. Software patching and updates."
         url="https://gurujitechglobal.com/services/it-support"
         imageUrl="https://gurujitechglobal.com/service-it-support.png"
         serviceType="IT Support Services"
@@ -62,7 +62,7 @@ export default function ITSupportPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
@@ -71,10 +71,10 @@ export default function ITSupportPage() {
             Back to Services
           </Link>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white">
-            IT Support & Maintenance
+            IT Support
           </h1>
           <p className="text-xl text-white/90 max-w-3xl">
-            Reliable 24/7 IT support to keep your business running smoothly
+            24/7 IT support and maintenance solutions in Coventry
           </p>
         </div>
       </section>
@@ -82,25 +82,27 @@ export default function ITSupportPage() {
       {/* About Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">
-                <span className="text-[oklch(0.35_0.12_260)]">Always-On</span> IT Support
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Our IT support and maintenance services ensure your IT infrastructure runs smoothly 24/7. We provide proactive monitoring, rapid incident response, and preventive maintenance to minimize downtime and maximize productivity. Our help desk is staffed by experienced technicians who can resolve issues quickly.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We understand that IT issues can be disruptive. That's why we offer multiple support channels including phone, email, and remote access to ensure you get help whenever you need it.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
-              <img
-                src="/about-hero.png"
-                alt="IT Support Team"
-                className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
-              />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl font-bold mb-6">
+                  <span className="text-[oklch(0.35_0.12_260)]">Always-On</span> IT Support
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Our IT support and maintenance services ensure your IT infrastructure runs smoothly 24/7. We provide proactive monitoring, rapid incident response, and preventive maintenance to minimize downtime and maximize productivity.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Whether you need assistance with technical issues, system maintenance, or strategic IT planning, our help desk is staffed by experienced technicians who can resolve issues quickly.
+                </p>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
+                <img
+                  src="/about-hero.png"
+                  alt="IT Support Team"
+                  className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -113,7 +115,7 @@ export default function ITSupportPage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Our Support <span className="text-[oklch(0.35_0.12_260)]">Capabilities</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted- max-w-2xl mx-auto">
               Comprehensive IT support services tailored to your business needs
             </p>
           </div>
@@ -144,7 +146,7 @@ export default function ITSupportPage() {
                 We combine technical expertise with customer-focused service to deliver support that exceeds expectations.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-border">
+            <div className="bg-white p-8 rounded-3xl shadow-lg border-border">
               <h3 className="text-2xl font-bold mb-6">Key Benefits</h3>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -178,7 +180,7 @@ export default function ITSupportPage() {
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white font-semibold rounded-full hover:bg-white/30 transition-all"
+              className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border border-white font-semibold rounded-full hover:bg-white/30 transition-all"
             >
               Learn More
             </Link>

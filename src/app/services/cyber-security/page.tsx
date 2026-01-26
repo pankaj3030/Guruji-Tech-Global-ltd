@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import ServiceSchema from '@/components/ServiceSchema';
+import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle2, Shield, Lock, AlertTriangle, Eye } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cyber Security | Threat Detection & Prevention | Guruji Tech Global',
-  description: 'Comprehensive cybersecurity services including threat detection, endpoint protection, network security, and vulnerability assessments for UK businesses.',
-  keywords: ['cybersecurity', 'threat detection', 'endpoint security', 'network security', 'vulnerability assessment'],
+  title: 'Cyber Security | Threat Detection & Prevention Coventry | Guruji Tech Global',
+  description: 'Comprehensive cybersecurity services in Coventry, UK. Threat detection, endpoint protection, network security, and vulnerability assessments for UK businesses.',
+  keywords: ['cybersecurity services Coventry', 'threat detection', 'endpoint security Coventry', 'network security UK', 'vulnerability assessment UK'],
 };
 
 export default function CyberSecurityPage() {

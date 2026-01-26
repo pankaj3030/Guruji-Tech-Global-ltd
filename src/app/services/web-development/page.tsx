@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import ServiceSchema from '@/components/ServiceSchema';
+import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
 import { ArrowRight, ArrowLeft, CheckCircle2, Code, Smartphone, Layout, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Web Development | Custom Websites & Applications | Guruji Tech Global',
-  description: 'Custom website and web application development. Responsive design, SEO optimization, and high-performance web solutions for UK businesses.',
-  keywords: ['web development', 'custom websites', 'web applications', 'responsive design', 'SEO optimization'],
+  title: 'Web Development | Custom Websites & Applications Coventry | Guruji Tech Global',
+  description: 'Custom website and web application development in Coventry, UK. Responsive design, SEO optimization, and high-performance web solutions for UK businesses.',
+  keywords: ['web development Coventry', 'custom websites Coventry', 'web applications UK', 'responsive design', 'SEO optimization'],
 };
 
 export default function WebDevelopmentPage() {
@@ -144,7 +144,7 @@ export default function WebDevelopmentPage() {
                 We combine cutting-edge technology with deep understanding of user needs to deliver web solutions that exceed expectations.
               </p>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-border">
+            <div className="bg-white p-8 rounded-3xl shadow-lg border-border">
               <h3 className="text-2xl font-bold mb-6">Key Benefits</h3>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
