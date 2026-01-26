@@ -66,12 +66,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <Header />
-        <main className="flex-1 pt-20" itemScope itemType="https://schema.org/LocalBusiness">
-          <meta itemProp="name" content="Guruji Tech Global" />
-          <link itemProp="url" href="https://gurujitechglobal.com" />
-          <meta itemProp="address" content="Coventry, United Kingdom" />
-          <meta itemProp="telephone" content="Phone" />
-          <meta itemProp="priceRange" content="££" />
+        <main className="flex-1 pt-20">
           {children}
         </main>
         <Footer />
@@ -82,29 +77,63 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
+              "@type": "Organization",
               "name": "Guruji Tech Global",
-              "description": "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, Microsoft 365, DevOps automation, and 24/7 IT support.",
               "url": "https://gurujitechglobal.com",
+              "logo": "https://gurujitechglobal.com/logo.webp",
+              "description": "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, Microsoft 365, DevOps automation, and 24/7 IT support.",
               "telephone": "+44-7488564873",
+              "email": "contact@gurujitechglobal.com",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Coventry",
-                "addressCountry": {
-                  "@type": "Country",
-                  "name": "United Kingdom"
-                }
+                "addressRegion": "West Midlands",
+                "addressCountry": "United Kingdom"
               },
               "geo": {
                 "@type": "GeoCoordinates",
                 "latitude": 52.4068,
                 "longitude": -1.5197
               },
-              "openingHours": ["Mo-Fr 09:00-18:00"],
+              "sameAs": [
+                "https://www.linkedin.com/company/guruji-tech-global",
+                "https://twitter.com/gurujitechglobal",
+                "https://www.facebook.com/gurujitechglobal"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "telephone": "+44-7488564873",
+                "email": "contact@gurujitechglobal.com",
+                "areaServed": ["GB"],
+                "availableLanguage": ["en"]
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Guruji Tech Global",
+              "image": "https://gurujitechglobal.com/hero-image.webp",
+              "description": "Expert IT solutions provider in Coventry, UK",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Coventry",
+                "addressRegion": "West Midlands",
+                "addressCountry": "United Kingdom"
+              },
+              "telephone": "+44-7488564873",
+              "url": "https://gurujitechglobal.com",
               "priceRange": "££",
-              "areaServed": {
-                "@type": "Country",
-                "name": "United Kingdom"
+              "openingHours": ["Mo-Fr 09:00-18:00"],
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 52.4068,
+                "longitude": -1.5197
               }
             })
           }}

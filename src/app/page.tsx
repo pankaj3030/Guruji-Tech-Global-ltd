@@ -15,6 +15,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://gurujitechglobal.com"
+              }
+            ]
+          })
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -218,78 +237,21 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-muted/30" itemScope itemType="https://schema.org/LocalBusiness">
+      <section className="py-20 bg-muted/30">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "AggregateRating",
-              "itemReviewed": [
-                {
-                  "@type": "Review",
-                  "author": {
-                    "@type": "Person",
-                    "name": "Sarah Johnson",
-                    "jobTitle": "CEO, TechStart UK"
-                  },
-                  "itemReviewed": {
-                    "@type": "Organization",
-                    "name": "Guruji Tech Global"
-                  },
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": 5,
-                    "bestRating": 5,
-                    "worstRating": 1
-                  },
-                  "reviewBody": "Guruji Tech Global transformed our entire IT infrastructure. Their cloud migration was seamless, and we've seen 40% improvement in productivity.",
-                  "datePublished": "2024-01-15",
-                  "publisher": "TechStart UK"
-                },
-                {
-                  "@type": "Review",
-                  "author": {
-                    "@type": "Person",
-                    "name": "Michael Chen",
-                    "jobTitle": "Operations Director, RetailCo"
-                  },
-                  "itemReviewed": {
-                    "@type": "Organization",
-                    "name": "Guruji Tech Global"
-                  },
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": 5,
-                    "bestRating": 5,
-                    "worstRating": 1
-                  },
-                  "reviewBody": "Outstanding cybersecurity expertise. They identified vulnerabilities we didn't know existed and protected our customer data effectively.",
-                  "datePublished": "2024-02-20",
-                  "publisher": "RetailCo"
-                },
-                {
-                  "@type": "Review",
-                  "author": {
-                    "@type": "Person",
-                    "name": "Emma Williams",
-                    "jobTitle": "Managing Director, EduSpace"
-                  },
-                  "itemReviewed": {
-                    "@type": "Organization",
-                    "name": "Guruji Tech Global"
-                  },
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": 5,
-                    "bestRating": 5,
-                    "worstRating": 1
-                  },
-                  "reviewBody": "The team at Guruji Tech Global is incredibly responsive. Their 24/7 IT support has been invaluable to our educational institution.",
-                  "datePublished": "2024-03-10",
-                  "publisher": "EduSpace"
-                }
-              ]
+              "ratingValue": "5.0",
+              "reviewCount": "3",
+              "bestRating": "5",
+              "worstRating": "1",
+              "itemReviewed": {
+                "@type": "Organization",
+                "name": "Guruji Tech Global"
+              }
             })
           }}
         />
@@ -336,7 +298,13 @@ export default function Home() {
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-[oklch(0.5_0.2_25)] text-[oklch(0.5_0.2_25)]" viewBox="0 0 20 20">
+                    <svg 
+                      key={i} 
+                      className="w-5 h-5 fill-[oklch(0.5_0.2_25)] text-[oklch(0.5_0.2_25)]" 
+                      viewBox="0 0 20 20"
+                      aria-label={i === 0 ? `${testimonial.rating} out of 5 stars` : undefined}
+                      role={i === 0 ? "img" : undefined}
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
