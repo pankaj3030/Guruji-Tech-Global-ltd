@@ -82,15 +82,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ITService",
+              "@type": "ProfessionalService",
               "name": "Guruji Tech Global",
               "description": "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, Microsoft 365, DevOps automation, and 24/7 IT support.",
               "url": "https://gurujitechglobal.com",
-              "telephone": "+44 XXX XXXXXXX",
+              "telephone": "+44-7488564873",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Coventry",
-                "addressCountry": "UK"
+                "addressCountry": {
+                  "@type": "Country",
+                  "name": "United Kingdom"
+                }
               },
               "geo": {
                 "@type": "GeoCoordinates",
@@ -98,7 +101,11 @@ export default function RootLayout({
                 "longitude": -1.5197
               },
               "openingHours": ["Mo-Fr 09:00-18:00"],
-              "priceRange": "££"
+              "priceRange": "££",
+              "areaServed": {
+                "@type": "Country",
+                "name": "United Kingdom"
+              }
             })
           }}
         />
