@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, CheckCircle2, Cloud, Server, Database, Shield, Users, Calendar, FileText, MessageSquare, GitBranch, Layers, Rocket, Cpu, Network, Wifi, Lock, AlertTriangle, Eye, Headphones, AlertCircle, Clock, Wrench, Monitor, RefreshCw, Zap, HardDrive, HardDrives, ShieldCheck, Activity, HardDrive2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Cloud, Server, Database, Shield, Users, Calendar, FileText, MessageSquare, GitBranch, Layers, Rocket, Cpu, Network, Wifi, Lock, AlertTriangle, Eye, Headphones, AlertCircle, Clock, Wrench, Monitor, RefreshCw, Zap, HardDrive, ShieldCheck, Activity } from 'lucide-react';
 import { getServiceBySlug } from '@/lib/data/services';
 import { ServiceSchema } from '@/components/ServiceSchema';
 import { notFound } from 'next/navigation';
@@ -33,7 +33,6 @@ const iconMap: Record<string, any> = {
   HardDrive,
   ShieldCheck,
   Activity,
-  HardDrive2,
 };
 
 interface Props {
