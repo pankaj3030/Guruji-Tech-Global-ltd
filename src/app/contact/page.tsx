@@ -14,13 +14,59 @@ export default function Contact() {
     subject: '',
     message: '',
   });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    };
+    let isValid = true;
+
+    if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+      isValid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    if (formData.subject.trim().length < 5) {
+      newErrors.subject = 'Subject must be at least 5 characters';
+      isValid = false;
+    }
+
+    if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast.error('Please fix the errors in the form');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -185,8 +231,9 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)]"
+                        className={`w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)] ${errors.name ? 'border-destructive' : 'border-input'}`}
                       />
+                      {errors.name && <p className="text-destructive text-sm mt-1">{errors.name}</p>}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-semibold mb-2">
@@ -200,8 +247,9 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)]"
+                        className={`w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)] ${errors.email ? 'border-destructive' : 'border-input'}`}
                       />
+                      {errors.email && <p className="text-destructive text-sm mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
@@ -232,8 +280,9 @@ export default function Contact() {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="How can we help you?"
-                      className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)]"
+                      className={`w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)] ${errors.subject ? 'border-destructive' : 'border-input'}`}
                     />
+                    {errors.subject && <p className="text-destructive text-sm mt-1">{errors.subject}</p>}
                   </div>
 
                   <div>
@@ -248,8 +297,9 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your project or inquiry..."
-                      className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)] resize-none"
+                      className={`w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-[oklch(0.35_0.12_260)] resize-none ${errors.message ? 'border-destructive' : 'border-input'}`}
                     />
+                    {errors.message && <p className="text-destructive text-sm mt-1">{errors.message}</p>}
                   </div>
 
                   <button

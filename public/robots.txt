@@ -1,14 +1,15 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# robots.txt for Guruji Tech Global
+# https://gurujitechglobal.com
 
 User-agent: *
 Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+
+Sitemap: https://gurujitechglobal.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

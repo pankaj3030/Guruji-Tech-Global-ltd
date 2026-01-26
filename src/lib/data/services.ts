@@ -15,7 +15,7 @@ export const services: Service[] = [
     title: "Cloud Services",
     slug: "cloud-services",
     description: "Cloud infrastructure design and deployment. Public, private, and hybrid cloud solutions.",
-    image: "service-cloud-services.png",
+    image: "/service-cloud-services.png",
     features: [
       "Cloud infrastructure design and deployment",
       "Public, private, and hybrid cloud solutions",
@@ -36,14 +36,14 @@ export const services: Service[] = [
     title: "Microsoft 365",
     slug: "microsoft-365",
     description: "Microsoft 365 setup and migration. Exchange, SharePoint, OneDrive, and Teams management.",
-    image: "service-microsoft-365.png",
+    image: "/service-microsoft-365.png",
     features: [
       "Microsoft 365 setup and migration",
       "Exchange, SharePoint, OneDrive, and Teams management",
       "Security and compliance configuration",
       "Ongoing administration and support"
     ],
-    detailedDescription: "Our Microsoft 365 services help organizations leverage the full power of Microsoft's productivity suite. From initial planning and migration to ongoing management and optimization, we ensure your team can collaborate effectively and securely. We specialize in seamless migrations from on-premises Exchange and legacy systems to Microsoft 365.",
+    detailedDescription: "Our Microsoft 365 services help organizations leverage full power of Microsoft's productivity suite. From initial planning and migration to ongoing management and optimization, we ensure your team can collaborate effectively and securely. We specialize in seamless migrations from on-premises Exchange and legacy systems to Microsoft 365.",
     benefits: [
       "Enhanced team collaboration",
       "Improved productivity with integrated tools",
@@ -57,7 +57,7 @@ export const services: Service[] = [
     title: "Web Development",
     slug: "web-development",
     description: "Custom website and web application development. Responsive UI UX design and SEO and performance optimization.",
-    image: "service-web-development.png",
+    image: "/service-web-development.png",
     features: [
       "Custom website and web application development",
       "Responsive UI UX design",
@@ -78,7 +78,7 @@ export const services: Service[] = [
     title: "DevOps & Automation",
     slug: "devops-automation",
     description: "CI/CD pipeline implementation and Infrastructure as code. Automated deployments and System monitoring and optimization.",
-    image: "service-devops-automation.png",
+    image: "/service-devops-automation.png",
     features: [
       "CI/CD pipeline implementation",
       "Infrastructure as code",
@@ -99,14 +99,14 @@ export const services: Service[] = [
     title: "Network Solutions",
     slug: "network-solutions",
     description: "Network design and implementation. LAN, WAN, and WiFi solutions.",
-    image: "service-network-solutions.png",
+    image: "/service-network-solutions.png",
     features: [
       "Network design and implementation",
       "LAN, WAN, and WiFi solutions",
       "Firewall and network security",
       "Network monitoring and maintenance"
     ],
-    detailedDescription: "Our network solutions team designs and implements robust network infrastructures that support your business operations. Whether you need to upgrade your office network, implement WiFi across multiple locations, or connect remote offices through VPN, we have the expertise to deliver reliable, secure networks.",
+    detailedDescription: "Our network solutions team designs and implements robust network infrastructures that support your business operations. Whether you need to upgrade your office network, implement WiFi across multiple locations, or connect remote offices through VPN, we have expertise to deliver reliable, secure networks.",
     benefits: [
       "Reliable and high-speed connectivity",
       "Secure network infrastructure",
@@ -120,14 +120,14 @@ export const services: Service[] = [
     title: "Cyber Security",
     slug: "cyber-security",
     description: "Threat detection and prevention. Endpoint and network security and Vulnerability assessments.",
-    image: "service-cyber-security.png",
+    image: "/service-cyber-security.png",
     features: [
       "Threat detection and prevention",
       "Endpoint and network security",
       "Vulnerability assessments",
       "Compliance and security audits"
     ],
-    detailedDescription: "Cyber security is at the core of everything we do. Our comprehensive security services protect your organization from cyber threats, data breaches, and compliance violations. We implement multi-layered security strategies including firewalls, endpoint protection, security awareness training, and incident response planning.",
+    detailedDescription: "Cyber security is at core of everything we do. Our comprehensive security services protect your organization from cyber threats, data breaches, and compliance violations. We implement multi-layered security strategies including firewalls, endpoint protection, security awareness training, and incident response planning.",
     benefits: [
       "Protection against cyber threats",
       "Compliance with industry regulations",
@@ -141,7 +141,7 @@ export const services: Service[] = [
     title: "IT Support & Maintenance",
     slug: "it-support",
     description: "Proactive system monitoring and Issue resolution and troubleshooting.",
-    image: "service-it-support.png",
+    image: "/service-it-support.png",
     features: [
       "Proactive system monitoring",
       "Issue resolution and troubleshooting",
@@ -162,7 +162,7 @@ export const services: Service[] = [
     title: "IP Telephony",
     slug: "ip-telephony",
     description: "VoIP and IP telephony solutions and Unified communications and Call routing and management.",
-    image: "service-ip-telephony.png",
+    image: "/service-ip-telephony.png",
     features: [
       "VoIP and IP telephony solutions",
       "Unified communications",
@@ -183,7 +183,7 @@ export const services: Service[] = [
     title: "IT Consulting",
     slug: "it-consulting",
     description: "IT strategy and roadmap planning and Digital transformation advisory and Infrastructure and system assessment.",
-    image: "service-it-consulting.png",
+    image: "/service-it-consulting.png",
     features: [
       "IT strategy and roadmap planning",
       "Digital transformation advisory",
@@ -204,7 +204,7 @@ export const services: Service[] = [
     title: "Backup & Disaster Recovery",
     slug: "backup-disaster-recovery",
     description: "Automated data backup solutions and Disaster recovery planning and Business continuity management.",
-    image: "service-backup-disaster-recovery.png",
+    image: "/service-backup-disaster-recovery.png",
     features: [
       "Automated data backup solutions",
       "Disaster recovery planning",
@@ -225,7 +225,7 @@ export const services: Service[] = [
     title: "Endpoint Management",
     slug: "endpoint-management",
     description: "Device monitoring and control and Security policy enforcement and Software deployment and updates.",
-    image: "service-endpoint-management.png",
+    image: "/service-endpoint-management.png",
     features: [
       "Device monitoring and control",
       "Security policy enforcement",
@@ -246,7 +246,7 @@ export const services: Service[] = [
     title: "Virtualization Services",
     slug: "virtualization",
     description: "Server and desktop virtualization and Resource optimization and High availability solutions.",
-    image: "service-virtualization.png",
+    image: "/service-virtualization.png",
     features: [
       "Server and desktop virtualization",
       "Resource optimization",
@@ -267,7 +267,7 @@ export const services: Service[] = [
     title: "CCTV Configuration & Maintenance",
     slug: "cctv",
     description: "CCTV system design and configuration and Installation and setup of IP cameras and Monitoring and access management.",
-    image: "service-cctv.png",
+    image: "/service-cctv.png",
     features: [
       "CCTV system design and configuration",
       "Installation and setup of IP cameras",
