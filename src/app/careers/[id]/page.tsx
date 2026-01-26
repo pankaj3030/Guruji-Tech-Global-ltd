@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, MapPin, Clock, CheckCircle2, Upload, X } from 'l
 import { jobs, getJobById } from '@/lib/data/jobs';
 import { notFound } from 'next/navigation';
 import { toast } from 'sonner';
+import CookieConsent from '@/components/ui/cookie-consent';
 
 export default function JobApplication({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -350,6 +351,7 @@ export default function JobApplication({ params }: { params: Promise<{ id: strin
           </div>
         </div>
       </section>
+      <CookieConsent />
     </div>
   );
 }

@@ -218,7 +218,81 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-muted/30" itemScope itemType="https://schema.org/LocalBusiness">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AggregateRating",
+              "itemReviewed": [
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Sarah Johnson",
+                    "jobTitle": "CEO, TechStart UK"
+                  },
+                  "itemReviewed": {
+                    "@type": "Organization",
+                    "name": "Guruji Tech Global"
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": 5,
+                    "bestRating": 5,
+                    "worstRating": 1
+                  },
+                  "reviewBody": "Guruji Tech Global transformed our entire IT infrastructure. Their cloud migration was seamless, and we've seen 40% improvement in productivity.",
+                  "datePublished": "2024-01-15",
+                  "publisher": "TechStart UK"
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Michael Chen",
+                    "jobTitle": "Operations Director, RetailCo"
+                  },
+                  "itemReviewed": {
+                    "@type": "Organization",
+                    "name": "Guruji Tech Global"
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": 5,
+                    "bestRating": 5,
+                    "worstRating": 1
+                  },
+                  "reviewBody": "Outstanding cybersecurity expertise. They identified vulnerabilities we didn't know existed and protected our customer data effectively.",
+                  "datePublished": "2024-02-20",
+                  "publisher": "RetailCo"
+                },
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Emma Williams",
+                    "jobTitle": "Managing Director, EduSpace"
+                  },
+                  "itemReviewed": {
+                    "@type": "Organization",
+                    "name": "Guruji Tech Global"
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": 5,
+                    "bestRating": 5,
+                    "worstRating": 1
+                  },
+                  "reviewBody": "The team at Guruji Tech Global is incredibly responsive. Their 24/7 IT support has been invaluable to our educational institution.",
+                  "datePublished": "2024-03-10",
+                  "publisher": "EduSpace"
+                }
+              ]
+            })
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">

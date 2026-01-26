@@ -1,7 +1,19 @@
 'use client';
 
+import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import { Target, Users, Award, Lightbulb, CheckCircle2 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About Us | Expert IT Solutions Provider Coventry UK',
+  description: 'Learn about Guruji Tech Global, your trusted IT solutions partner in Coventry, UK. Over 10 years experience delivering cloud, cybersecurity, and web development.',
+  keywords: ['About Guruji Tech Global', 'IT Solutions Coventry', 'Technology Company UK', 'Cloud Services Coventry'],
+  openGraph: {
+    title: 'About Us | Guruji Tech Global',
+    description: 'Your trusted IT solutions partner in Coventry, UK with over 10 years of experience.',
+    type: 'website',
+  },
+};
 
 export default function About() {
   const [isLoaded, setIsLoaded] = useState(false);

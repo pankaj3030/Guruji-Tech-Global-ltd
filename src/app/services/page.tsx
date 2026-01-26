@@ -1,9 +1,21 @@
 'use client';
 
+import { Metadata } from 'next';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { services } from '@/lib/data/services';
+
+export const metadata: Metadata = {
+  title: 'IT Services & Solutions Coventry UK | Cloud, Cyber Security, Web Development',
+  description: 'Expert IT services in Coventry, UK. Cloud services, Microsoft 365, web development, cybersecurity, IT support, and more. Transform your business today.',
+  keywords: ['IT Services Coventry', 'Cloud Services UK', 'Cybersecurity Coventry', 'Web Development UK', 'Microsoft 365 Setup', 'IT Support UK'],
+  openGraph: {
+    title: 'IT Services & Solutions Coventry UK | Guruji Tech Global',
+    description: 'Expert IT services in Coventry, UK. Cloud, cybersecurity, web development, and 24/7 IT support.',
+    type: 'website',
+  },
+};
 
 export default function Services() {
   const [isLoaded, setIsLoaded] = useState(false);

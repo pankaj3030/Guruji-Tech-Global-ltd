@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import CookieConsent from "@/components/ui/cookie-consent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -74,6 +75,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CookieConsent />
         <Toaster />
         <script
           type="application/ld+json"
