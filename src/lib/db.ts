@@ -34,6 +34,70 @@ function getDatabaseUrl(): string {
   return url;
 }
 
+let tablesInitialized = false;
+
+async function ensureTablesExist(prisma: PrismaClient): Promise<void> {
+  if (tablesInitialized) {
+    console.log('[Database] Tables already initialized, skipping check');
+    return;
+  }
+
+  try {
+    console.log('[Database] Checking if tables exist...');
+
+    // Check if tables exist
+    const tablesResult = await prisma.$queryRaw`SELECT name FROM sqlite_master WHERE type='table'`;
+    const tables = tablesResult as any[];
+    const hasContactSubmission = tables.some((t: any) => t.name === 'ContactSubmission');
+    const hasJobApplication = tables.some((t: any) => t.name === 'JobApplication');
+
+    console.log('[Database] ContactSubmission table exists:', hasContactSubmission);
+    console.log('[Database] JobApplication table exists:', hasJobApplication);
+
+    if (!hasContactSubmission || !hasJobApplication) {
+      console.log('[Database] Tables missing, creating tables...');
+
+      // Create ContactSubmission table
+      await prisma.$executeRawUnsafe(`
+        CREATE TABLE IF NOT EXISTS "ContactSubmission" (
+          "id" TEXT NOT NULL PRIMARY KEY,
+          "name" TEXT NOT NULL,
+          "email" TEXT NOT NULL,
+          "phone" TEXT,
+          "subject" TEXT,
+          "message" TEXT NOT NULL,
+          "submittedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
+
+      // Create JobApplication table
+      await prisma.$executeRawUnsafe(`
+        CREATE TABLE IF NOT EXISTS "JobApplication" (
+          "id" TEXT NOT NULL PRIMARY KEY,
+          "jobId" TEXT NOT NULL,
+          "jobTitle" TEXT NOT NULL,
+          "firstName" TEXT NOT NULL,
+          "lastName" TEXT NOT NULL,
+          "email" TEXT NOT NULL,
+          "phone" TEXT NOT NULL,
+          "address" TEXT,
+          "coverLetter" TEXT,
+          "resumeUrl" TEXT,
+          "submittedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )
+      `);
+
+      console.log('[Database] Tables created successfully');
+    }
+
+    tablesInitialized = true;
+  } catch (error) {
+    console.error('[Database] ERROR: Failed to ensure tables exist');
+    console.error('[Database] Error details:', error);
+    // Don't throw - allow application to continue
+  }
+}
+
 export const db =
   globalForPrisma.prisma ??
   new PrismaClient({
@@ -46,3 +110,8 @@ export const db =
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
+
+// Ensure tables exist when database is first used
+export async function initializeDatabase(): Promise<void> {
+  await ensureTablesExist(db);
+}

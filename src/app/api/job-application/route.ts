@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db';
+import { db, initializeDatabase } from '@/lib/db';
 import { EmailService } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
     console.log('[Job Application API] Received job application');
+
+    // Ensure database tables exist before trying to save
+    await initializeDatabase();
 
     const formData = await request.formData();
     const jobId = formData.get('jobId') as string;

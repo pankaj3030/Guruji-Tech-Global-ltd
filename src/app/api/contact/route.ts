@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/db';
+import { db, initializeDatabase } from '@/lib/db';
 import { EmailService } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
     console.log('[Contact API] Received contact form submission');
+
+    // Ensure database tables exist before trying to save
+    await initializeDatabase();
 
     const body = await request.json();
     const { name, email, phone, subject, message } = body;
