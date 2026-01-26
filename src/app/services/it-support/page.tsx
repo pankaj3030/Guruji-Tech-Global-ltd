@@ -48,7 +48,7 @@ export default function ITSupportPage() {
         name="IT Support & Maintenance"
         description="Proactive system monitoring and Issue resolution. Software patching and updates."
         url="https://gurujitechglobal.com/services/it-support"
-        imageUrl="https://gurujitechglobal.com/service-it-support.png"
+        imageUrl="https://gurujitechglobal.com/service-it-support.webp"
         serviceType="IT Support Services"
       />
       
@@ -56,7 +56,7 @@ export default function ITSupportPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/service-it-support.png"
+            src="/service-it-support.webp"
             alt="IT Support"
             className="w-full h-full object-cover"
           />
@@ -98,7 +98,7 @@ export default function ITSupportPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
                 <img
-                  src="/about-hero.png"
+                  src="/about-hero.webp"
                   alt="IT Support Team"
                   className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
                 />

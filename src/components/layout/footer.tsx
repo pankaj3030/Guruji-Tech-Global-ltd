@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <img
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Guruji Tech Global"
                 className="h-16 w-auto"
               />

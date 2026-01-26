@@ -97,7 +97,7 @@ export default function CoventryServicesPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero-image.png"
+            src="/hero-image.webp"
             alt="IT Services Coventry"
             className="w-full h-full object-cover"
           />

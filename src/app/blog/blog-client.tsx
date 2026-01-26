@@ -18,7 +18,7 @@ export default function BlogClient() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/blog-hero.png"
+            src="/blog-hero.webp"
             alt="Blog"
             className="w-full h-full object-cover"
           />

@@ -48,7 +48,7 @@ export default function CloudServicesPage() {
         name="Cloud Services"
         description="Cloud infrastructure design and deployment. Public, private, and hybrid cloud solutions."
         url="https://gurujitechglobal.com/services/cloud-services"
-        imageUrl="https://gurujitechglobal.com/service-cloud-services.png"
+        imageUrl="https://gurujitechglobal.com/service-cloud-services.webp"
         serviceType="Cloud Infrastructure"
       />
       
@@ -56,7 +56,7 @@ export default function CloudServicesPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/service-cloud-services.png"
+            src="/service-cloud-services.webp"
             alt="Cloud Services"
             className="w-full h-full object-cover"
           />
@@ -97,7 +97,7 @@ export default function CloudServicesPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
-                src="/hero-image.png"
+                src="/hero-image.webp"
                 alt="Cloud Infrastructure"
                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
               />

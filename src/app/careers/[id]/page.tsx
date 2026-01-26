@@ -97,7 +97,7 @@ export default function JobApplication({ params }: { params: Promise<{ id: strin
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/careers-hero.png"
+            src="/careers-hero.webp"
             alt="Job Application"
             className="w-full h-full object-cover"
           />

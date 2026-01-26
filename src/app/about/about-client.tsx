@@ -16,7 +16,7 @@ export default function AboutClient() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/about-hero.png"
+            src="/about-hero.webp"
             alt="About Guruji Tech Global"
             className="w-full h-full object-cover"
           />
@@ -66,7 +66,7 @@ export default function AboutClient() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
-                src="/hero-image.png"
+                src="/hero-image.webp"
                 alt="Our Team at Work"
                 className="relative w-full h-[500px] object-cover rounded-3xl shadow-2xl"
               />

@@ -38,7 +38,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Guruji Tech Global"
               className="h-16 w-auto"
             />

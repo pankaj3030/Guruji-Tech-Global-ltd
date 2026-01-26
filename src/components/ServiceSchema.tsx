@@ -26,7 +26,7 @@ export function ServiceSchema({
       "name": "Guruji Tech Global",
       "url": "https://gurujitechglobal.com",
       "telephone": "+44-7488564873",
-      "image": "https://gurujitechglobal.com/logo.png"
+      "image": "https://gurujitechglobal.com/logo.webp"
     },
     "areaServed": {
       "@type": "Country",

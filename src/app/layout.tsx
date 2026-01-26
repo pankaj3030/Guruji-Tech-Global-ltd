@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   keywords: ["IT Solutions Coventry", "Cloud Services UK", "Web Development UK", "Cybersecurity Coventry", "Microsoft 365 Setup", "DevOps Automation", "IT Support UK", "Network Solutions", "Guruji Tech Global"],
   authors: [{ name: "Guruji Tech Global" }],
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.webp",
   },
   metadataBase: new URL('https://gurujitechglobal.com'),
   openGraph: {

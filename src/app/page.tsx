@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-image.png"
+            src="/hero-image.webp"
             alt="Guruji Tech Global"
             fill
             priority
@@ -180,7 +180,7 @@ export default function Home() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <Image
-                src="/about-hero.png"
+                src="/about-hero.webp"
                 alt="Our Team"
                 width={800}
                 height={500}

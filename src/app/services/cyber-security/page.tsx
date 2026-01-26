@@ -48,7 +48,7 @@ export default function CyberSecurityPage() {
         name="Cyber Security"
         description="Threat detection and prevention. Endpoint and network security and Vulnerability assessments."
         url="https://gurujitechglobal.com/services/cyber-security"
-        imageUrl="https://gurujitechglobal.com/service-cyber-security.png"
+        imageUrl="https://gurujitechglobal.com/service-cyber-security.webp"
         serviceType="Cyber Security"
       />
       
@@ -56,7 +56,7 @@ export default function CyberSecurityPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/service-cyber-security.png"
+            src="/service-cyber-security.webp"
             alt="Cyber Security"
             className="w-full h-full object-cover"
           />
@@ -97,7 +97,7 @@ export default function CyberSecurityPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
-                src="/hero-image.png"
+                src="/hero-image.webp"
                 alt="Cyber Security"
                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
               />

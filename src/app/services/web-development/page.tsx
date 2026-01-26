@@ -48,7 +48,7 @@ export default function WebDevelopmentPage() {
         name="Web Development"
         description="Custom website and web application development. Responsive UI/UX design and SEO and performance optimization."
         url="https://gurujitechglobal.com/services/web-development"
-        imageUrl="https://gurujitechglobal.com/service-web-development.png"
+        imageUrl="https://gurujitechglobal.com/service-web-development.webp"
         serviceType="Web Development"
       />
       
@@ -56,7 +56,7 @@ export default function WebDevelopmentPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/service-web-development.png"
+            src="/service-web-development.webp"
             alt="Web Development"
             className="w-full h-full object-cover"
           />
@@ -97,7 +97,7 @@ export default function WebDevelopmentPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.5_0.2_25)]/20 to-[oklch(0.35_0.12_260)]/20 rounded-3xl blur-3xl" />
               <img
-                src="/about-hero.png"
+                src="/about-hero.webp"
                 alt="Web Development Team"
                 className="relative w-full h-[400px] object-cover rounded-3xl shadow-2xl"
               />
