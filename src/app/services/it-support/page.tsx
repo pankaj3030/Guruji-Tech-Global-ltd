@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ServiceSchema } from '@/components/ServiceSchema';
 import Link from 'next/link';
-import { ArrowRight, ArrowLeft, CheckCircle2, Monitor, Lock, RefreshCw, Clock, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Headphones, AlertCircle, Clock, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'IT Support & Maintenance | 24/7 Help Desk Coventry | Guruji Tech Global',
