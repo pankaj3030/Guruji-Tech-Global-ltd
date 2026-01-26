@@ -55,7 +55,7 @@ export default function IPTelephonyPage() {
         imageUrl="https://gurujitechglobal.com/service-ip-telephony.webp"
         serviceType="IP Telephony"
       />
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -66,7 +66,7 @@ export default function IPTelephonyPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left text-white">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
