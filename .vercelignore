@@ -1,0 +1,18 @@
+# Force Vercel to use bun instead of pnpm
+# This prevents Vercel from misinterpreting the project type
+
+# Ignore pnpm files
+pnpm-lock.yaml
+pnpm-lock.json
+
+# Ignore node_modules (will be rebuilt by Vercel)
+node_modules/
+
+# Ignore build artifacts
+.next/
+.vercel/
+
+# Ignore logs
+*.log
+dev.log
+server.log
