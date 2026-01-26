@@ -34,16 +34,17 @@ function getDatabaseUrl(): string {
   return url;
 }
 
+// On Vercel, we need to initialize tables on EVERY request
+// because /tmp/prisma.db is recreated on each deployment
 let tablesInitialized = false;
 
 async function ensureTablesExist(prisma: PrismaClient): Promise<void> {
-  if (tablesInitialized) {
-    console.log('[Database] Tables already initialized, skipping check');
-    return;
-  }
+  // On Vercel, always check and create tables because database is ephemeral
+  const isVercel = !!process.env.VERCEL;
 
   try {
     console.log('[Database] Checking if tables exist...');
+    console.log('[Database] Environment:', isVercel ? 'Vercel (ephemeral storage)' : 'Local');
 
     // Check if tables exist
     const tablesResult = await prisma.$queryRaw`SELECT name FROM sqlite_master WHERE type='table'`;
@@ -88,14 +89,26 @@ async function ensureTablesExist(prisma: PrismaClient): Promise<void> {
       `);
 
       console.log('[Database] Tables created successfully');
+    } else {
+      console.log('[Database] Tables already exist');
     }
 
     tablesInitialized = true;
   } catch (error) {
     console.error('[Database] ERROR: Failed to ensure tables exist');
     console.error('[Database] Error details:', error);
-    // Don't throw - allow application to continue
+    // On Vercel, don't throw - allow application to continue
+    if (!process.env.VERCEL) {
+      console.error('[Database] Not on Vercel, throwing error');
+    throw error;
+    }
   }
+}
+
+// Export the function to be called in API routes
+export async function initializeDatabase(): Promise<void> {
+  // Always call ensureTablesExist before database operations
+  await ensureTablesExist(db);
 }
 
 export const db =
@@ -110,8 +123,3 @@ export const db =
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db
-
-// Ensure tables exist when database is first used
-export async function initializeDatabase(): Promise<void> {
-  await ensureTablesExist(db);
-}
