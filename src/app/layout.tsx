@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { GoogleTagManagerHead, GoogleTagManagerBody } from "@/components/google-tag-manager";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
@@ -62,6 +64,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" suppressHydrationWarning>
+      <head>
+        {/* Google Tag Manager */}
+        <GoogleTagManagerHead gtmId="GTM-T4X8WB5S" />
+        {/* Google Analytics */}
+        <GoogleAnalytics measurementId="G-F3D22ZXL85" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
