@@ -68,7 +68,7 @@ export default function RootLayout({
         {/* Google Tag Manager */}
         <GoogleTagManagerHead gtmId="GTM-T4X8WB5S" />
         {/* Google Analytics */}
-        <GoogleAnalytics measurementId="G-F3D22ZXL85" />
+        <GoogleAnalytics measurementId="G-T7BND0JW2T" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}

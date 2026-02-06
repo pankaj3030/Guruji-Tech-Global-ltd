@@ -1,5 +1,5 @@
 # robots.txt for Guruji Tech Global
-# https://gurujitechglobal.com
+# https://www.gurujitechglobal.com
 
 User-agent: *
 Allow: /
@@ -9,7 +9,7 @@ Disallow: /admin/
 Disallow: /_next/
 Disallow: /private/
 
-Sitemap: https://gurujitechglobal.com/sitemap.xml
+Sitemap: https://www.gurujitechglobal.com/sitemap.xml
 
 # Crawl-delay for polite crawling
-Crawl-delay: 1
+
