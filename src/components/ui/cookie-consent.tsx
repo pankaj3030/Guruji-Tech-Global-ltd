@@ -8,6 +8,18 @@ export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
+  // Function to update Google consent
+  const updateGoogleConsent = (consentSettings: {
+    ad_user_data?: string;
+    ad_personalization?: string;
+    ad_storage?: string;
+    analytics_storage?: string;
+  }) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', consentSettings);
+    }
+  };
+
   useEffect(() => {
     // Check if user has already consented
     const hasConsented = localStorage.getItem('cookie-consent');
@@ -16,26 +28,72 @@ export default function CookieConsent() {
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 1500);
-      
+
       return () => clearTimeout(timer);
+    } else {
+      // Restore previous consent choice
+      const consentChoice = hasConsented;
+      if (consentChoice === 'accepted') {
+        updateGoogleConsent({
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          ad_storage: 'granted',
+          analytics_storage: 'granted',
+        });
+      } else if (consentChoice === 'essential') {
+        updateGoogleConsent({
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          ad_storage: 'denied',
+          analytics_storage: 'granted',
+        });
+      }
+      // declined keeps all denied (default state)
     }
   }, []);
 
   const handleAcceptAll = () => {
     localStorage.setItem('cookie-consent', 'accepted');
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
+
+    // Update Google consent - grant all
+    updateGoogleConsent({
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      ad_storage: 'granted',
+      analytics_storage: 'granted',
+    });
+
     setIsVisible(false);
   };
 
   const handleAcceptEssential = () => {
     localStorage.setItem('cookie-consent', 'essential');
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
+
+    // Update Google consent - grant analytics only
+    updateGoogleConsent({
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      ad_storage: 'denied',
+      analytics_storage: 'granted',
+    });
+
     setIsVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem('cookie-consent', 'declined');
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
+
+    // Update Google consent - deny all
+    updateGoogleConsent({
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+    });
+
     setIsVisible(false);
   };
 
