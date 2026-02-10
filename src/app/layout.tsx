@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { GoogleTracking } from "@/components/google-tracking";
+import { GoogleTracking, GoogleTrackingNoScript } from "@/components/google-tracking";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
@@ -64,16 +64,18 @@ export default function RootLayout({
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <head>
-        {/* Google Tracking: Analytics, Ads & Tag Manager */}
+        {/* Google Tracking: Analytics, Ads, Tag Manager & Tag 360 */}
         <GoogleTracking
           gaId="G-EKKVPQMREZ"
           adsId="AW-17768577986"
           gtmId="GT-5TWZTQBR"
+          gtmContainerId="GTM-T4X8WB5S"
         />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
+        <GoogleTrackingNoScript gtmContainerId="GTM-T4X8WB5S" />
         <Header />
         <main className="flex-1 pt-20">
           {children}
