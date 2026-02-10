@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://*.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' data: https://*.gstatic.com; connect-src 'self' https://*.googleapis.com https://*.analytics.google.com; frame-src 'self' https://*.youtube.com; base-uri 'self'; form-action 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://www.google.com https://*.google.com; style-src 'self' 'unsafe-inline' https://*.googleapis.com; img-src 'self' data: https: blob: https://*.google.com https://*.googletagmanager.com; font-src 'self' data: https://*.gstatic.com; connect-src 'self' https://*.googleapis.com https://*.analytics.google.com https://region1.analytics.google.com https://www.google.com https://googleads.g.doubleclick.net https://*.google.com https://*.doubleclick.net; frame-src 'self' https://*.youtube.com https://*.googletagmanager.com https://googleads.g.doubleclick.net; base-uri 'self'; form-action 'self';"
           }
         ],
       },
