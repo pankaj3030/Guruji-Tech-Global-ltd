@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { GoogleTagManagerHead, GoogleTagManagerBody } from "@/components/google-tag-manager";
-import { GoogleAnalytics } from "@/components/google-analytics";
-import { GoogleAds } from "@/components/google-ads";
+import { GoogleTracking } from "@/components/google-tracking";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
@@ -66,17 +64,16 @@ export default function RootLayout({
   return (
     <html lang="en-GB" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
-        <GoogleTagManagerHead gtmId="GT-5TWZTQBR" />
-        {/* Google Analytics */}
-        <GoogleAnalytics measurementId="G-EKKVPQMREZ" />
-        {/* Google Ads */}
-        <GoogleAds adsId="AW-17768577986" />
+        {/* Google Tracking: Analytics, Ads & Tag Manager */}
+        <GoogleTracking
+          gaId="G-EKKVPQMREZ"
+          adsId="AW-17768577986"
+          gtmId="GT-5TWZTQBR"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <GoogleTagManagerBody gtmId="GT-5TWZTQBR" />
         <Header />
         <main className="flex-1 pt-20">
           {children}
