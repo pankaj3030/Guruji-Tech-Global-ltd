@@ -39,7 +39,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-image.webp"
-            alt="Guruji Tech Global"
+            alt="Guruji Tech Global - Expert IT Solutions and Services in Coventry UK"
             fill
             priority
             className="object-cover"
@@ -49,12 +49,12 @@ export default function Home() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 transition-all duration-1000 ${
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 transition-all duration-1000 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
             }`}
           >
             <span className="bg-gradient-to-r from-[oklch(0.35_0.12_260)] via-[oklch(0.5_0.2_25)] to-[oklch(0.35_0.12_260)] bg-clip-text text-transparent">
-              Innovative IT Solutions
+              Expert IT Solutions & Services in Coventry, UK
             </span>
           </h1>
           <p

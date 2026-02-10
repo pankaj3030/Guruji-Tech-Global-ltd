@@ -18,27 +18,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Guruji Tech Global | IT Solutions & Services Coventry UK",
-  description: "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, Microsoft 365, DevOps automation, and 24/7 IT support. Transform your business today.",
-  keywords: ["IT Solutions Coventry", "Cloud Services UK", "Web Development UK", "Cybersecurity Coventry", "Microsoft 365 Setup", "DevOps Automation", "IT Support UK", "Network Solutions", "Guruji Tech Global"],
+  title: "IT Solutions Coventry | Expert IT Services & Support UK | Guruji Tech Global",
+  description: "Expert IT solutions in Coventry, UK. 500+ projects delivered. Cloud services, web development, cybersecurity, Microsoft 365, and 24/7 IT support. Get a free consultation today!",
+  keywords: ["IT Solutions Coventry", "Cloud Services UK", "Web Development UK", "Cybersecurity Coventry", "Microsoft 365 Setup", "DevOps Automation", "IT Support UK", "Network Solutions", "Managed IT Services", "IT Consulting UK", "Guruji Tech Global"],
   authors: [{ name: "Guruji Tech Global" }],
   icons: {
     icon: "/logo.webp",
   },
-  metadataBase: new URL('https://gurujitechglobal.com'),
+  metadataBase: new URL('https://www.gurujitechglobal.com'),
+  alternates: {
+    canonical: 'https://www.gurujitechglobal.com',
+  },
   openGraph: {
-    title: "Guruji Tech Global | IT Solutions & Services Coventry UK",
-    description: "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, and more.",
-    url: "https://gurujitechglobal.com",
+    title: "IT Solutions Coventry | Expert IT Services & Support UK | Guruji Tech Global",
+    description: "Expert IT solutions in Coventry, UK. 500+ projects delivered. Cloud services, web development, cybersecurity, and 24/7 IT support.",
+    url: "https://www.gurujitechglobal.com",
     siteName: "Guruji Tech Global",
     type: "website",
     locale: "en_GB",
     countryName: "United Kingdom",
+    images: [
+      {
+        url: "https://www.gurujitechglobal.com/hero-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Guruji Tech Global - IT Solutions Coventry",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guruji Tech Global | IT Solutions & Services Coventry UK",
-    description: "Expert IT solutions in Coventry, UK. Cloud services, web development, cybersecurity, and more.",
+    title: "IT Solutions Coventry | Expert IT Services & Support UK",
+    description: "Expert IT solutions in Coventry, UK. 500+ projects delivered. Cloud services, web development, cybersecurity, and more.",
+    images: ["https://www.gurujitechglobal.com/hero-image.webp"],
   },
   robots: {
     index: true,
@@ -52,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'G-EKKVPQMREZ', // Updated with your Google Analytics ID
   },
 };
 

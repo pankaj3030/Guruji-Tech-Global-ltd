@@ -8,8 +8,10 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /private/
+Disallow: /test-tracking/
 
 Sitemap: https://www.gurujitechglobal.com/sitemap.xml
 
 # Crawl-delay for polite crawling
+Crawl-delay: 1
 
