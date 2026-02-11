@@ -3,9 +3,28 @@ import Link from 'next/link';
 import { ArrowRight, Clock, Calendar, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Microsoft 365 vs Google Workspace: Which is Right for You? | Guruji Tech Global',
-  description: 'Compare features, pricing, and benefits of leading productivity suites. Make an informed decision for your business collaboration tools.',
-  keywords: ['Microsoft 365 vs Google Workspace', 'office productivity suite', 'business email', 'collaboration tools', 'productivity software'],
+  title: 'Microsoft 365 vs Google Workspace 2025: Complete Comparison for UK Businesses | Guruji Tech Global',
+  description: 'Comprehensive comparison of Microsoft 365 vs Google Workspace for UK businesses. Features, pricing, security, collaboration tools, and which to choose for your team. Expert insights and recommendations.',
+  keywords: ['Microsoft 365 vs Google Workspace UK', 'office productivity suite comparison', 'business email UK', 'collaboration tools UK', 'productivity software Coventry', 'Teams vs Google Meet', 'Outlook vs Gmail', 'best productivity suite 2025'],
+  alternates: {
+    canonical: 'https://www.gurujitechglobal.com/blog/microsoft-365-vs-google-workspace',
+  },
+  openGraph: {
+    title: 'Microsoft 365 vs Google Workspace 2025: Complete Comparison for UK Businesses',
+    description: 'Comprehensive comparison of Microsoft 365 vs Google Workspace. Features, pricing, security, and which to choose for your business.',
+    url: 'https://www.gurujitechglobal.com/blog/microsoft-365-vs-google-workspace',
+    type: 'article',
+    publishedTime: '2024-11-20',
+    modifiedTime: '2025-01-15',
+    images: [
+      {
+        url: 'https://www.gurujitechglobal.com/blog-hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Microsoft 365 vs Google Workspace Comparison Guide',
+      },
+    ],
+  },
 };
 
 export default function Microsoft365VsGoogleWorkspace() {
@@ -46,6 +65,25 @@ export default function Microsoft365VsGoogleWorkspace() {
     'Simple setup and management',
     'Browser-based access from any device',
     'Regular automatic updates',
+  ];
+
+  const faqs = [
+    {
+      question: 'Which productivity suite is better for small businesses in the UK?',
+      answer: 'For most small businesses, Google Workspace offers better value with lower per-user costs (£6-9/user/month) and excellent collaboration features. However, if your team is already familiar with Microsoft Office or requires advanced Excel features, Microsoft 365 (£7.60-23.60/user/month) may be the better choice. We recommend a free trial of both before deciding.',
+    },
+    {
+      question: 'Can I migrate from Google Workspace to Microsoft 365 or vice versa?',
+      answer: 'Yes, both platforms support migration between each other. We have successfully helped UK businesses migrate from Google to Microsoft and vice versa. The migration process includes emails, calendars, contacts, and documents. Typical migration takes 1-2 weeks depending on data volume. Contact us for a free migration assessment.',
+    },
+    {
+      question: 'Which platform offers better security for UK businesses?',
+      answer: 'Both platforms offer enterprise-grade security. Microsoft 365 has advanced threat protection (Microsoft Defender) and compliance certifications ideal for regulated industries. Google Workspace excels in data protection with automated phishing protection. Both comply with GDPR, ISO 27001, and SOC 2. The choice depends on your specific security requirements and existing infrastructure.',
+    },
+    {
+      question: 'What is the cost difference between Microsoft 365 and Google Workspace in the UK?',
+      answer: 'Google Workspace Business Starter starts at £6/user/month, while Microsoft 365 Business Basic starts at £7.60/user/month. For advanced features, Google Workspace Business Plus is £18/user/month, and Microsoft 365 Business Premium is £23.60/user/month. Annual billing typically offers 15-20% savings. Both offer free trials: Google (14 days) and Microsoft (30 days).',
+    },
   ];
 
   return (
@@ -129,6 +167,19 @@ export default function Microsoft365VsGoogleWorkspace() {
             </div>
           </section>
 
+          {/* FAQ Section */}
+          <section className="mb-12 py-12 bg-muted/30 rounded-2xl">
+            <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="border-b border-border pb-6 last:border-0">
+                  <h3 className="text-xl font-bold mb-3 text-[oklch(0.35_0.12_260)]">{faq.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* CTA Section */}
           <section className="py-12">
             <div className="bg-gradient-to-r from-[oklch(0.35_0.12_260)] to-[oklch(0.5_0.2_25)] rounded-2xl p-8 text-white text-center">
@@ -164,13 +215,77 @@ export default function Microsoft365VsGoogleWorkspace() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "Microsoft 365 vs Google Workspace: Which is Right for You?",
-            "description": "Compare features, pricing, and benefits of leading productivity suites. Make an informed decision for your business collaboration tools.",
+            "headline": "Microsoft 365 vs Google Workspace 2025: Complete Comparison for UK Businesses",
+            "description": "Comprehensive comparison of Microsoft 365 vs Google Workspace for UK businesses. Features, pricing, security, collaboration tools, and which to choose.",
             "datePublished": "2024-11-20",
+            "dateModified": "2025-01-15",
             "author": {
               "@type": "Organization",
-              "name": "Guruji Tech Global"
+              "name": "Guruji Tech Global",
+              "url": "https://www.gurujitechglobal.com"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Guruji Tech Global",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.gurujitechglobal.com/logo.webp"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.gurujitechglobal.com/blog/microsoft-365-vs-google-workspace"
             }
+          })
+        }}
+      />
+
+      {/* FAQ Schema for Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.gurujitechglobal.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.gurujitechglobal.com/blog"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Microsoft 365 vs Google Workspace",
+                "item": "https://www.gurujitechglobal.com/blog/microsoft-365-vs-google-workspace"
+              }
+            ]
           })
         }}
       />
