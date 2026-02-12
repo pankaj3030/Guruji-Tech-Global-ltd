@@ -1,9 +1,74 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ZAI from 'z-ai-web-dev-sdk';
+import { EmailService } from '@/lib/email';
 
-// Store conversations in memory (in production, use Redis or database)
+// Store conversations and lead data in memory (in production, use Redis or database)
 const conversations = new Map<string, Array<{ role: string; content: string }>>();
+const leadData = new Map<string, LeadInfo>();
 let zaiInstance: any = null;
+
+interface LeadInfo {
+  name: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  websiteType: string;
+  features: string;
+  budget: string;
+  timeline: string;
+  additionalInfo: string;
+  currentStep: number;
+  isLeadCollection: boolean;
+}
+
+// Questions for each step
+const STEP_QUESTIONS: Record<number, { field: keyof LeadInfo; question: string; acknowledge: string }> = {
+  1: { 
+    field: 'name', 
+    question: "To get started, could you please provide your **full name**?",
+    acknowledge: "Nice to meet you, {value}!"
+  },
+  2: { 
+    field: 'email', 
+    question: "What's your **email address**? We'll use this to send you a quote.",
+    acknowledge: "Got it! Your email is {value}."
+  },
+  3: { 
+    field: 'phone', 
+    question: "What's your **phone number**? (You can type 'skip' if you prefer not to share)",
+    acknowledge: "Thanks! We have your phone number."
+  },
+  4: { 
+    field: 'companyName', 
+    question: "What's your **company name**?",
+    acknowledge: "Great! So you're from {value}."
+  },
+  5: { 
+    field: 'websiteType', 
+    question: "What **type of website** do you need? (e.g., business website, e-commerce store, portfolio, blog, etc.)",
+    acknowledge: "Perfect! You're looking for a {value}."
+  },
+  6: { 
+    field: 'features', 
+    question: "What **features** would you like on your website? (e.g., contact form, booking system, payment integration, etc.)",
+    acknowledge: "Excellent choices! You want {value}."
+  },
+  7: { 
+    field: 'budget', 
+    question: "What's your **budget range** for this project? (e.g., £500-1000, £1000-3000, £3000+, or 'not sure')",
+    acknowledge: "Budget noted: {value}."
+  },
+  8: { 
+    field: 'timeline', 
+    question: "When do you need the website **completed by**? (e.g., 'as soon as possible', '1 month', '3 months', 'no rush')",
+    acknowledge: "Timeline: {value}."
+  },
+  9: { 
+    field: 'additionalInfo', 
+    question: "Is there anything **else** you'd like to share about your project? (Type 'no' or 'none' if you're done)",
+    acknowledge: "Thanks for the additional info!"
+  }
+};
 
 // System prompt for Guruji Tech Global AI Assistant
 const SYSTEM_PROMPT = `You are a helpful AI assistant for Guruji Tech Global, an IT solutions company based in Coventry, UK.
@@ -65,15 +130,300 @@ function getConversationHistory(sessionId: string) {
   return conversations.get(sessionId)!;
 }
 
-function trimConversationHistory(history: Array<{ role: string; content: string }>, maxMessages: number = 15) {
+function getLeadInfo(sessionId: string): LeadInfo {
+  if (!leadData.has(sessionId)) {
+    leadData.set(sessionId, {
+      name: '',
+      email: '',
+      phone: '',
+      companyName: '',
+      websiteType: '',
+      features: '',
+      budget: '',
+      timeline: '',
+      additionalInfo: '',
+      currentStep: 0,
+      isLeadCollection: false
+    });
+  }
+  return leadData.get(sessionId)!;
+}
+
+function trimConversationHistory(history: Array<{ role: string; content: string }>, maxMessages: number = 20) {
   if (history.length <= maxMessages) {
     return history;
   }
-  // Keep system prompt and recent messages
   return [
     history[0], // Keep system prompt
     ...history.slice(-(maxMessages - 1))
   ];
+}
+
+// Check if user message indicates website development interest
+function isWebsiteInquiry(message: string): boolean {
+  const triggers = [
+    'need a website',
+    'want a website',
+    'build a website',
+    'create a website',
+    'website for my',
+    'website for our',
+    'web development',
+    'develop a website',
+    'make a website',
+    'new website',
+    'looking for website',
+    'website design',
+    'ecommerce website',
+    'e-commerce website',
+    'online store',
+    'business website'
+  ];
+  
+  const lowerMessage = message.toLowerCase();
+  return triggers.some(trigger => lowerMessage.includes(trigger));
+}
+
+// Extract and validate data based on step
+function extractDataForStep(step: number, message: string): { valid: boolean; value: string } {
+  const trimmedMessage = message.trim();
+  
+  switch (step) {
+    case 1: // Name
+      if (trimmedMessage.length >= 2) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 2: // Email
+      const emailMatch = trimmedMessage.match(/[\w.-]+@[\w.-]+\.\w+/);
+      if (emailMatch) {
+        return { valid: true, value: emailMatch[0] };
+      }
+      return { valid: false, value: '' };
+      
+    case 3: // Phone (optional)
+      if (trimmedMessage.toLowerCase() === 'skip' || trimmedMessage.toLowerCase() === 'no') {
+        return { valid: true, value: 'Not provided' };
+      }
+      const phoneMatch = trimmedMessage.match(/[\d\s\+\-\(\)]{7,}/);
+      if (phoneMatch) {
+        return { valid: true, value: phoneMatch[0].trim() };
+      }
+      // Accept any non-empty response as skip
+      if (trimmedMessage.length > 0) {
+        return { valid: true, value: 'Not provided' };
+      }
+      return { valid: false, value: '' };
+      
+    case 4: // Company name
+      if (trimmedMessage.length >= 1) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 5: // Website type
+      if (trimmedMessage.length >= 2) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 6: // Features
+      if (trimmedMessage.length >= 2) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 7: // Budget
+      if (trimmedMessage.length >= 1) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 8: // Timeline
+      if (trimmedMessage.length >= 1) {
+        return { valid: true, value: trimmedMessage };
+      }
+      return { valid: false, value: '' };
+      
+    case 9: // Additional info (optional)
+      if (trimmedMessage.toLowerCase() === 'no' || trimmedMessage.toLowerCase() === 'none' || trimmedMessage.toLowerCase() === 'skip') {
+        return { valid: true, value: '' };
+      }
+      return { valid: true, value: trimmedMessage };
+      
+    default:
+      return { valid: false, value: '' };
+  }
+}
+
+// Generate lead collection response
+function generateLeadResponse(lead: LeadInfo, isStart: boolean = false): string {
+  if (isStart) {
+    return `Great! I'd be happy to help you with a website for your company! 🎉\n\nLet me ask you a few questions to understand your needs better.\n\n${STEP_QUESTIONS[1].question}`;
+  }
+  
+  const stepConfig = STEP_QUESTIONS[lead.currentStep];
+  if (!stepConfig) return '';
+  
+  // Get the value that was just collected
+  const field = stepConfig.field;
+  const value = lead[field] as string;
+  
+  // Generate acknowledgment
+  let acknowledge = stepConfig.acknowledge;
+  if (value && acknowledge.includes('{value}')) {
+    acknowledge = acknowledge.replace('{value}', value);
+  }
+  
+  // Check if we're done
+  if (lead.currentStep >= 9) {
+    return null; // Signal completion
+  }
+  
+  // Get next question
+  const nextStep = lead.currentStep + 1;
+  const nextQuestion = STEP_QUESTIONS[nextStep]?.question || '';
+  
+  return `${acknowledge}\n\n${nextQuestion}`;
+}
+
+// Send lead notification email
+async function sendLeadNotificationEmail(sessionId: string): Promise<boolean> {
+  const lead = leadData.get(sessionId);
+  if (!lead) return false;
+
+  try {
+    const emailSent = await EmailService.sendEmail({
+      to: [process.env.CONTACT_NOTIFICATION_EMAIL || 'contact@gurujitechglobal.com'],
+      subject: `🌐 New Website Inquiry from ${lead.name} - ${lead.companyName}`,
+      text: `
+NEW WEBSITE DEVELOPMENT INQUIRY
+
+Contact Information:
+- Name: ${lead.name}
+- Email: ${lead.email}
+- Phone: ${lead.phone || 'Not provided'}
+- Company: ${lead.companyName || 'Not provided'}
+
+Project Details:
+- Website Type: ${lead.websiteType || 'Not specified'}
+- Features Required: ${lead.features || 'Not specified'}
+- Budget Range: ${lead.budget || 'Not specified'}
+- Timeline: ${lead.timeline || 'Not specified'}
+
+Additional Information:
+${lead.additionalInfo || 'None provided'}
+
+---
+This lead was collected via the AI Chatbot on gurujitechglobal.com
+Please follow up within 24 hours.
+      `,
+      html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Website Development Inquiry</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #4169E1 0%, #3b82f6 100%); color: white; padding: 25px; border-radius: 10px 10px 0 0; }
+    .content { background: #fff; padding: 30px; border-radius: 0 0 10px 10px; }
+    .section { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #4169E1; }
+    .section h3 { margin-top: 0; color: #4169E1; }
+    .info-row { display: flex; padding: 8px 0; border-bottom: 1px solid #eee; }
+    .info-label { font-weight: bold; width: 140px; color: #555; }
+    .info-value { flex: 1; }
+    .badge { display: inline-block; background: #4169E1; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 12px; }
+    .highlight { background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin-top: 20px; }
+    .footer { text-align: center; color: #666; font-size: 14px; margin-top: 20px; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🌐 New Website Development Inquiry</h1>
+      <p style="margin: 5px 0 0 0; opacity: 0.9;">Lead collected via AI Chatbot</p>
+    </div>
+    
+    <div class="content">
+      <div class="section">
+        <h3>👤 Contact Information</h3>
+        <div class="info-row">
+          <span class="info-label">Name:</span>
+          <span class="info-value">${lead.name}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email:</span>
+          <span class="info-value"><a href="mailto:${lead.email}">${lead.email}</a></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Phone:</span>
+          <span class="info-value">${lead.phone || 'Not provided'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Company:</span>
+          <span class="info-value">${lead.companyName || 'Not provided'}</span>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>💻 Project Details</h3>
+        <div class="info-row">
+          <span class="info-label">Website Type:</span>
+          <span class="info-value">${lead.websiteType || 'Not specified'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Features:</span>
+          <span class="info-value">${lead.features || 'Not specified'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Budget:</span>
+          <span class="info-value">${lead.budget || 'Not specified'}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Timeline:</span>
+          <span class="info-value">${lead.timeline || 'Not specified'}</span>
+        </div>
+      </div>
+      
+      ${lead.additionalInfo ? `
+      <div class="section">
+        <h3>📝 Additional Information</h3>
+        <p>${lead.additionalInfo}</p>
+      </div>
+      ` : ''}
+      
+      <div class="highlight">
+        <strong>⚡ Action Required:</strong>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+          <li>Follow up within 24 hours</li>
+          <li>Prepare a preliminary quote based on requirements</li>
+          <li>Schedule a consultation call if needed</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p><strong>Guruji Tech Global - AI Chatbot Lead</strong></p>
+      <p>📧 contact@gurujitechglobal.com | 📞 +44-7488564873</p>
+      <p style="font-size: 12px; color: #999;">
+        <a href="https://gurujitechglobal.com" style="color: #4169E1;">www.gurujitechglobal.com</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
+      `
+    }, process.env.RESEND_FROM_CONTACT || 'form@gurujitechglobal.com');
+
+    return emailSent;
+  } catch (error) {
+    console.error('Failed to send lead notification:', error);
+    return false;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -87,30 +437,116 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get or create conversation history
+    // Get or create conversation history and lead info
     let history = getConversationHistory(sessionId || 'default');
+    const lead = getLeadInfo(sessionId || 'default');
 
-    // Add user message
+    // Add user message to history
     history.push({
       role: 'user',
       content: message
     });
 
+    let aiResponse: string;
+    let isInLeadCollection = lead.isLeadCollection;
+
+    // Check if this is a new website inquiry
+    if (isWebsiteInquiry(message) && !lead.isLeadCollection) {
+      // Start lead collection
+      lead.isLeadCollection = true;
+      lead.currentStep = 0; // Will be incremented to 1
+      isInLeadCollection = true;
+      
+      aiResponse = generateLeadResponse(lead, true);
+      
+      lead.currentStep = 1; // Ready for first answer
+      leadData.set(sessionId || 'default', lead);
+    }
+    // Handle ongoing lead collection
+    else if (lead.isLeadCollection && lead.currentStep > 0 && lead.currentStep <= 9) {
+      // Extract data for current step
+      const { valid, value } = extractDataForStep(lead.currentStep, message);
+      
+      if (valid) {
+        // Save the extracted data
+        const field = STEP_QUESTIONS[lead.currentStep].field;
+        (lead as any)[field] = value;
+        
+        // Move to next step
+        lead.currentStep++;
+        
+        // Check if collection is complete
+        if (lead.currentStep > 9) {
+          // Lead collection complete - send email
+          const emailSent = await sendLeadNotificationEmail(sessionId || 'default');
+          
+          if (emailSent) {
+            aiResponse = `🎉 **Thank you, ${lead.name}!**
+
+I've collected all your information and sent it to our web development team. Here's a summary:
+
+📋 **Your Details:**
+• **Name:** ${lead.name}
+• **Email:** ${lead.email}
+• **Phone:** ${lead.phone || 'Not provided'}
+• **Company:** ${lead.companyName || 'Not provided'}
+
+💻 **Project Requirements:**
+• **Website Type:** ${lead.websiteType || 'Not specified'}
+• **Features:** ${lead.features || 'Not specified'}
+• **Budget:** ${lead.budget || 'Not specified'}
+• **Timeline:** ${lead.timeline || 'Not specified'}
+
+Our team will review your requirements and contact you within 24 hours!
+
+In the meantime, feel free to ask me any other questions. 😊`;
+          } else {
+            aiResponse = `Thank you, ${lead.name}! 
+
+I've collected your information. Your inquiry has been recorded and our team will contact you at ${lead.email} within 24-48 hours.
+
+You can also reach us directly at:
+• 📞 +44-7488564873
+• 📧 contact@gurujitechglobal.com
+
+Is there anything else I can help you with?`;
+          }
+          
+          // Reset lead collection mode
+          lead.isLeadCollection = false;
+          lead.currentStep = 0;
+        } else {
+          // Continue to next question
+          aiResponse = generateLeadResponse(lead);
+        }
+        
+        leadData.set(sessionId || 'default', lead);
+      } else {
+        // Invalid input - ask again
+        aiResponse = `I didn't quite catch that. ${STEP_QUESTIONS[lead.currentStep].question}`;
+      }
+    }
+    // Normal conversation - use AI
+    else {
+      // Trim history if too long
+      history = trimConversationHistory(history);
+      conversations.set(sessionId || 'default', history);
+
+      // Get ZAI instance
+      const zai = await getZAIInstance();
+
+      // Get AI completion
+      const completion = await zai.chat.completions.create({
+        messages: history,
+        thinking: { type: 'disabled' }
+      });
+
+      aiResponse = completion.choices[0]?.message?.content || "I apologize, but I couldn't generate a response. Please try again.";
+    }
+
     // Trim history if too long
     history = trimConversationHistory(history);
-    conversations.set(sessionId || 'default', history);
-
-    // Get ZAI instance
-    const zai = await getZAIInstance();
-
-    // Get AI completion
-    const completion = await zai.chat.completions.create({
-      messages: history,
-      thinking: { type: 'disabled' }
-    });
-
-    const aiResponse = completion.choices[0]?.message?.content || "I apologize, but I couldn't generate a response. Please try again.";
-
+    
     // Add AI response to history
     history.push({
       role: 'assistant',
@@ -123,7 +559,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       response: aiResponse,
-      messageCount: history.length - 1 // Exclude system prompt from count
+      messageCount: history.length - 1,
+      leadCollectionMode: isInLeadCollection,
+      leadStep: lead.currentStep
     });
 
   } catch (error) {
@@ -145,10 +583,11 @@ export async function DELETE(request: NextRequest) {
     const sessionId = searchParams.get('sessionId') || 'default';
 
     conversations.delete(sessionId);
+    leadData.delete(sessionId);
 
     return NextResponse.json({
       success: true,
-      message: 'Conversation cleared successfully'
+      message: 'Conversation and lead data cleared successfully'
     });
 
   } catch (error) {
