@@ -7,6 +7,7 @@ export default function SimpleChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const [chatHistory, setChatHistory] = useState<Array<{role: 'user' | 'assistant', content: string}>>([
@@ -16,12 +17,24 @@ export default function SimpleChatbot() {
     }
   ]);
 
+  // Initialize sessionId from sessionStorage or generate new one
+  useEffect(() => {
+    const storedSession = sessionStorage.getItem('chatbot-session-id');
+    if (storedSession) {
+      setSessionId(storedSession);
+    } else {
+      const newSessionId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+      setSessionId(newSessionId);
+      sessionStorage.setItem('chatbot-session-id', newSessionId);
+    }
+  }, []);
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory]);
 
   const handleSend = async () => {
-    if (!message.trim() || isLoading) return;
+    if (!message.trim() || isLoading || !sessionId) return;
 
     const userMessage = message.trim();
     setMessage('');
@@ -35,7 +48,7 @@ export default function SimpleChatbot() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          sessionId: 'session-' + Date.now(),
+          sessionId,
           message: userMessage
         })
       });
