@@ -2,6 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import ZAI from 'z-ai-web-dev-sdk';
 import { EmailService } from '@/lib/email';
 
+/**
+ * Chatbot API Route
+ * 
+ * This endpoint uses the z-ai-web-dev-sdk for AI responses. The SDK requires
+ * a configuration file at `.z-ai-config` in the project root with the following structure:
+ * 
+ * {
+ *   "baseUrl": "https://your-api-endpoint.com/v1",
+ *   "apiKey": "your-api-key-here",
+ *   "chatId": "optional-chat-id",
+ *   "userId": "optional-user-id"
+ * }
+ * 
+ * If the configuration is missing, the chatbot will gracefully fall back to
+ * rule-based responses. See `.z-ai-config.example` for a template.
+ */
+
 // Store conversations and lead data in memory (in production, use Redis or database)
 const conversations = new Map<string, Array<{ role: string; content: string }>>();
 const leadData = new Map<string, LeadInfo>();
@@ -110,12 +127,76 @@ Guidelines:
 - If asked about pricing, suggest requesting a custom quote
 - For technical support issues, recommend contacting the support team`;
 
+// Configuration check flag
+let zaiConfigAvailable = true;
+let zaiInitError: string | null = null;
+
 // Initialize ZAI instance
 async function getZAIInstance() {
   if (!zaiInstance) {
-    zaiInstance = await ZAI.create();
+    try {
+      zaiInstance = await ZAI.create();
+      zaiConfigAvailable = true;
+      zaiInitError = null;
+    } catch (error) {
+      zaiConfigAvailable = false;
+      zaiInitError = error instanceof Error ? error.message : 'Unknown error';
+      
+      // Check if it's a configuration file error
+      if (zaiInitError?.includes('Configuration file not found') || 
+          zaiInitError?.includes('.z-ai-config')) {
+        console.warn(
+          '[Chatbot] ZAI SDK configuration missing. ' +
+          'Please create a .z-ai-config file with the following structure:\n' +
+          JSON.stringify({
+            baseUrl: 'YOUR_API_BASE_URL',
+            apiKey: 'YOUR_API_KEY',
+            chatId: 'OPTIONAL_CHAT_ID',
+            userId: 'OPTIONAL_USER_ID'
+          }, null, 2)
+        );
+      } else {
+        console.error('[Chatbot] ZAI SDK initialization failed:', zaiInitError);
+      }
+      
+      throw error;
+    }
   }
   return zaiInstance;
+}
+
+// Check if ZAI is available
+function isZAIAvailable(): boolean {
+  return zaiConfigAvailable && zaiInstance !== null;
+}
+
+// Generate a fallback response when AI is not available
+function generateFallbackResponse(message: string, history: Array<{ role: string; content: string }>): string {
+  const lowerMessage = message.toLowerCase();
+  
+  // Check for website-related inquiries
+  if (isWebsiteInquiry(message)) {
+    return `I'd be happy to help you with your website project! However, our AI assistant is currently in fallback mode.\n\nPlease contact us directly for personalized assistance:\n\n📞 **Phone:** +44-7488564873\n📧 **Email:** contact@gurujitechglobal.com\n\nOr visit our [Contact Page](/contact) to send us a message. Our team will get back to you within 24 hours!`;
+  }
+  
+  // Check for greetings
+  if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    return `Hello! Welcome to Guruji Tech Global! 👋\n\nI'm currently operating in fallback mode. For immediate assistance, please:\n\n• 📞 Call us: +44-7488564873\n• 📧 Email: contact@gurujitechglobal.com\n• 🌐 Visit our [Contact Page](/contact)\n\nOur team is available Monday-Friday, 9AM-6PM GMT.`;
+  }
+  
+  // Check for service inquiries
+  const serviceKeywords = ['service', 'cloud', 'security', 'support', 'web development', 'microsoft', 'network', 'backup'];
+  if (serviceKeywords.some(keyword => lowerMessage.includes(keyword))) {
+    return `Thank you for your interest in our IT services! 💼\n\nGuruji Tech Global offers a wide range of services including:\n• Cloud Services (AWS, Azure, Google Cloud)\n• Cyber Security & Compliance\n• IT Support & Managed Services\n• Web Development\n• Microsoft 365 Solutions\n• Network Solutions\n• And more!\n\nFor detailed information and quotes, please contact us directly or visit our [Services page](/services).`;
+  }
+  
+  // Check for pricing
+  if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('pricing') || lowerMessage.includes('quote')) {
+    return `We'd be happy to provide you with a custom quote! 💰\n\nPlease contact us with your specific requirements:\n\n📞 Phone: +44-7488564873\n📧 Email: contact@gurujitechglobal.com\n\nOr fill out our [contact form](/contact) and we'll get back to you with a tailored quote within 24 hours.`;
+  }
+  
+  // Default response
+  return `Thank you for your message! 🙏\n\nI'm currently operating in fallback mode. For the best assistance, please:\n\n📞 **Call us:** +44-7488564873\n📧 **Email:** contact@gurujitechglobal.com\n🌐 **Visit:** [Contact Page](/contact)\n\nOur team at Guruji Tech Global is ready to help you with all your IT needs!`;
 }
 
 function getConversationHistory(sessionId: string) {
@@ -532,16 +613,22 @@ Is there anything else I can help you with?`;
       history = trimConversationHistory(history);
       conversations.set(sessionId || 'default', history);
 
-      // Get ZAI instance
-      const zai = await getZAIInstance();
+      try {
+        // Get ZAI instance
+        const zai = await getZAIInstance();
 
-      // Get AI completion
-      const completion = await zai.chat.completions.create({
-        messages: history,
-        thinking: { type: 'disabled' }
-      });
+        // Get AI completion
+        const completion = await zai.chat.completions.create({
+          messages: history,
+          thinking: { type: 'disabled' }
+        });
 
-      aiResponse = completion.choices[0]?.message?.content || "I apologize, but I couldn't generate a response. Please try again.";
+        aiResponse = completion.choices[0]?.message?.content || "I apologize, but I couldn't generate a response. Please try again.";
+      } catch (zaiError) {
+        // ZAI initialization failed - use fallback response
+        console.warn('[Chatbot] Using fallback response due to ZAI unavailability');
+        aiResponse = generateFallbackResponse(message, history);
+      }
     }
 
     // Trim history if too long
