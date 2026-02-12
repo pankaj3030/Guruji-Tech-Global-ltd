@@ -4,3 +4,82 @@
   "chatId": "optional-chat-id",
   "userId": "optional-user-id"
 }
+
+/*
+╔══════════════════════════════════════════════════════════════════════════╗
+║              ZAI Chatbot Configuration (.z-ai-config)                    ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+SETUP INSTRUCTIONS:
+────────────────────────────────────────────────────────────────────────────
+
+1. Copy this file to .z-ai-config (remove the .example extension):
+   cp .z-ai-config.example .z-ai-config
+
+2. Replace the placeholder values with your actual API credentials
+
+3. Restart your development server for the changes to take effect
+
+4. Verify configuration by visiting: http://localhost:3000/api/chatbot/config
+
+
+REQUIRED FIELDS:
+────────────────────────────────────────────────────────────────────────────
+
+  baseUrl (string)
+    Your AI API endpoint URL
+    Examples:
+      • OpenAI: "https://api.openai.com/v1"
+      • Custom: "https://api.your-service.com/v1"
+
+  apiKey (string)
+    Your API authentication key
+    Example: "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    Note: This should be kept secret and never committed to version control
+
+
+OPTIONAL FIELDS:
+────────────────────────────────────────────────────────────────────────────
+
+  chatId (string)
+    Optional identifier for chat sessions
+    Useful for tracking conversations in the AI system
+
+  userId (string)
+    Optional identifier for user tracking
+    Helps with personalization and analytics
+
+
+SECURITY NOTES:
+────────────────────────────────────────────────────────────────────────────
+
+⚠️  IMPORTANT: Add .z-ai-config to your .gitignore file to prevent
+    accidental exposure of your API credentials!
+
+⚠️  Never share your .z-ai-config file or commit it to version control
+
+⚠️  Use environment variables in production for enhanced security
+    (see .env.example for reference)
+
+
+TROUBLESHOOTING:
+────────────────────────────────────────────────────────────────────────────
+
+If the chatbot remains in fallback mode after setting up the config:
+
+1. Check server logs for validation errors
+2. Verify JSON syntax is valid (use a JSON validator)
+3. Ensure baseUrl is a complete, valid URL
+4. Confirm apiKey is not a placeholder value
+5. Check file permissions on .z-ai-config (should be readable)
+6. Try the configuration check endpoint: /api/chatbot/config
+
+
+FOR MORE HELP:
+────────────────────────────────────────────────────────────────────────────
+
+• Configuration status: /api/chatbot/config
+• Example file: .z-ai-config.example
+• Documentation: See z-ai-web-dev-sdk documentation
+
+*/
