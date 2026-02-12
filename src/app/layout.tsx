@@ -6,6 +6,7 @@ import { GoogleTracking, GoogleTrackingNoScript } from "@/components/google-trac
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
+import AIChatbot from "@/components/ai-chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -94,6 +95,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CookieConsent />
+        <AIChatbot />
         <Toaster />
         <script
           type="application/ld+json"
