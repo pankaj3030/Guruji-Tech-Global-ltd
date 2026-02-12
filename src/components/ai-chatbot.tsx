@@ -15,7 +15,7 @@ export default function AIChatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState('');
+  const [sessionId, setSessionId] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Generate unique session ID
@@ -40,7 +40,7 @@ export default function AIChatbot() {
   };
 
   const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+    if (!input.trim() || isLoading || !sessionId) return;
 
     const userMessage = input.trim();
     setInput('');
