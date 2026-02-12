@@ -339,33 +339,41 @@ function extractDataForStep(step: number, message: string): { valid: boolean; va
 }
 
 // Generate lead collection response
-function generateLeadResponse(lead: LeadInfo, isStart: boolean = false): string {
+// completedStep: the step that was just answered (used for acknowledgement)
+// currentStep: the next step to ask about
+function generateLeadResponse(lead: LeadInfo, isStart: boolean = false, completedStep?: number): string {
   if (isStart) {
     return `Great! I'd be happy to help you with a website for your company! 🎉\n\nLet me ask you a few questions to understand your needs better.\n\n${STEP_QUESTIONS[1].question}`;
   }
-  
-  const stepConfig = STEP_QUESTIONS[lead.currentStep];
-  if (!stepConfig) return '';
-  
-  // Get the value that was just collected
+
+  // If completedStep is provided, use it for acknowledgement (the step just completed)
+  // Otherwise fall back to currentStep (for backwards compatibility)
+  const acknowledgeStep = completedStep !== undefined ? completedStep : lead.currentStep;
+  const stepConfig = STEP_QUESTIONS[acknowledgeStep];
+
+  if (!stepConfig) {
+    // No config for this step, return a safe fallback
+    return "Thanks for that information! Let's continue.";
+  }
+
+  // Get the value that was just collected from the completed step
   const field = stepConfig.field;
   const value = lead[field] as string;
-  
+
   // Generate acknowledgment
   let acknowledge = stepConfig.acknowledge;
   if (value && acknowledge.includes('{value}')) {
     acknowledge = acknowledge.replace('{value}', value);
   }
-  
-  // Check if we're done
-  if (lead.currentStep >= 9) {
-    return null; // Signal completion
+
+  // Check if we're done (after step 9 is completed, currentStep will be 10)
+  if (lead.currentStep > 9) {
+    return null; // Signal completion - all 9 steps are done
   }
-  
-  // Get next question
-  const nextStep = lead.currentStep + 1;
-  const nextQuestion = STEP_QUESTIONS[nextStep]?.question || '';
-  
+
+  // Get next question from current step (which is the next step to ask)
+  const nextQuestion = STEP_QUESTIONS[lead.currentStep]?.question || '';
+
   return `${acknowledge}\n\n${nextQuestion}`;
 }
 
@@ -547,20 +555,21 @@ export async function POST(request: NextRequest) {
     else if (lead.isLeadCollection && lead.currentStep > 0 && lead.currentStep <= 9) {
       // Extract data for current step
       const { valid, value } = extractDataForStep(lead.currentStep, message);
-      
+
       if (valid) {
         // Save the extracted data
-        const field = STEP_QUESTIONS[lead.currentStep].field;
+        const completedStep = lead.currentStep;
+        const field = STEP_QUESTIONS[completedStep].field;
         (lead as any)[field] = value;
-        
+
         // Move to next step
         lead.currentStep++;
-        
-        // Check if collection is complete
+
+        // Check if collection is complete (after step 9 is done, currentStep becomes 10)
         if (lead.currentStep > 9) {
           // Lead collection complete - send email
           const emailSent = await sendLeadNotificationEmail(sessionId || 'default');
-          
+
           if (emailSent) {
             aiResponse = `🎉 **Thank you, ${lead.name}!**
 
@@ -582,7 +591,7 @@ Our team will review your requirements and contact you within 24 hours!
 
 In the meantime, feel free to ask me any other questions. 😊`;
           } else {
-            aiResponse = `Thank you, ${lead.name}! 
+            aiResponse = `Thank you, ${lead.name}!
 
 I've collected your information. Your inquiry has been recorded and our team will contact you at ${lead.email} within 24-48 hours.
 
@@ -592,15 +601,15 @@ You can also reach us directly at:
 
 Is there anything else I can help you with?`;
           }
-          
+
           // Reset lead collection mode
           lead.isLeadCollection = false;
           lead.currentStep = 0;
         } else {
-          // Continue to next question
-          aiResponse = generateLeadResponse(lead);
+          // Continue to next question - pass the completed step for acknowledgement
+          aiResponse = generateLeadResponse(lead, false, completedStep);
         }
-        
+
         leadData.set(sessionId || 'default', lead);
       } else {
         // Invalid input - ask again
@@ -631,9 +640,14 @@ Is there anything else I can help you with?`;
       }
     }
 
+    // Ensure we always have a valid response (never null)
+    if (!aiResponse) {
+      aiResponse = "I apologize, but I couldn't generate a response. Please try again.";
+    }
+
     // Trim history if too long
     history = trimConversationHistory(history);
-    
+
     // Add AI response to history
     history.push({
       role: 'assistant',
