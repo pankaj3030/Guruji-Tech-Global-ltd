@@ -6,9 +6,8 @@ import { GoogleTracking, GoogleTrackingNoScript } from "@/components/google-trac
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
-import SimpleChatbot from "@/components/simple-chatbot";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import TinyChat from "@/components/tinychat";
+import CanonicalTag from "@/components/canonical-tag";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,11 +95,10 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CanonicalTag />
         <CookieConsent />
-        <SimpleChatbot />
+        <TinyChat />
         <Toaster />
-        <SpeedInsights />
-        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

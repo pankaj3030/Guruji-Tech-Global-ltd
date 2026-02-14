@@ -6,10 +6,14 @@ export const metadata: Metadata = {
   title: 'IT Blog | Cloud, Cybersecurity & Web Development Insights | Guruji Tech Global',
   description: 'Expert insights on cloud services, cybersecurity, web development, and Microsoft 365. Stay updated with the latest IT trends and best practices.',
   keywords: ['IT blog', 'technology insights', 'cloud computing blog', 'cybersecurity tips', 'web development guides', 'Microsoft 365 help', 'IT tutorials Coventry'],
+  alternates: {
+    canonical: 'https://gurujitechglobal.com/blog',
+  },
   openGraph: {
     title: 'IT Blog | Guruji Tech Global',
     description: 'Expert insights on cloud, cybersecurity, web development, and IT solutions.',
     type: 'website',
+    url: 'https://gurujitechglobal.com/blog',
   },
 };
 

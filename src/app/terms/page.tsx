@@ -1,5 +1,20 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { FileText, AlertCircle, CheckCircle, Scale } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | IT Services Agreement | Guruji Tech Global',
+  description: 'Terms of service for Guruji Tech Global IT services. Read our service agreements, payment terms, and user responsibilities.',
+  alternates: {
+    canonical: 'https://gurujitechglobal.com/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | Guruji Tech Global',
+    description: 'Terms of service for Guruji Tech Global IT services.',
+    type: 'website',
+    url: 'https://gurujitechglobal.com/terms',
+  },
+};
 
 export default function TermsOfService() {
   return (

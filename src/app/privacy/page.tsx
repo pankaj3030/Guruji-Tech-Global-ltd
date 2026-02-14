@@ -1,5 +1,20 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Lock, Eye, Trash2, Mail } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | GDPR Compliance | Guruji Tech Global',
+  description: 'Guruji Tech Global privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and UK data protection laws.',
+  alternates: {
+    canonical: 'https://gurujitechglobal.com/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | Guruji Tech Global',
+    description: 'How we collect, use, and protect your personal data in compliance with GDPR.',
+    type: 'website',
+    url: 'https://gurujitechglobal.com/privacy',
+  },
+};
 
 export default function PrivacyPolicy() {
   return (
