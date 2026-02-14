@@ -7,6 +7,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import CookieConsent from "@/components/ui/cookie-consent";
 import SimpleChatbot from "@/components/simple-chatbot";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -97,6 +98,7 @@ export default function RootLayout({
         <CookieConsent />
         <SimpleChatbot />
         <Toaster />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
