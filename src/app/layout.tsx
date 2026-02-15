@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'G-EKKVPQMREZ', // Updated with your Google Analytics ID
+    google: 'G-26GZ8EV18Y', // Updated with your Google Analytics ID
   },
 };
 
@@ -80,16 +80,16 @@ export default function RootLayout({
       <head>
         {/* Google Tracking: Analytics, Ads, Tag Manager & Tag 360 */}
         <GoogleTracking
-          gaId="G-EKKVPQMREZ"
+          gaId="G-26GZ8EV18Y"
           adsId="AW-17768577986"
-          gtmId="GT-5TWZTQBR"
-          gtmContainerId="GTM-T4X8WB5S"
+          gtmId="GT-NNSJ3JK8"
+          gtmContainerId="GTM-M394HLVS"
         />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <GoogleTrackingNoScript gtmContainerId="GTM-T4X8WB5S" />
+        <GoogleTrackingNoScript gtmContainerId="GTM-NNSJ3JK8" />
         <Header />
         <main className="flex-1 pt-20">
           {children}
