@@ -27,21 +27,21 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.webp",
   },
-  metadataBase: new URL('https://www.gurujitechglobal.com'),
+  metadataBase: new URL('https://gurujitechglobal.com'),
   alternates: {
-    canonical: 'https://www.gurujitechglobal.com',
+    canonical: 'https://gurujitechglobal.com',
   },
   openGraph: {
     title: "IT Solutions Coventry | Expert IT Services & Support UK | Guruji Tech Global",
     description: "Expert IT solutions in Coventry, UK. 500+ projects delivered. Cloud services, web development, cybersecurity, and 24/7 IT support.",
-    url: "https://www.gurujitechglobal.com",
+    url: "https://gurujitechglobal.com",
     siteName: "Guruji Tech Global",
     type: "website",
     locale: "en_GB",
     countryName: "United Kingdom",
     images: [
       {
-        url: "https://www.gurujitechglobal.com/hero-image.webp",
+        url: "https://gurujitechglobal.com/hero-image.webp",
         width: 1200,
         height: 630,
         alt: "Guruji Tech Global - IT Solutions Coventry",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IT Solutions Coventry | Expert IT Services & Support UK",
     description: "Expert IT solutions in Coventry, UK. 500+ projects delivered. Cloud services, web development, cybersecurity, and more.",
-    images: ["https://www.gurujitechglobal.com/hero-image.webp"],
+    images: ["https://gurujitechglobal.com/hero-image.webp"],
   },
   robots: {
     index: true,
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'G-26GZ8EV18Y', // Updated with your Google Analytics ID
+    google: 'G-26GZ8EV18Y', // Google Analytics ID
   },
 };
 
@@ -89,7 +89,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <GoogleTrackingNoScript gtmContainerId="GTM-NNSJ3JK8" />
+        <GoogleTrackingNoScript gtmContainerId="GTM-M394HLVS" />
         <Header />
         <main className="flex-1 pt-20">
           {children}
