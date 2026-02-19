@@ -2,7 +2,7 @@
 
 export const SEO_CONFIG = {
   siteName: 'Guruji Tech Global',
-  siteUrl: 'https://www.gurujitechglobal.com',
+  siteUrl: 'https://gurujitechglobal.com',
   domain: 'gurujitechglobal.com',
   phone: '+44-7488564873',
   email: 'contact@gurujitechglobal.com',
