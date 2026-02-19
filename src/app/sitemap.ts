@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.gurujitechglobal.com';
+    const baseUrl = 'https://gurujitechglobal.com';
 
     // 1. Service Slugs
     const services = [
