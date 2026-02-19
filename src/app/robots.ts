@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
                 // disallow: '/private/',
             },
         ],
-        sitemap: 'https://www.gurujitechglobal.com/sitemap.xml',
+        sitemap: 'https://gurujitechglobal.com/sitemap.xml',
     };
 }
