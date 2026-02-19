@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'cctv'
     ];
 
-    // 2. Blog Post Slugs (Extracted from your list)
+    // 2. Blog Post Slugs
     const blogPosts = [
         'what-is-cloud-migration',
         'cybersecurity-audit-signs',
@@ -36,6 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         'network-solutions-guide'
     ];
 
+    // 3. Career Job IDs
+    const jobIds = ['1', '2'];
+
     // Generate URLs for Services
     const serviceUrls = services.map((service) => ({
         url: `${baseUrl}/services/${service}`,
@@ -49,10 +52,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}/blog/${post}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
-        priority: 0.6, // Blog posts usually have slightly lower priority than main service pages
+        priority: 0.6,
     }));
 
-    // 3. Main Static Pages
+    // Generate URLs for Career Pages
+    const careerUrls = jobIds.map((id) => ({
+        url: `${baseUrl}/careers/${id}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.5,
+    }));
+
+    // 4. Main Static Pages
     return [
         {
             url: baseUrl,
@@ -73,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/blog`, // Main Blog Index Page
+            url: `${baseUrl}/blog`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.7,
@@ -91,6 +102,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
+            url: `${baseUrl}/faq`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
+            url: `${baseUrl}/it-services-coventry`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
             url: `${baseUrl}/privacy`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
@@ -102,7 +125,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'yearly',
             priority: 0.3,
         },
-        ...serviceUrls, // Spreads all service URLs here
-        ...blogUrls,    // Spreads all blog post URLs here
+        ...serviceUrls,
+        ...blogUrls,
+        ...careerUrls,
     ];
 }
